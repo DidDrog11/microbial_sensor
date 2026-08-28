@@ -1,0 +1,109 @@
+---
+title: "Pallasjärvi Fieldwork Protocol — WP1 (Microbial Sensor Project)"
+subtitle: "Sample collection with Prof. Henttonen's team, September trapping campaign"
+date: today
+format: html
+---
+
+## Status
+
+Draft skeleton. Sections marked with a callout are placeholders — fill in and reshare so the design can be reviewed as a whole.
+
+::: {.callout-important}
+
+This protocol assumes **snap-trapping**, 3–4 nights per grid, ~150 individuals total, no live recapture. If any of that changes, the sample-linkage logic in §4 needs revisiting.
+
+:::
+
+## 1. Purpose
+
+Collect host and paired environmental samples from wild rodents at Pallasjärvi (Finnish Lapland) to support WP1 of the Microbial Sensor project: establishing whether structured components of the gut microbiome track host connectivity, using within-campaign spatial co-occurrence as the connectivity proxy (see `data-management-plan.qmd` §2 for how "connected" is operationally defined here, now that this is prospective rather than archived data).
+
+::: {.callout-note}
+
+**PLACEHOLDER** — confirm scope: is this Pallasjärvi only for now (Swedish national archive samples dropped per current plan), or is there a parallel Grimsö archive component still being considered?
+
+:::
+
+## 2. Personnel and site
+
+- Field lead: Prof. Henttonen (Heikki) and team 
+- Site(s): Pallasjärvi long-term monitoring grids
+
+::: {.callout-note}
+
+**PLACEHOLDER** — grid names/count, coordinates or reference to existing grid map, trap type/model in use, trap check frequency (once daily? — this determines how long material sits before processing, see §5).
+
+:::
+
+## 3. Per-individual sample set
+
+For each trapped individual, the following are collected:
+
+| # | Sample | Collected by | Purpose |
+|---|--------|--------------|---------|
+| 1 | Blood/tissue for PUUV serology | Heikki's team, existing SOP | Hantavirus surveillance (unchanged from current practice) |
+| 2 | Whole gut, retained intact | Heikki's team | User dissects distal colon later at IEG — standardizes gut segment sampled against WP2 fecal swabs |
+| 3 | Nest/burrow material + soil | Heikki's team (burrow ID via local knowledge of grids) | Environmental Channel — shared-infrastructure signal |
+
+::: {.callout-note}
+
+**PLACEHOLDER** — existing PUUV SOP reference/citation (so this document can point to it rather than duplicate it), and confirmation of what "processes the blood" currently means in practice (serum for ELISA vs. whole blood).
+
+:::
+
+## 4. Linkage metadata (capture at point of collection)
+
+Recorded per individual, feeding directly into `data-management-plan.qmd`:
+
+- Unique sample ID (see naming scheme in data management plan)
+- Grid ID, trap station ID, GPS coordinates
+- Date and night of capture (1st–4th night of that grid's session)
+- Species, sex, age/mass if routinely recorded
+- Burrow ID (if a burrow could be associated with this capture) and trap-to-burrow distance
+- Which of the sample types in §3 were actually obtained (not all may be possible for every individual)
+
+## 5. Storage
+
+Primary: flash-freeze and store at −80°C as soon as practical.
+
+Interim (between collection and return to station, if trap checks are infrequent): ethanol or a nucleic-acid preservation buffer, then transfer to −80°C on return. Ethanol and RNAlater-type preservation both hold up well for 16S work relative to immediate freezing; a combined "preserve then freeze" approach performs about as well as freezing alone.
+
+::: {.callout-note}
+
+**PLACEHOLDER** — confirm −80°C access at the field station, and who is sourcing/shipping preservation buffer to Finland if the interim step is needed (RNAlater is expensive/sometimes back-ordered; a homemade nucleic-acid-preservation buffer is a cheaper substitute if procurement is tight on this timeline).
+
+:::
+
+Target volumes (guideline, not a hard constraint given gut material won't be scarce): ~0.5–1 g nest/soil material split into two tubes (working aliquot + untouched archive tube), to avoid repeated freeze–thaw of the only sample.
+
+## 6. Controls collected alongside real samples
+
+- **Off-grid reference soil** — background regional soil signature, collected away from any grid/burrow. This is a biological comparator, not a contamination check.
+- **Field blanks** — opened, empty tubes left near trap stations during active trapping, to catch airborne/handling contamination. Distribute across grids and nights rather than collecting just one.
+
+::: {.callout-note}
+
+**PLACEHOLDER** — target number of field blanks and off-grid soil samples (a fraction of total N, e.g. ~5–10%, is a reasonable starting point — pin down once pilot results are in, see `pilot-lab-protocol.qmd`). 
+
+:::
+
+Kit blanks, PCR no-template controls, and the mock community standard are lab-stage controls, not field-collected — see `pilot-lab-protocol.qmd`.
+
+## 7. Field hygiene
+
+Sterile or single-use dissection tools per individual for gut and nest/burrow sampling specifically (shared tools across a necropsy series will homogenize the community signal across individuals in a way that's very hard to detect after the fact).
+
+## 8. Outstanding items
+
+::: {.callout-important}
+
+**PLACEHOLDERS to resolve before this protocol is final:**
+
+- Export/transfer documentation for moving biological material Finland → Sweden (confirm whether any genetic-resource paperwork is needed beyond standard courier/customs)
+- Biosafety/PPE reference for handling wild-rodent carcasses and excreta (likely already covered by Heikki's existing PUUV field SOP — link it here rather than duplicate)
+- Confirmed trap check frequency (drives §5 storage decision)
+- Sign-off from Heikki's team on burrow-identification feasibility given
+  the compressed September timeline
+
+:::

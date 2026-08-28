@@ -1,0 +1,13 @@
+project:
+  title: "Microbial Sensor — Registered Report"
+  output-dir: _output
+  render:
+    - rr.qmd
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto
+
+editor: source

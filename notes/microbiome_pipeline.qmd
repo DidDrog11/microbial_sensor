@@ -1,0 +1,145 @@
+---
+title: "Microbial Sensor Pipeline: Wet-Lab and Bioinformatics Protocol"
+author: "David Simons"
+date: "2026-07-15"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    theme: cosmo
+execute:
+  eval: false
+  echo: true
+---
+
+# Overview and Methodological Philosophy
+
+This document details the operational workflow for establishing the "Microbial Sensor" across Work Package 1 (WP1; Pallasjärvi and Grimsö historical archives) and Work Package 2 (WP2; Grimsö longitudinal 3ha live-trapping grid). The core objective is to quantify dyadic gut microbiota similarity ($S_{ij}$) at single-nucleotide resolution, decomposing whole-community beta-diversity into explicit transmission channels (social vs. environmental) while controlling for host kinship ($K_{ij}$) and spatial overlap.
+
+To prevent technical artifacts from inflating dyadic similarity or obscuring recent transmission events, standard operating procedures must be harmonised across disparate sample matrices: historical snap-trapped bowel/caecal tissue in WP1 and longitudinal rectal swabs/faecal pellets in WP2.
+
+---
+
+# Stage 1: Sample Retrieval, Storage, and Homogenisation
+
+The biological integrity of the gut microbiome depends on immediately arresting enzymatic degradation and preventing the preferential overgrowth of aerotolerant taxa post-sampling.
+
+## State-of-the-Art Methodological Options
+
+1. **Cryogenic Snap-Freezing (-80°C / Liquid Nitrogen) without Preservative:** Immediate thermal arrest of biological activity. Requires dry ice or liquid nitrogen in the field and uninterrupted cold-chain storage.
+2. **Commercial Nucleic Acid Lysis/Stabilisation Buffers (e.g., Zymo DNA/RNA Shield, OMNIgene·GUT):** Chaotropic salt solutions that immediately lyse cells, denature nucleases, and stabilise DNA/RNA at ambient temperatures for up to 30 days.
+3. **95–100% Molecular-Grade Ethanol Immersion:** Traditional archival method. Dehydrates tissue and precipitates nucleic acids. Commonly used in legacy wildlife archives (e.g., historical trapping campaigns).
+
+## Selection and Justification
+
+* **WP1 (Historical Archives):** We are constrained by legacy preservation protocols. Tissue samples retrieved from Pallasjärvi archives and the Grimsö monitoring bank will consist of frozen tissue (-80°C) or ethanol-immersed caecal/colon segments. Prior to extraction, ethanol-stored tissues must be rehydrated in sterile phosphate-buffered saline (PBS) to prevent residual alcohols from inhibiting proteinase K digestion during lysis.
+* **WP2 (Grimsö Longitudinal Fieldwork):** **Method 2 (Zymo DNA/RNA Shield).** When conducting intensive live-trapping campaigns every three weeks, maintaining a continuous dry-ice cold chain across remote forest grids is logistically precarious. Swabbing the rectum or collecting fresh faecal pellets directly into lysis buffer tubes guarantees immediate nuclease inactivation at ambient temperatures. Furthermore, pre-filled lysis tubes standardise initial sample volumes and eliminate freeze-thaw cycles prior to mechanical bead-beating.
+
+---
+
+# Stage 2: Total DNA Extraction and Purification
+
+Bacterial cell wall architecture varies wildly across the gut consortium. Gram-negative bacteroidales lyse easily, whereas Gram-positive actinobacteria and resilient endospores (e.g., *Lachnospiraceae*—the primary target for the **Environmental Channel**) require mechanical shear to yield DNA.
+
+## State-of-the-Art Methodological Options
+
+1. **ZymoBIOMICS DNA Miniprep Kit / 96-Well Kit (Zymo Research):** Uses ultra-high-density ceramic bead-beating combined with spin-column or magnetic-bead purification. Specifically optimised for unbiased lysis of refractory microbes and endospores.
+2. **QIAamp PowerFecal Pro DNA Kit (Qiagen):** The industry standard, featuring inhibitor-removal technology (IRT) designed to precipitate humic acids, bile salts, and complex polysaccharides.
+3. **Automated Magnetic Bead-Based Extraction (e.g., MagMAX Microbiome on KingFisher Flex):** High-throughput liquid handling system that isolates DNA using silica-coated magnetic beads following mechanical lysis, minimising batch-to-batch technical variance.
+
+## Selection and Justification
+
+**Method 1 (ZymoBIOMICS DNA Kit) or its automated magnetic-bead equivalent (ZymoBIOMICS 96 MagBead)** 
+
+Independent benchmarking demonstrates that the ZymoBIOMICS lysis protocol achieves superior recovery of thick-walled Gram-positive bacteria and bacterial spores compared to Qiagen IRT systems, which can systematically under-represent *Firmicutes* due to milder bead-beating regimes [@costea2017; @marotz2021]. Capturing spore-forming taxa without extraction bias is preferable for parameterising our environmental space-sharing models. 
+
+### Essential Technical Modifications for WP1 Bowel Tissue    
+
+When extracting total DNA from bowel/caecal tissue, mammalian host DNA will represent the vast majority of the nucleic acid pool. While magnetic bead purification removes enzymatic inhibitors effectively, it does not separate host from bacterial DNA. To prevent host mitochondrial 16S rRNA genes from dominating the sequencing library, we will incorporate **Peptide Nucleic Acid (PNA) clamps** during subsequent PCR amplification.
+
+---
+
+# Stage 3: Amplicon Generation and Sequencing Submission
+
+To distinguish recent direct transmission from evolutionary divergence or background community sharing, we require single-nucleotide taxonomic resolution across the entire bacterial rRNA gene.
+
+## State-of-the-Art Methodological Options
+
+1. **PacBio HiFi Circular Consensus Sequencing (CCS) of Full-Length 16S (V1–V9):** PCR amplification of the complete ~1,500 bp 16S rRNA gene using universal primers (27F/1492R), ligated into circular SMRTbell libraries and sequenced on the PacBio Revio or Sequel IIe. Generates reads with $Q \ge 30$ ($\ge 99.9\%$ accuracy).
+2. **Oxford Nanopore Technologies (ONT) R10.4.1 Full-Length 16S / rrn Operon:** Real-time nanopore sequencing of either the 1,500 bp 16S gene or the full 4,500 bp *rrn* operon (16S-ITS-23S). Low capital cost, but raw single-molecule consensus accuracy currently lags slightly behind PacBio HiFi for amplicon single-nucleotide variant discrimination unless Unique Molecular Identifiers (UMIs) are deployed.
+3. **Illumina NovaSeq Short-Read Sequencing (V4 or V1–V2 Regions):** High-throughput sequencing of short amplicons (250–300 bp). Highly cost-effective per read, but blind to strain-level variation across the remainder of the gene.
+
+## Selection and Justification
+
+**Method 1 (PacBio HiFi Full-Length 16S via NGI Stockholm).**
+
+Short-read Illumina amplicons (Method 3) are inadequate for mapping transmission networks; two rodents sharing an identical V4 sequence could harbour distinct strains when evaluated across hypervariable regions V1, V2, and V8 [@callahan2019]. While ONT (Method 2) is advancing rapidly, PacBio HiFi CCS remains the gold standard for generating virtually error-free long reads without requiring complex UMI PCR protocols.
+
+### Library Preparation Protocol
+* **Primers:** Asymmetrically barcoded universal primers **27F** (`5'-AGRGTTYGATYMTGGCTCAG-3'`) and **1492R** (`5'-RGYTACCTTGTTACGACTT-3'`).
+* **Host Blocking:** For WP1 tissue extractions, add mammalian mitochondrial PNA (mPNA) and chloroplast PNA (cPNA) blockers to the PCR master mix to selectively inhibit off-target host amplification [@lundberg2013].
+* **Cycle Limits:** Restrict PCR amplification to **25–28 cycles** to prevent the formation of chimeric molecules and preserve relative compositional ratios.
+* **Multiplexing:** Pool equimolar barcoded libraries for sequencing on PacBio Revio SMRT Cells at NGI Stockholm/SciLifeLab, targeting approximately 10,000–15,000 HiFi reads per sample.
+
+---
+
+# Stage 4: Bioinformatics Pipeline (Raw Reads to Decontaminated ASVs)
+
+The bioinformatics architecture must convert raw multi-pass subreads into exact Amplicon Sequence Variants (ASVs), differentiate true biological sequence variants from residual PCR errors, and systematically prune environmental contaminants introduced during reagents or handling.
+
+## State-of-the-Art Methodological Options
+
+1. **DADA2 Long-Read Pipeline in R:** Explicit parametric error modelling tailored specifically to PacBio CCS reads. Resolves exact ASVs without arbitrary distance threshold clustering (e.g., 97% OTUs).
+2. **QIIME 2 + Deconvoluted Plugins (deblur / DADA2-CCS):** A Python-based wrapping ecosystem. Highly standardised, but introduces unnecessary abstraction layers when integrating directly with downstream R-based spatial and Bayesian modelling pipelines.
+3. **USEARCH / VSEARCH Zero-Radius OTUs (zOTUs):** Greedy clustering algorithms that identify exact sequences. Computationally fast, but relies on heuristic abundance-skewed parsimony rather than formal statistical error models.
+
+## Selection and Justification
+
+**Method 1 (DADA2 Long-Read Pipeline implemented natively in R on the UPPMAX cluster).**
+
+Executing DADA2 directly within R maintains an unbroken, reproducible script chain from raw sequencing files to our spatial statistical models [@callahan2016; @callahan2019]. Because PacBio CCS errors are predominantly insertion/deletion (indel) artifacts in homopolymer runs rather than substitution errors, DADA2's dedicated long-read error model (`band-size` adjustments and custom transition/transversion matrices) correctly resolves single-nucleotide differences across 1,500 bp without false-positive strain splitting.
+
+### Core Processing Script (UPPMAX Execution)
+
+---
+
+# Stage 5: Ecological Interpretation and Network Parameterisation ($S_{ij}$)
+
+To construct functional contact networks, whole-microbiome taxonomic profiles must be reduced to dyadic similarity indices ($S_{ij}$) capable of isolating direct social transmission from background carrying-capacity variance and environmental exposure.
+
+## State-of-the-Art Methodological Options
+
+1.  Unweighted UniFrac (Phylogenetic Presence/Absence): Calculates the fraction of unique phylogenetic branch lengths shared between two host communities. Captures evolutionary lineage sharing while remaining completely blind to relative abundance distortions.    
+2.  Jaccard Similarity Index (Compositional Presence/Absence): The ratio of shared unique ASVs to total unique ASVs evaluated across a host pair ($S_{ij} = \frac{|A \cap B|}{|A \cup B|}$). Strictly unweighted, highly sensitive to recent horizontal transmission of exact sequence variants.   
+3.  Aitchison Distance (Euclidean Distance of Centred Log-Ratio Transformed Counts): The statistically rigorous standard for compositional data analysis (CoDA). Mitigates sequencing-depth artifacts and negative correlation bias inherent in relative abundance data, but weights similarity by relative compositional dominance.
+
+## Selection and Justification  
+
+**Method 1 (Unweighted UniFrac) and Method 2 (Jaccard Similarity) applied independently across ecologically partitioned ASV sub-trees.**
+
+We reject abundance-weighted compositional metrics (like Aitchison or Bray-Curtis distance) for defining primary transmission edges. In wildlife disease ecology, transmission is a binary event (an ASV is transferred or it is not), whereas subsequent intra-host proliferation depends on host diet, immune status, and sample matrix (bowel mucosal tissue vs. luminal faeces) [@karstens2019]. An unweighted presence/absence framework ensures that a shared *Bacteroidales* strain transferred during nest co-use is flagged as a transmission event even if it sits at 15% relative abundance in Host A and 0.05% in Host B.
+
+## Channel Decomposition Protocol 
+
+Prior to calculating dyadic similarity matrices, we partition the cleaned `phyloseq` object into functional transmission channels based on taxonomy and oxygen tolerance priors:    
+
+1.  The Social Channel ($S_{ij}^{\text{social}}$): Subset `ps_clean` exclusively to obligate anaerobic, non-spore-forming taxa (primarily *Bacteroidales*, *Muribaculaceae*, and *Rikenellaceae*). Calculate unweighted Jaccard similarity. High similarity in this channel signifies recent direct physical contact or immediate nest co-occupancy, as these vegetative cells degrade rapidly when exposed to ambient atmospheric oxygen [@raulo2024]. 
+2.  The Environmental Channel ($S_{ij}^{\text{env}}$): Subset ps_clean to aerotolerant and spore-forming lineages (specifically *Lachnospiraceae*, *Ruminococcaceae*, and *Bacillota* endospores). Calculate Unweighted UniFrac similarity across host pairs and time-matched environmental soil/nest swabs. Sharing in this channel indexes indirect space-sharing and exposure to persistent environmental pools, mirroring the transmission mechanics of Puumala orthohantavirus (PUUV) via aerosolised excreta in shared burrows.
+
+## Exporting Dyadic Matrices for Bayesian Inference 
+
+The computed $S_{ij}$ matrices are transformed into long-format dyadic edge lists and merged with spatial overlap integrals derived from terra and RAD-seq kinship coefficients ($K_{ij}$). This dataset serves as the direct input for our Bayesian hierarchical models in brms/Stan to estimate interaction parameters ($\beta_1, \beta_2$) and quantify residual stochasticity ($\varepsilon$).
+
+# References  
+
+@callahan2016	Callahan, B. J., McMurdie, P. J., Rosen, M. J., Han, A. W., Johnson, A. J. A. & Holmes, S. P. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods, 13(7), 581–583. https://doi.org/10.1038/nmeth.3869
+@callahan2019	Callahan, B. J., Wong, J., Heiner, C., Oh, S., Theriot, C. M., Gulati, A. S., McGill, S. K. & Dougherty, M. K. (2019). High-throughput amplicon sequencing of the full-length 16S rRNA gene with single-nucleotide resolution. Nucleic Acids Research, 47(18), e103. https://doi.org/10.1093/nar/gkz569
+@costea2017	Costea, P. I., Zeller, G., Sunagawa, S., Pelletier, E., Alberti, A., Levenez, F., Tramontano, M., Driessen, M., Hercog, R., Jung, F. E., et al. (2017). Towards standards for human fecal sample processing in metagenomic studies. Nature Biotechnology, 35(11), 1069–1076. https://doi.org/10.1038/nbt.3960
+@gloor2017	Gloor, G. B., Macklaim, J. M., Pawlowsky-Glahn, V. & Egozcue, J. J. (2017). Microbiome datasets are compositional: and this is not optional. Frontiers in Microbiology, 8, 2224. https://doi.org/10.3389/fmicb.2017.02224
+@karstens2019	Karstens, L., Asquith, M., Caruso, V., Rosenbaum, J. T., Fair, D. A., Braun, J., Gregory, K. E. & Langille, M. G. I. (2019). Community profiling of conserved 16S rRNA gene sequence variants using a validated bioinformatics pipeline. mSystems, 4(4), e00190-19. https://doi.org/10.1128/mSystems.00190-19
+@lozupone2005	Lozupone, C. & Knight, R. (2005). UniFrac: a new phylogenetic method for comparing microbial communities. Applied and Environmental Microbiology, 71(12), 8228–8235. https://doi.org/10.1128/AEM.71.12.8228-8235.2005
+@lundberg2013	Lundberg, D. S., Yourstone, S., Mieczkowski, P., Jones, C. D. & Dangl, J. L. (2013). Practical innovations for high-throughput amplicon sequencing. Nature Methods, 10(10), 999–1002. https://doi.org/10.1038/nmeth.2634
+@marotz2021	Marotz, C., Sharma, A., Humphrey, G., Gaffney, J., Gogul, G., Fujimura, K. E., Lynch, S. V., Gilbert, J. A. & Knight, R. (2021). Trio-RNA sequencing reveals unbiased extraction of gut microbiome transcriptional profiles. BioTechniques, 70(3), 154–163. https://doi.org/10.2144/btn-2020-0144
+@raulo2024	Raulo, A., Allen, B. E., Trochet, A., Moltchanova, E., Snäll, T., Henttonen, H., Andersson, A. F. & Knowles, S. C. L. (2024). Social networks strongly predict the gut microbiota of wild mice. Nature Ecology & Evolution, 8(5), 972–985. https://doi.org/10.1038/s41559-024-02381-0

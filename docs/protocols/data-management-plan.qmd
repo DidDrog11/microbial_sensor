@@ -1,0 +1,110 @@
+---
+title: "Data Management Plan — WP1 (Microbial Sensor Project)"
+subtitle: "Sample tracking, metadata, and batch design for Pallasjärvi + downstream Grimsö comparability"
+date: today
+format: html
+---
+
+## Status
+
+Draft skeleton — companion to `pallasjarvi-fieldwork-protocol.qmd` and `pilot-lab-protocol.qmd`. Fill in and reshare.
+
+## 1. Scope
+
+Covers WP1 sample tracking from field collection at Pallasjärvi through extraction, sequencing, and analysis-ready metadata — designed to stay compatible with WP2 (Grimsö) metadata so the two work packages can eventually be merged for cross-site comparison.
+
+::: {.callout-note}
+
+Now that Pallasjärvi is prospective (not archived) and the Swedish national archive samples are out of scope, WP1 is effectively single-site. Worth stating that explicitly here so anyone picking up this document later understands why the design changed from the original proposal.
+
+:::
+
+## 2. Connectivity definition (operational)
+
+Since there's no multi-year history to select connected/unconnected dyads from, connectivity for WP1 must be defined from within-campaign data:
+
+::: {.callout-important}
+
+**PLACEHOLDER** — exact operational definition, e.g. co-capture at the same trap station/burrow within the 3–4 night session vs. capture on distant grids. This determines what counts as a "connected" vs. "unconnected" dyad
+in the eventual model, and should be pinned down before the pilot (it affects what metadata absolutely must be captured in the field — see §4).
+
+:::
+
+## 3. Sample ID scheme
+
+::: {.callout-note}
+
+**PLACEHOLDER** — propose something like:
+
+`PAL-{grid}-{date:YYYYMMDD}-{individual}-{sampletype}`
+
+e.g. `PAL-G3-20260915-014-GUT`, `PAL-G3-20260915-014-NEST`, `PAL-G3-20260915-BLANK-01`
+
+Confirm grid codes and whether individual numbering resets per grid or is
+global across the campaign.
+
+:::
+
+## 4. Metadata schema
+
+Minimum fields to capture per sample, matching §4 of the fieldwork protocol:
+
+| Field | Description | Captured by |
+|---|---|---|
+| sample_id | Unique ID per §3 | Field team |
+| grid_id | Trapping grid identifier | Field team |
+| trap_station_id | Trap location within grid | Field team |
+| gps_lat / gps_lon | Coordinates | Field team |
+| capture_date | Date of capture | Field team |
+| trap_night | Which night of the 3–4 night session (1–4) | Field team |
+| individual_id | Unique animal identifier | Field team |
+| species | | Field team |
+| sex / age_class / mass | If routinely recorded | Field team |
+| burrow_id | If a burrow was associated with this capture | Field team |
+| trap_to_burrow_distance_m | | Field team |
+| sample_types_collected | Which of gut/nest/soil/blood obtained | Field team |
+| storage_medium | Frozen / ethanol / preservation buffer | Field team |
+| extraction_batch_id | | Lab |
+| extraction_date | | Lab |
+| extraction_kit_lot | | Lab |
+| pcr_batch_id | | Lab |
+| sequencing_run_id | | Lab / NGI |
+
+::: {.callout-note}
+
+**PLACEHOLDER** — confirm which fields Heikki's team can realistically capture given field conditions vs. which need to be reconstructed later (e.g., precise GPS per burrow may need a field-friendly method — handheld GPS unit vs. relative distance/bearing from a mapped trap station).
+
+:::
+
+## 5. Batch design
+
+To avoid confounding batch effects with the biological variable of interest:
+
+- Extraction and library-prep batches should be **blocked across grids**, not run grid-by-grid in sequence
+- Once the connectivity definition (§2) is settled, batches should also be blocked across connectivity status, so "connected" and "unconnected" individuals aren't systematically processed in different runs
+- Field blanks and off-grid soil controls should appear in every batch, not be run separately at the end
+
+::: {.callout-note}
+
+**PLACEHOLDER** — actual randomization scheme once N and grid count are known; a simple stratified-random assignment to batches is probably sufficient, but worth deciding the block size against expected batch capacity (how many
+samples per extraction/PCR run).
+
+:::
+
+## 6. Storage, backup, and repository
+
+::: {.callout-important}
+
+**PLACEHOLDER** — where does raw sequence data land (NGI delivery → UPPMAX?), where does the metadata spreadsheet/database live during the project (shared drive? institutional data management system?), what's the backup policy, and what's the plan for final deposition (per the proposal's commitment to open repositories for scripts and raw sequences — need a named repository, e.g. ENA/SRA for sequences, and a code repository for the R scripts).
+
+:::
+
+## 7. Version control
+
+R scripts (DADA2 pipeline, Bayesian hierarchical models) should live in a git repository from the start, not just at write-up time.
+
+::: {.callout-note}
+
+**PLACEHOLDER** — repository location/host, access for collaborators (Henttonen's team, Videvall lab), naming convention for analysis scripts.
+
+:::

@@ -1,0 +1,93 @@
+---
+title: "Pilot Lab Protocol — WP1 (Microbial Sensor Project)"
+subtitle: "Validating DNA yield/quality and the PacBio HiFi 16S pipeline on fresh Pallasjärvi material before finalizing Stage 1 RR commitments"
+date: today
+format: html
+---
+
+## Status
+
+## 1. Purpose
+
+Fresh snap-trapped material (gut, nest/burrow, soil) is untested for this pipeline in a way an established archive wouldn't have been. This pilot exists to check DNA yield, quality, and amplification success **before** the Stage 1 RR locks in committed sample numbers and analysis plan — cheap insurance against pre-registering N or a protocol that turns out to be optimistic.
+
+## 2. Pilot sample selection
+
+::: {.callout-note}
+
+**PLACEHOLDER** — propose a small subset spanning conditions rather than a random handful, e.g.:
+
+- 2–3 individuals per grid (spanning grids)
+- All sample types per individual (gut, nest/burrow soil, off-grid soil,
+  field blank)
+- At least one sample stored via each storage route if both flash-freeze
+  and interim-preservative routes end up being used (see fieldwork
+  protocol §5) — so storage method itself is part of what's validated
+
+Total pilot N: TBD once grid count is confirmed.
+
+:::
+
+## 3. Extraction
+
+::: {.callout-important}
+
+**PLACEHOLDER** — kit choice. Starting point for discussion: a PowerSoil-type kit (or equivalent) for nest/soil material, a stool-DNA kit for gut/distal colon content. Standard input mass for kits in this class is ~250 mg;
+collected volumes (§5 of fieldwork protocol) leave headroom above this so duplicate/repeat extractions are possible if a first attempt fails.
+
+:::
+
+- Duplicate extraction where sample volume allows (working aliquot vs. archive tube — do not deplete the archive tube on a pilot)
+- Record extraction kit lot per batch
+
+## 4. Controls included in the pilot
+
+Run alongside the pilot extractions, not deferred to the full run:
+
+- **Kit/reagent blank** — one per extraction batch
+- **PCR no-template control** — one per PCR batch
+- **Mock community standard** — run through the identical pipeline, to benchmark taxonomic/quantitative accuracy before committing real samples
+
+::: {.callout-note}
+
+**PLACEHOLDER** — mock community source/order status (e.g. ZymoBIOMICS or equivalent) — order lead time may matter for the pilot timeline.
+
+:::
+
+## 5. QC metrics and pass/fail criteria
+
+| Metric | Method | Threshold |
+|---|---|---|
+| DNA yield | Qubit/Nanodrop | TBD |
+| Purity (260/280, 260/230) | Nanodrop | TBD |
+| Amplification success | Gel check on full-length 16S primers | TBD |
+| Contaminant load in blanks | Compare blank vs. sample read counts (post-pilot sequencing) | TBD |
+
+::: {.callout-important}
+
+**PLACEHOLDER** — actual thresholds. Worth setting these *before* seeing pilot results, not after, so they function as real decision criteria rather than post-hoc justification.
+
+:::
+
+## 6. Decision framework
+
+What pilot outcomes would change before Stage 1 RR submission:
+
+::: {.callout-note}
+
+**PLACEHOLDER** — e.g.:
+
+- If soil/nest yield is too low at 250 mg input → increase field-collected volume guidance, or switch extraction kit
+- If off-grid or field blanks show substantial contaminant load → revisit field hygiene protocol before scaling to full N 
+- If gut material shows postmortem degradation signatures → revisit trap check frequency / interim storage requirement in fieldwork protocol §5
+- If a storage route (flash-freeze vs. preservative) clearly outperforms the other → standardize on it for the full campaign rather than leaving it flexible
+
+:::
+
+## 7. Timeline
+
+::: {.callout-important}
+
+**PLACEHOLDER** — pilot needs to complete (extraction → QC, not necessarily full sequencing) early enough to inform Stage 1 RR numbers. Slot this against the Phase 1 timeline once the September trapping dates are confirmed.
+
+:::

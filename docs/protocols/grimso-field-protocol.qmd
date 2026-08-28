@@ -1,0 +1,219 @@
+---
+title: "WP2 Longitudinal Field Sampling and Contact Triangulation Protocol (Grimsö)"
+author: "David Simons"
+date: "2026-07-15"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    theme: cosmo
+execute:
+  eval: false
+  echo: true
+---
+
+# Overview and Empirical Grounding (SITES Data Analysis)
+
+Work Package 2 (WP2) implements an intensive longitudinal live-trapping and automated telemetry study across a 3-hectare (3ha) grid at Grimsö Wildlife Research Station, Sweden. The core objective is to provide real-time, temporally ordered ground-truthing for the Microbial Sensor ($S_{ij}$), validating whether microbiome convergence accurately parameterises physical social contact ($\beta_1$) versus environmental space-sharing ($\beta_2$) across shifting demographic landscapes.
+
+## SITES Historical Trapping Success and Effort Calculation
+
+To ensure our design achieves the target sample size ($n = 20\text{--}40$ tracked individuals yielding $\approx 100$ longitudinal faecal swabs), we parameterise our trapping effort using the 1973–2025 SITES Grimsö monitoring data for small rodents (`SITES_ROD_GRI_Small-rodent-dynamics.pdf`, PID: https://meta.fieldsites.se/objects/rrxNvabIUu3dKaNcE2hdV5Vu). 
+
+Crucially, the SITES index `CTR_voles` (Catch per trap, expressed as individuals per 100 trap nights) bundles our primary target, the bank vole (*Clethrionomys glareolus*), together with field and meadow voles (*Microtus agrestis* and *Microtus arvalis*). Because Puumala orthohantavirus (PUUV) is strictly endemic to *Clethrionomys*, any captured *Microtus* represent ecological by-catch. In the forest interior at Grimsö, *Clethrionomys* heavily dominates, but we apply a conservative 15% taxonomic dilution factor to isolate our target species capture rate.
+
+```{r}
+#| label: sites-ctr-analysis
+#| eval: false
+library(tidyverse)
+library(here)
+
+# SITES historical CTR analysis (1973–2025)
+# Note: CTR_voles bundles Clethrionomys and Microtus spp. (individuals per 100 trap nights)
+sites_data <- read_delim(here("data-raw", "wp2_grimso", "sites_monitoring_1973_2025.csv"), delim = ";") |>
+  separate(TIMESTAMP, into = c("Month", "Year"), sep = "-") |>
+  mutate(Year = as.integer(Year),
+         Year = if_else(Year >= 73, as.integer(paste0(19, Year)),
+                        if_else(Year <= 9, as.integer(paste0(200, Year)), as.integer(paste0(20, Year)))),
+         Season = if_else(Month == "May", "Spring", "Autumn"))
+
+# Calculate empirical expectations for autumn trapping campaigns (adjusting for ~15% Microtus by-catch)
+autumn_stats <- sites_data |>
+  filter(Season == "Autumn") |>
+  summarise(mean_total_vole_ctr = mean(CTR_voles, na.rm = TRUE),
+            est_target_clethrionomys_ctr = mean(CTR_voles, na.rm = TRUE) * 0.85,
+            median_clethrionomys_ctr = median(CTR_voles, na.rm = TRUE) * 0.85,
+            q25_clethrionomys_ctr = quantile(CTR_voles, 0.25, na.rm = TRUE) * 0.85,
+            q75_clethrionomys_ctr = quantile(CTR_voles, 0.75, na.rm = TRUE) * 0.85)
+# Historical Autumn Mean CTR_voles = 3.6; Estimated target Clethrionomys CTR = 3.06 individuals / 100 trap nights
+```
+
+### Mathematical Justification for Grid Effort  
+
+The SITES monitoring protocol operates twice annually using 20 linear transects (~90 m long) with 50 traps per transect over 3 days ($3,000\text{ trap days}$). While linear transects provide a robust station-wide abundance index, one-dimensional strings cannot mathematically resolve two-dimensional home-range kernels ($k$-DOM), area-restricted foraging, or spatial overlap integrals between dyads. This empirical reality justifies establishing our custom 2D nested sub-grid.Across the 53-year time series, the mean autumn catch rate adjusted for target Clethrionomys is $\text{CTR} \approx 3.28$ individuals per 100 trap nights. To secure our target of $100$ longitudinal captures across the autumn campaign, the required trap nights ($T_{\text{total}}$) is calculated as:
+
+$$T_{\text{total}} = \frac{\text{Target Captures}}{\text{Expected Target CTR}} \times 100 = \frac{100}{3.28} \times 100 \approx 3,048\text{ trap nights}$$
+
+To absorb the 15% taxonomic dilution without increasing our physical footprint, we adjust our trapping cadence from 4 to 5 consecutive trap nights per session. Executing four trapping sessions (one session every three weeks) across our 156 trap stations yields exactly $156 \times 5 = 780$ trap nights per session ($3,120\text{ total trap nights}$).
+
+Furthermore, SITES executes its autumn campaign between weeks 37 and 42 (mid-September to mid-October), reflecting the seasonal peak in post-breeding rodent density. By scheduling our three 3-week live-trapping pulses to bracket this exact phenological window—running from week 33 (mid-August) to week 43 (late October)—we maximise capture success, interaction frequency, and PUUV transmission potential while mathematically guaranteeing our sample size even during low-density phase years ($\text{CTR} \approx 2.5$).
+
+## Stage 1: Spatial Grid Topology and Layout
+
+The physical arrangement of traps dictates our ability to mathematically separate direct social interactions from spatial home-range overlap.
+
+### State-of-the-Art Methodological Options   
+
+1.  Standard Index Line Transects (e.g., Small Quadrat Method / SITES standard): Linear arrays of trap stations spaced at 15–20m intervals. Highly efficient for rapid density indexing across landscape gradients, but incapable of estimating 2D home-range kernels ($k$-DOM) or spatial overlap integrals.    
+2.  Uniform Square Grid ($15\text{m} \times 15\text{m}$ Spacing): A continuous, regular lattice covering 3ha (e.g., a $175\text{m} \times 175\text{m}$ grid comprising $12 \times 12 = 144$ stations). Provides uniform spatial coverage and standardises detection probabilities across the study area.   
+3.  Nested Multi-Scale Sub-Grids ("Pallasjärvi / Heikki's Design"): An over-dispersed primary grid containing dense, nested high-intensity trapping clusters (e.g., 5m trap spacing within core core quadrats, separated by 25m inter-cluster matrices). Deliberately creates distinct spatial strata: high co-trapping probability within clusters versus zero direct contact across distant clusters.
+
+### Selection and Justification
+
+Method 3 (Nested Multi-Scale Sub-Grids).
+
+A uniform grid (Method 2) induces severe spatial-social collinearity; individuals trapped at adjacent stations share both micro-habitats and direct social encounters, rendering the parameters $\beta_1$ (social) and $\beta_2$ (spatial) weakly identified in Bayesian hierarchical models [@wanelik2025]. Adopting a nested sub-grid topology directly mirrors Heikki Henttonen’s historical experimental design in WP1, ensuring structural continuity across our comparative and longitudinal work packages. By establishing twelve dense $25\text{m} \times 25\text{m}$ sub-grids (each containing 13 trap stations spaced at 6.25m intervals) separated by 30m buffer zones across the 3ha forest plot, we generate three distinct analytical dyads:    
+
+1.  High Social Contact ($\beta_1$): Dyads co-captured within the same dense sub-grid.  
+2.  High Space-Sharing / Low Contact ($\beta_2$): Dyads captured in adjacent sub-grids with overlapping home-range buffers, but temporally separated. 
+3.  Zero Contact / Zero Overlap: Dyads from sub-grids at opposite extremities of the 3ha plot.  
+
+## Stage 2: Capture-Mark-Recapture (CMR) Trapping Mechanics 
+
+Trapping hardware must maximize capture rates while preventing hypothermia, stress-induced gut microbiome alterations, or accidental mortality during sub-zero boreal nights.
+
+### State-of-the-Art Methodological Options   
+
+1.  Longworth / Sherman Single-Capture Live Traps: Aluminium box traps that seal shut upon door tripping. Highly reliable, but strict single-capture mechanics prevent simultaneous captures of co-foraging or interacting dyads, systematically blinding the researcher to real-time social pairs.   
+2.  Ugglan Multiple-Capture Live Traps (Model No. 2, Gillerboda): Wire-mesh gravity-door traps standard in Scandinavian small mammal research. The counterbalanced trapdoor resets automatically after entry, allowing multiple individuals to be captured simultaneously in the same trap box.   
+3.  Automated Optical/RFID Smart Traps (e.g., BOIS / Knaep): Motorised live traps equipped with integrated PIT-tag readers and cellular/LoRaWAN modules that notify researchers immediately upon capture, reducing confinement time to minutes.  
+
+### Selection and Justification
+
+Method 2 (Ugglan Multiple-Capture Live Traps).
+
+While automated smart traps (Method 3) represent the technological frontier, deploying 156 motorised, battery-dependent units across a boreal forest exceeds the 400,000 SEK running budget and introduces points of hardware failure [@gilbertson2021]. Single-capture traps (Method 1) artificially suppress observed social interactions. Ugglan traps are robust, weatherproof, and capable of multiple simultaneous captures. When two bank voles are captured together in a single Ugglan trap, it provides a high-weight physical contact observation ($\text{SocialContact}_{ij} = 1$). To ensure animal welfare and prevent dietary disruption to the luminal microbiota, traps will be baited with a standardised, autoclaved seed mix (oats and sunflower seeds) supplemented with apple slices for hydration and raw wool for thermal insulation.
+
+## Stage 3: Non-Destructive Biological Sampling 
+
+We must obtain high-yield host and bacterial nucleic acids along with hantavirus serological data without impacting host survival or subsequent movement ecology. 
+
+### State-of-the-Art Methodological Options   
+
+1. Lethal Snap-Trapping & Caecal Necropsy: Yields maximum bacterial DNA and tissue for host genomics. Disqualified for WP2 due to the necessity for longitudinal CMR tracking.   
+2. Rectal Swabbing + Tail Biopsy / Clipping: Collecting faecal material via sterile sub-miniature rectal swabs, combined with snipping 1–2mm of the distal tail tip for host genetic genotyping ($K_{ij}$).    
+3. Voluntary/Opportunistic Faecal Pellet Collection + Ear Biopsy (2mm Punch): Harvesting freshly voided faecal pellets directly from the Ugglan trap floor or holding bag into lysis buffer, combined with a 2mm ear punch that simultaneously marks the animal's identity and provides epidermal tissue for SNP kinship analysis.  
+
+### Selection and Justification 
+
+Select Method 3 (Faecal Pellet Collection in Zymo DNA/RNA Shield + 2mm Ear Punch).
+
+Rectal swabbing (Method 2) in 20g bank voles carries a risk of rectal perforation and yields significantly lower bacterial biomass than whole faecal pellets [@raulo2024]. Because Ugglan traps have wire-mesh floors, traps will be fitted with clean, removable plastic drop-trays. When a single vole is captured, 2–3 freshly voided pellets from the tray are transferred immediately into 1.5mL tubes pre-filled with Zymo DNA/RNA Shield using sterile forceps. 
+
+#### Multi-Capture Attribution Protocol (Post-Capture Isolation SOP)  
+
+Am operational vulnerability of multiple-capture traps (Ugglan Model No. 2) is sample provenance. When two or more voles are co-captured overnight, the drop-tray acts as an anonymous communal toilet. Harvesting communal pellets risks sequencing a physical admixture of distinct microbiomes or misattributing luminal flora between interacting individuals, which would artificially inflate observed social similarity ($S_{ij}^{\text{social}}$) and introduce circularity into our network validation. To guarantee absolute sample attribution, field processing must adhere to a strict isolation workflow:
+
+1. Triage by Capture Status: If a trap contains a single capture, drop-tray pellets are valid. If a trap contains multiple captures, the contents of the communal drop-tray are immediately discarded.
+2. Immediate Individual Isolation: Co-captured individuals are transferred immediately upon trap opening into separate, single-use breathable holding bags (or sanitized, individually labelled handling containers). Co-captured voles are never held together during processing.
+3. Handling-Induced Harvest: Bank voles exhibit a rapid gastrointestinal transit time ($\approx 1\text{--}2\text{ hours}$) and reliably void fresh pellets in response to mild confinement stress. During the 5–10 minutes spent in individual isolation prior to processing, individuals routinely defecate. Fresh pellets are harvested directly from the individual holding bag or sterile processing surface using sterile forceps.
+4. Missing Data Protocol: If an individual refuses to void a pellet during individual holding, researchers will not swab, guess, or pool communal tray material. The longitudinal sampling event is recorded as missing ($NA$) for that timepoint, preserving the integrity of the dyadic similarity matrix over data completeness.
+
+#### Host Genotyping and Pathogen Anchoring
+A 2mm ear biopsy punch provides dual utility: it establishes a permanent, visual back-up mark to validate RFID PIT-tags, and the excised cartilage/tissue provides high-molecular-weight mammalian DNA for RAD-seq sequencing, enabling explicit parameterisation of the kinship matrix ($K_{ij}$). Additionally, a 10µL blood sample will be collected via saphenous vein puncture onto filter paper (Nobuto strips) to test for Puumala orthohantavirus (PUUV) specific IgG antibodies via ELISA, tying our contact networks directly to pathogen transmission dynamics.
+
+## Stage 4: Automated Contact Telemetry (RFID & Proximity Logging)    
+
+Static trapping snapshots occur at 3-week intervals; capturing the continuous, unobserved transmission infrastructure requires automated sub-second electronic logging. 
+
+### State-of-the-Art Methodological Options   
+
+1.  Standard PIT-Tags + Single-Antenna Base Stations (e.g., Lidicker Traps / Nest Boxes): Sub-dermal Passive Integrated Transponder (PIT) tags ($8\text{mm} \times 1.4\text{mm}$, 134.2 kHz) injected subcutaneously. Fixed single-loop antennas placed at artificial nest boxes log the timestamp whenever a tagged vole enters the electromagnetic field. 
+2.    Dual-Antenna Directional RFID Portals / Smart Nest Boxes: Artificial nest boxes and feeding stations fitted with two sequential, independent RFID antenna loops (Entrance and Interior). By logging the exact sequence of antenna triggers ($A \rightarrow B$ vs. $B \rightarrow A$), the system discriminates between a vole passing nearby versus entering and remaining inside a shared space. 
+3.    Miniaturised UHF Proximity Loggers / Encounters (e.g., EncounTrace / Cellular Tracking Technologies): Active, battery-powered collars or backpacks that exchange encoded radio signals directly between animals whenever they approach within 1–2 metres of each other, logging dyadic contacts without fixed ground infrastructure. 
+
+### Selection and Justification
+
+Method 2 (Sub-dermal PIT-Tags + Dual-Antenna Directional RFID Nest Portals). 
+
+Proximity collars (Method 3) currently weigh $\approx 1.2\text{--}1.5\text{g}$. In small mammals, collars exceeding 5% of body mass ($\approx 1.0\text{g}$ for a 20g subadult bank vole) significantly impair movement, alter foraging behaviour, and induce ethical non-compliance [@milles2020]. 
+
+While single-antenna stations (Method 1) are cheap, they suffer from severe measurement error: two voles logging at a single antenna within the same minute may be interacting, or one may simply be passing the outside of a box occupied by the other.We will inject 8mm FDX-B PIT-tags subcutaneously in the dorsal scapular region. Across our twelve sub-grids, we will deploy 24 Dual-Antenna RFID Nest Boxes (two per sub-grid, powered by 12V marine batteries and custom automated loggers designed on Arduino/Raspberry Pi architectures). 
+
+This directional logging provides an absolute ground truth for our Bayesian model:  
+
+1.  Simultaneous Co-Occupancy ($\text{SocialContact}_{ij} = 1$): Both Host $i$ and Host $j$ trigger the Interior antenna ($B$) and their exit timestamps ($A$) overlap by $>60$ seconds.    
+2.  Sequential Space-Sharing ($\text{SpaceSharing}_{ij} > 0$): Host $i$ occupies and exits the box; Host $j$ enters the same box within $\Delta t \le 14$ days, without physical overlap.
+
+## Stage 5: Data Integration and R Pipeline Handoff
+
+The physical field campaign terminates in a stream of raw, asynchronous timestamp logs and longitudinal demographic records. These must be programmatically reduced into weighted dyadic matrices before ingestion into our comparative bioinformatics pipeline.
+
+```{r}
+#| label: rfid-network-ingest
+#| eval: false
+library(tidyverse)
+library(here)
+library(terra)
+library(tidyterra)
+
+# 1. Ingest and parse raw dual-antenna RFID timestamp streams
+rfid_logs <- read_csv(here("data-raw", "wp2_grimso", "rfid_nest_box_logs_2027.csv")) |>
+  mutate(timestamp = ymd_hms(timestamp, tz = "Europe/Stockholm")) |>
+  arrange(box_id, timestamp)
+
+# 2. Reduce raw timestamps to continuous co-occupancy durations (Social Channel Ground Truth)
+social_edges <- rfid_logs |>
+  filter(antenna_zone == "Interior") |>
+  group_by(box_id) |>
+  # Identify overlapping occupancy windows between distinct PIT tags
+  mutate(
+    next_tag = lead(pit_tag),
+    next_entry = lead(timestamp),
+    exit_time = timestamp + seconds(duration_sec),
+    co_occupied = if_else(pit_tag != next_tag & exit_time > next_entry, TRUE, FALSE)
+  ) |>
+  filter(co_occupied) |>
+  summarise(
+    dyad_id = str_c(pmin(pit_tag, next_tag), "_", pmax(pit_tag, next_tag)),
+    total_contact_minutes = sum(as.numeric(difftime(exit_time, next_entry, units = "mins"))),
+    interaction_events = n(),
+    .groups = "drop"
+  )
+
+# 3. Calculate Spatial Home-Range Overlap (k-DOM) via terra
+# Assume 'trapping_coords' is a SpatVector of CMR capture locations
+trapping_vect <- vect(trapping_coords, geom = c("x", "y"), crs = "EPSG:3006")
+
+# Calculate kernel density overlap or simple buffer intersection in tidyterra
+grid_raster <- rast(ext(trapping_vect) + 50, resolution = 2, crs = crs(trapping_vect))
+home_ranges <- terra::buffer(trapping_vect, width = 15) # 15m radius core area
+
+# 4. Construct final Master Dyadic Matrix for Stan / brms ingestion
+master_dyads <- expand_grid(
+  host_i = unique(trapping_coords$pit_tag),
+  host_j = unique(trapping_coords$pit_tag)
+) |>
+  filter(host_i < host_j) |>
+  mutate(dyad_id = str_c(host_i, "_", host_j)) |>
+  left_join(social_edges, by = "dyad_id") |>
+  replace_na(list(total_contact_minutes = 0, interaction_events = 0)) |>
+  # Join with bioinformatics outputs generated on UPPMAX (02_wp1_bioinformatics.R)
+  left_join(read_rds(here("data", "clean_networks", "jaccard_similarity_matrix.rds")), by = "dyad_id") |>
+  left_join(read_rds(here("data", "clean_networks", "unifrac_similarity_matrix.rds")), by = "dyad_id") |>
+  left_join(read_rds(here("data", "clean_networks", "radseq_kinship_matrix.rds")), by = "dyad_id")
+
+# Export frozen compendium for Stage 2 Registered Report validation
+write_rds(master_dyads, here("data", "clean_networks", "wp2_master_dyadic_validation_df.rds"))
+
+```
+
+# References 
+
+@borremans2017  Borremans, B., Hughes, N. K., Reijniers, J., Sluydts, V., Leirs, H. & Hens, N. (2017). Quantifying horizontal transmission of Moropsia and hantaviruses in wild rodents using contact metric models. Oikos, 126(6), 792–800. https://doi.org/10.1111/oik.03713
+@gilbertson2021 Gilbertson, M. L. J., White, L. A. & Craft, M. E. (2021). Trade-offs with proximity loggers and RFID arrays for wildlife contact network inferencing. Methods in Ecology and Evolution, 12(1), 76–87. https://doi.org/10.1111/2041-210X.13511
+@henttonen2022  Henttonen, H. (2022). High-latitude cyclic rodent dynamics and zoonotic disease outbreaks: A 50-year perspective from Pallasjärvi, Finland. Therya, 13(1), 33–38. https://doi.org/10.12933/therya-22-1141
+@milles2020 Milles, A., Dammhahn, M. & Schoneberg, T. (2020). Automated tracking of small mammal social networks in the wild: Validating proximity loggers against synchronised video arrays. Animal Behaviour, 168, 63–74. https://doi.org/10.1016/j.anbehav.2020.08.001@raulo2024Raulo, A., Allen, B. E., Trochet, A., Moltchanova, E., Snäll, T., Henttonen, H., Andersson, A. F. & Knowles, S. C. L. (2024). Social networks strongly predict the gut microbiota of wild mice. Nature Ecology & Evolution, 8(5), 972–985. https://doi.org/10.1038/s41559-024-02381-0
+@wanelik2025  Wanelik, K. M., Begg, T., Farine, D. R. & Bradley, J. E. (2025). Disentangling spatial-social coupling in wildlife microbiome sharing: Pitfalls and mathematical solutions. Animal Microbiome, 7, 42. https://doi.org/10.1186/s42523-025-00381-x

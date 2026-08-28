@@ -39,11 +39,64 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
+# pkgdown site (scoped: the project's docs/ tree is version-controlled)
+/docs/pkgdown/
 
 # translation temp files
 po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# --- Project-specific ---------------------------------------------------
+
+# Raw data is read-only and never committed (see CLAUDE.md)
+data-raw/
+
+# Processed data: keep the directory tree, not the objects
+data/**
+!data/**/
+!data/**/README.md
+
+# Large / binary data formats, wherever they appear
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.vcf
+*.vcf.gz
+*.rds
+*.RDS
+*.rda
+*.qs
+*.feather
+*.parquet
+*.sqlite
+*.duckdb
+
+# Credentials
+.env
+*.pem
+*.key
+credentials.json
+secrets.yml
+
+# Quarto
+.quarto/
+_freeze/
+**/_output/
+**/*_files/
+**/*.knit.md
+**/*.utf8.md
+/docs/**/*.tex
+!/docs/**/preamble.tex
+/docs/**/*.log
+
+# renv: renv/.gitignore (committed, managed by renv) excludes the project
+# library. renv.lock, renv/activate.R and .Rprofile are tracked.
+
+# macOS / Windows cruft
+.DS_Store
+Thumbs.db

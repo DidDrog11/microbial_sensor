@@ -36,14 +36,9 @@ format:
 
 ::: {.callout-important title="Status — skeleton, not a draft"}
 
-Section order, headings and the mandatory Design Table follow the *Nature
-Ecology & Evolution* Stage 1 template (`np-nee-template-stage1.pdf`, this
-directory). All scientific content is a placeholder.
+Section order, headings and the mandatory Design Table follow the *Nature Ecology & Evolution* Stage 1 template (`np-nee-template-stage1.pdf`, this directory). All scientific content is a placeholder.
 
-Hypotheses, the operational definition of connectivity, the sampling plan and
-the model specification are developed outside this repository and arrive here
-already decided (CLAUDE.md, *Roles*). They must be written in by an author,
-not inferred from the protocols.
+Hypotheses, the operational definition of connectivity, the sampling plan and the model specification are developed outside this repository and arrive here already decided (CLAUDE.md, *Roles*). They must be written in by an author, not inferred from the protocols.
 
 Delete this callout before submission.
 
@@ -57,9 +52,8 @@ Delete this callout before submission.
 
 Per the template, the abstract should:
 
-1. open with one sentence introducing the general topic and its significance
-   for a broad audience;
-2. state the specific research questions;
+1. open with one sentence introducing the general topic and its significance for a broad audience;
+2. state the specific research questions; 
 3. state what will be done;
 4. state broadly what results would confirm or disconfirm the hypotheses.
 
@@ -77,22 +71,15 @@ Required content:
 
 - Review of the literature motivating the research question.
 - Full description of the experimental aims and research questions.
-- Each research question motivated, explained, and linked to specific
-  hypotheses and predictions.
-- Predictions defined precisely in terms of the specific independent and
-  dependent variables. Numbering as Hypothesis 1, Hypothesis 2 … with a
-  corresponding H0 in each case is recommended.
-- Commitment to an interpretation of **all** potential data patterns, including
-  those running counter to prediction. Absence of evidence cannot be
-  interpreted as evidence of absence under NHST; interpreting non-predicted
-  patterns requires Bayesian inference or frequentist equivalence testing.
+- Each research question motivated, explained, and linked to specific hypotheses and predictions.
+- Predictions defined precisely in terms of the specific independent and dependent variables. Numbering as Hypothesis 1, Hypothesis 2 … with a corresponding H0 in each case is recommended.
+- Commitment to an interpretation of **all** potential data patterns, including those running counter to prediction. Absence of evidence cannot be interpreted as evidence of absence under NHST; interpreting non-predicted patterns requires Bayesian inference or frequentist equivalence testing.
 - A call-out to the mandatory Design Table (@tbl-design).
 
 Constraints on wording:
 
 - Write the proposed research in the **future tense** throughout.
-- If the evidence is correlational or cross-sectional, use no causal language
-  and no language implying causality.
+- If the evidence is correlational or cross-sectional, use no causal language and no language implying causality.
 - No priority or novelty claims, anywhere in the manuscript.
 
 :::
@@ -103,13 +90,10 @@ Constraints on wording:
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** This research involves non-human animals, so the Methods
-section must open with a statement that:
+**PLACEHOLDER.** This research involves non-human animals, so the Methods section must open with a statement that:
 
 - the research complies with all relevant ethical regulations;
-- names the board and institution that approved the study protocol
-  (WP1 Pallasjärvi, Finland; WP2 Grimsö, Sweden — permits differ by
-  jurisdiction and both must be named);
+- names the board and institution that approved the study protocol (WP1 Pallasjärvi, Finland; WP2 Grimsö, Sweden — permits differ by jurisdiction and both must be named);
 - confirms that the ARRIVE guidelines were used to report the research.
 
 :::
@@ -120,14 +104,10 @@ section must open with a statement that:
 
 **PLACEHOLDER — include only if applicable.**
 
-- Describe pilot studies and results briefly here; report them in full in
-  Supplementary Information.
-- Pilot data and custom analysis code must be deposited and referred to in the
-  Data availability and Code availability statements. They must be accessible
-  for peer review, and may be embargoed until Stage 2 acceptance.
+- Describe pilot studies and results briefly here; report them in full in Supplementary Information.
+- Pilot data and custom analysis code must be deposited and referred to in the Data availability and Code availability statements. They must be accessible for peer review, and may be embargoed until Stage 2 acceptance.
 - Simulated data supporting a power analysis must also be made available.
-- Any NHST reported on pilot data must be reported in full:
-  statistic(df) = value, *p* = value, effect size = value, % CI = values.
+- Any NHST reported on pilot data must be reported in full: statistic(df) = value, *p* = value, effect size = value, % CI = values.
 
 :::
 
@@ -135,31 +115,21 @@ section must open with a statement that:
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Experimental procedures in sufficient detail for another
-researcher to repeat the methodology exactly, using only this protocol, the
-Supplementary Information, and the linked code and data.
+**PLACEHOLDER.** Experimental procedures in sufficient detail for another researcher to repeat the methodology exactly, using only this protocol, the Supplementary Information, and the linked code and data.
 
 Must include:
 
-- Full description of outcome-neutral criteria and positive controls — quality
-  checks orthogonal to the experimental hypotheses (e.g. absence of floor or
-  ceiling effects, positive controls).
+- Full description of outcome-neutral criteria and positive controls — quality checks orthogonal to the experimental hypotheses (e.g. absence of floor or ceiling effects, positive controls).
 - A statement on randomization, if applicable.
-- For experimental studies, whether the design is within-subjects,
-  between-subjects, mixed, or other.
-- A statement on blinding. If there will be no blinding, state exactly:
-  "Data collection and analysis will not be performed blind to the conditions
-  of the experiments."
+- For experimental studies, whether the design is within-subjects, between-subjects, mixed, or other.
+- A statement on blinding. If there will be no blinding, state exactly: "Data collection and analysis will not be performed blind to the conditions of the experiments."
 
-Source material — check currency before reusing, and note that the funded
-proposal is *not* the current plan (CLAUDE.md):
+Source material — check currency before reusing, and note that the funded proposal is *not* the current plan (CLAUDE.md):
 
 - `../protocols/pallasjarvi-fieldwork-protocol.qmd` (WP1 field design)
-- `../protocols/grimso-field-protocol.qmd` (WP2 longitudinal design, RFID
-  contact triangulation)
+- `../protocols/grimso-field-protocol.qmd` (WP2 longitudinal design, RFID contact triangulation)
 - `../protocols/pilot-lab-protocol.qmd` (extraction, PacBio HiFi 16S)
-- `../protocols/data-management-plan.qmd` (sample IDs, batch design, and the
-  operational definition of connectivity)
+- `../protocols/data-management-plan.qmd` (sample IDs, batch design, and the operational definition of connectivity)
 
 :::
 
@@ -171,28 +141,19 @@ proposal is *not* the current plan (CLAUDE.md):
 
 If any hypothesis is tested by Neyman–Pearson inference:
 
-- A statistical power analysis is required, with effect sizes justified from
-  the existing literature and based on the **lowest** available or meaningful
-  estimate (published estimates are inflated by publication bias).
+- A statistical power analysis is required, with effect sizes justified from the existing literature and based on the **lowest** available or meaningful estimate (published estimates are inflated by publication bias).
 - A priori power must be **≥ 0.95** for every proposed hypothesis test.
 
 If any hypothesis is tested by Bayes factors:
 
-- Specify the predictions of the theory such that a Bayes factor can be
-  computed — which distribution represents the theory, and how its parameters
-  are set.
-- Commit to collecting data until BF ≥ 10 in favour of the experimental
-  hypothesis or the null. A maximum feasible sample size may be specified given
-  resource limits, but it must be large enough that an inconclusive result at
-  that size would still be an important message for the field.
+- Specify the predictions of the theory such that a Bayes factor can be computed — which distribution represents the theory, and how its parameters are set.
+- Commit to collecting data until BF ≥ 10 in favour of the experimental hypothesis or the null. A maximum feasible sample size may be specified given resource limits, but it must be large enough that an inconclusive result at that size would still be an important message for the field.
 
 Regardless of method, list:
 
-- all data inclusion and exclusion criteria, and how they affect the sampling
-  strategy;
+- all data inclusion and exclusion criteria, and how they affect the sampling strategy;
 - a full description of proposed sample characteristics;
-- objective procedures for exclusion due to technical error or other reasons,
-  including how and under what conditions data would be replaced.
+- objective procedures for exclusion due to technical error or other reasons, including how and under what conditions data would be replaced.
 
 These details must also be summarised in @tbl-design.
 
@@ -204,16 +165,12 @@ These details must also be summarised in @tbl-design.
 
 **PLACEHOLDER.**
 
-- All pre-processing steps, and a precise description of every planned
-  analysis, including correction for multiple comparisons if applicable.
+- All pre-processing steps, and a precise description of every planned analysis, including correction for multiple comparisons if applicable.
 - All covariates and regressors stated.
-- Where an analysis decision is contingent on the outcome of a prior analysis,
-  the contingency must be specified as an IF–THEN rule and then adhered to.
-- **Do not** include exploratory analyses here. They belong in the Stage 2
-  manuscript under an *Exploratory Analyses* heading.
+- Where an analysis decision is contingent on the outcome of a prior analysis, the contingency must be specified as an IF–THEN rule and then adhered to.
+- **Do not** include exploratory analyses here. They belong in the Stage 2 manuscript under an *Exploratory Analyses* heading.
 
-After in-principle acceptance, any deviation from this section requires
-editorial approval **before** it is implemented.
+After in-principle acceptance, any deviation from this section requires editorial approval **before** it is implemented.
 
 :::
 
@@ -221,12 +178,9 @@ editorial approval **before** it is implemented.
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Timeline for completion, and the proposed resubmission date
-if Stage 1 review is successful. Extensions can be negotiated with the handling
-editor.
+**PLACEHOLDER.** Timeline for completion, and the proposed resubmission date if Stage 1 review is successful. Extensions can be negotiated with the handling editor.
 
-Fellowship term is Sep 2026 – Aug 2028: WP1 trapping Sep 2026 (Y1), WP2
-live-trapping autumn of Y2.
+Fellowship term is Sep 2026 – Aug 2028: WP1 trapping Sep 2026 (Y1), WP2 live-trapping autumn of Y2.
 
 :::
 
@@ -240,13 +194,9 @@ The template explicitly prohibits both sections at Stage 1.
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Must contain an explicit commitment to public sharing of raw
-data and materials upon acceptance of the Stage 2 manuscript. Any pilot data
-already collected must be deposited, accessible for peer review, and may be
-embargoed until Stage 2 acceptance.
+**PLACEHOLDER.** Must contain an explicit commitment to public sharing of raw data and materials upon acceptance of the Stage 2 manuscript. Any pilot data already collected must be deposited, accessible for peer review, and may be embargoed until Stage 2 acceptance.
 
-The sequence data destination (ENA/SRA) and the repository DOI for metadata
-should be named here — see `../protocols/data-management-plan.qmd`.
+The sequence data destination (ENA/SRA) and the repository DOI for metadata should be named here — see `../protocols/data-management-plan.qmd`.
 
 :::
 
@@ -254,13 +204,9 @@ should be named here — see `../protocols/data-management-plan.qmd`.
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Must be a **separate** statement from Data availability, and
-must contain an explicit commitment to public sharing of all code upon Stage 2
-acceptance.
+**PLACEHOLDER.** Must be a **separate** statement from Data availability, and must contain an explicit commitment to public sharing of all code upon Stage 2 acceptance.
 
-Provide a live link (GitHub, OSF) to the code, including code used to simulate
-data, run power analyses, and analyse pilot data. Must be available for peer
-review; may be embargoed until Stage 2 acceptance.
+Provide a live link (GitHub, OSF) to the code, including code used to simulate data, run power analyses, and analyse pilot data. Must be available for peer review; may be embargoed until Stage 2 acceptance.
 
 :::
 
@@ -271,10 +217,7 @@ review; may be embargoed until Stage 2 acceptance.
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** `references.bib` is a stub. No unpublished manuscripts (in
-preparation, submitted, under review, or under revision) may appear in the
-reference list; cite such work parenthetically in the main text only, and let
-no argument or conclusion rest on it.
+**PLACEHOLDER.** `references.bib` is a stub. No unpublished manuscripts (in preparation, submitted, under review, or under revision) may appear in the reference list; cite such work parenthetically in the main text only, and let no argument or conclusion rest on it.
 
 Citation rendering check: [@callahan2016dada2].
 
@@ -284,17 +227,12 @@ Citation rendering check: [@callahan2016dada2].
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Acknowledge all funding sources with grant or contribution
-numbers (Birgitta Sintring Fellowship; add the grant number). State the role
-the funders had in conceptualization, design, data collection, analysis, the
-decision to publish, or preparation of the manuscript. If they had none, use
-verbatim:
+**PLACEHOLDER.** Acknowledge all funding sources with grant or contribution numbers (Birgitta Sintring Fellowship; add the grant number). State the role the funders had in conceptualization, design, data collection, analysis, the decision to publish, or preparation of the manuscript. If they had none, use verbatim:
 
 > The funders have/had no role in study design, data collection and analysis,
 > decision to publish or preparation of the manuscript.
 
-Anything that could be perceived as a competing interest must also appear in
-the competing interests statement. Keep other acknowledgements brief.
+Anything that could be perceived as a competing interest must also appear in the competing interests statement. Keep other acknowledgements brief.
 
 :::
 
@@ -302,8 +240,7 @@ the competing interests statement. Keep other acknowledgements brief.
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Short statement of individual contributions, referring to
-authors by initials, using CRediT roles (<https://credit.niso.org/>).
+**PLACEHOLDER.** Short statement of individual contributions, referring to authors by initials, using CRediT roles (<https://credit.niso.org/>).
 
 :::
 
@@ -311,8 +248,7 @@ authors by initials, using CRediT roles (<https://credit.niso.org/>).
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Declare financial and non-financial competing interests. If
-there are none, state verbatim:
+**PLACEHOLDER.** Declare financial and non-financial competing interests. If there are none, state verbatim:
 
 > The authors declare no competing interests.
 
@@ -322,21 +258,15 @@ there are none, state verbatim:
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Figures may appear in the text or at the end of the protocol.
-A maximum of **six display elements** (figures and tables combined) is
-permitted in the final Stage 2 submission — @tbl-design is one of them.
-Non-essential display items go to Supplementary Information.
+**PLACEHOLDER.** Figures may appear in the text or at the end of the protocol. A maximum of **six display elements** (figures and tables combined) is permitted in the final Stage 2 submission — @tbl-design is one of them. Non-essential display items go to Supplementary Information.
 
-Captions begin with a brief title, then describe what is shown and give all
-relevant statistical information. For pilot data, list the *N* of each panel
-and report full statistics.
+Captions begin with a brief title, then describe what is shown and give all relevant statistical information. For pilot data, list the *N* of each panel and report full statistics.
 
 :::
 
 # Tables {.unnumbered}
 
-The Design Table is mandatory. Its columns are prescribed; add one row per
-research question.
+The Design Table is mandatory. Its columns are prescribed; add one row per research question.
 
 ::: {#tbl-design}
 
@@ -369,16 +299,10 @@ Design table.
 
 Requirements for @tbl-design:
 
-- **Exact** correspondence between each scientific hypothesis and each
-  statistical test.
-- Hypotheses must name the measure and the predicted direction. Not
-  "Condition A will affect performance differently from Condition B", but
-  e.g. "Reaction times will be significantly higher in Condition A than in
-  Condition B".
-- Analysis strategies contingent on results (e.g. normal vs. non-normal
-  distributions) must be given as IF–THEN statements.
-- Null results cannot be interpreted under NHST. Interpreting them requires a
-  commitment to Bayes factors or equivalence testing.
+- **Exact** correspondence between each scientific hypothesis and each statistical test.
+- Hypotheses must name the measure and the predicted direction. Not "Condition A will affect performance differently from Condition B", but e.g. "Reaction times will be significantly higher in Condition A than in Condition B".
+- Analysis strategies contingent on results (e.g. normal vs. non-normal distributions) must be given as IF–THEN statements.
+- Null results cannot be interpreted under NHST. Interpreting them requires a commitment to Bayes factors or equivalence testing.
 
 :::
 
@@ -386,7 +310,6 @@ Requirements for @tbl-design:
 
 ::: {.callout-note}
 
-**PLACEHOLDER.** Report pilot data in detail here, along with any other
-background material.
+**PLACEHOLDER.** Report pilot data in detail here, along with any other background material.
 
 :::

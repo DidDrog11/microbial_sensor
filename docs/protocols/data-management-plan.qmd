@@ -13,11 +13,7 @@ Draft skeleton — companion to `pallasjarvi-fieldwork-protocol.qmd` and `pilot-
 
 Covers WP1 sample tracking from field collection at Pallasjärvi through extraction, sequencing, and analysis-ready metadata — designed to stay compatible with WP2 (Grimsö) metadata so the two work packages can eventually be merged for cross-site comparison.
 
-::: {.callout-note}
-
-Now that Pallasjärvi is prospective (not archived) and the Swedish national archive samples are out of scope, WP1 is effectively single-site. Worth stating that explicitly here so anyone picking up this document later understands why the design changed from the original proposal.
-
-:::
+WP1 is single-site and prospective: every sample comes from the September 2026 Pallasjärvi campaign, and there is no archived-sample component. This is the main respect in which the design departs from the original proposal, and it is why connectivity has to be defined from within-campaign data (§2).
 
 ## 2. Connectivity definition (operational)
 

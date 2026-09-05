@@ -19,11 +19,7 @@ This protocol assumes **snap-trapping**, 3–4 nights per grid, ~150 individuals
 
 Collect host and paired environmental samples from wild rodents at Pallasjärvi (Finnish Lapland) to support WP1 of the Microbial Sensor project: establishing whether structured components of the gut microbiome track host connectivity, using within-campaign spatial co-occurrence as the connectivity proxy (see `data-management-plan.qmd` §2 for how "connected" is operationally defined here, now that this is prospective rather than archived data).
 
-::: {.callout-note}
-
-**PLACEHOLDER** — confirm scope: is this Pallasjärvi only for now (Swedish national archive samples dropped per current plan), or is there a parallel Grimsö archive component still being considered?
-
-:::
+WP1 is Pallasjärvi only: a single prospective field campaign, with no archived-sample component.
 
 ## 2. Personnel and site
 

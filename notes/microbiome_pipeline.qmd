@@ -16,9 +16,9 @@ execute:
 
 # Overview and Methodological Philosophy
 
-This document details the operational workflow for establishing the "Microbial Sensor" across Work Package 1 (WP1; Pallasjärvi and Grimsö historical archives) and Work Package 2 (WP2; Grimsö longitudinal 3ha live-trapping grid). The core objective is to quantify dyadic gut microbiota similarity ($S_{ij}$) at single-nucleotide resolution, decomposing whole-community beta-diversity into explicit transmission channels (social vs. environmental) while controlling for host kinship ($K_{ij}$) and spatial overlap.
+This document details the operational workflow for establishing the "Microbial Sensor" across Work Package 1 (WP1; the prospective Pallasjärvi snap-trapping campaign) and Work Package 2 (WP2; Grimsö longitudinal 3ha live-trapping grid). The core objective is to quantify dyadic gut microbiota similarity ($S_{ij}$) at single-nucleotide resolution, decomposing whole-community beta-diversity into explicit transmission channels (social vs. environmental) while controlling for host kinship ($K_{ij}$) and spatial overlap.
 
-To prevent technical artifacts from inflating dyadic similarity or obscuring recent transmission events, standard operating procedures must be harmonised across disparate sample matrices: historical snap-trapped bowel/caecal tissue in WP1 and longitudinal rectal swabs/faecal pellets in WP2.
+To prevent technical artifacts from inflating dyadic similarity or obscuring recent transmission events, standard operating procedures must be harmonised across disparate sample matrices: freshly snap-trapped bowel/caecal tissue in WP1 and longitudinal rectal swabs/faecal pellets in WP2.
 
 ---
 
@@ -34,7 +34,7 @@ The biological integrity of the gut microbiome depends on immediately arresting 
 
 ## Selection and Justification
 
-* **WP1 (Historical Archives):** We are constrained by legacy preservation protocols. Tissue samples retrieved from Pallasjärvi archives and the Grimsö monitoring bank will consist of frozen tissue (-80°C) or ethanol-immersed caecal/colon segments. Prior to extraction, ethanol-stored tissues must be rehydrated in sterile phosphate-buffered saline (PBS) to prevent residual alcohols from inhibiting proteinase K digestion during lysis.
+* **WP1 (Pallasjärvi Snap-Trapping Campaign):** **Method 1 (cryogenic storage), with Method 2 or 3 as an interim step.** Material here is fresh, not archival: whole guts are retained in the field and the distal colon dissected later at IEG. The primary route is flash-freezing and storage at -80°C as soon as practical. Where trap check frequency leaves material sitting before return to the station, samples go into ethanol or a nucleic-acid preservation buffer and transfer to -80°C on arrival (see `../docs/protocols/pallasjarvi-fieldwork-protocol.qmd` §5). Samples that travelled the ethanol route must be rehydrated in sterile phosphate-buffered saline (PBS) before extraction, to prevent residual alcohol from inhibiting proteinase K digestion during lysis.
 * **WP2 (Grimsö Longitudinal Fieldwork):** **Method 2 (Zymo DNA/RNA Shield).** When conducting intensive live-trapping campaigns every three weeks, maintaining a continuous dry-ice cold chain across remote forest grids is logistically precarious. Swabbing the rectum or collecting fresh faecal pellets directly into lysis buffer tubes guarantees immediate nuclease inactivation at ambient temperatures. Furthermore, pre-filled lysis tubes standardise initial sample volumes and eliminate freeze-thaw cycles prior to mechanical bead-beating.
 
 ---

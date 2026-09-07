@@ -60,6 +60,7 @@ This is about scope, not concealment: AI use is disclosed at the level of resear
 - Analysis scripts numbered by pipeline stage
 - `data-raw/` is read-only — never write to it
 - No absolute paths — use `here::here()`
+- Spatial work uses `terra` and `tidyterra`, not `sf`. Rasters and vectors both go through terra; tidyterra supplies the dplyr verbs for `SpatVector` and `SpatRaster`.
 - Do not hard-wrap prose at a fixed column. Write each paragraph, list item, or table row as one line and let the editor soft-wrap it. This applies to Markdown, Quarto, and commit message bodies; code still follows normal line-length conventions.
 
 ## Git

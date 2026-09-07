@@ -58,6 +58,11 @@ data/**
 !data/**/
 !data/**/README.md
 
+# Derived outputs: keep the directory tree, not the artefacts
+output/**
+!output/**/
+!output/**/README.md
+
 # Large / binary data formats, wherever they appear
 *.fastq
 *.fastq.gz

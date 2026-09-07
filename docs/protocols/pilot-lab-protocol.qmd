@@ -1,6 +1,6 @@
 ---
 title: "Pilot Lab Protocol — WP1 (Microbial Sensor Project)"
-subtitle: "Validating DNA yield/quality and the PacBio HiFi 16S pipeline on fresh Pallasjärvi material before finalizing Stage 1 RR commitments"
+subtitle: "Validating DNA yield/quality and the PacBio HiFi 16S pipeline on fresh Pallasjärvi material before finalizing the preregistered commitments"
 date: today
 format: html
 ---
@@ -9,7 +9,7 @@ format: html
 
 ## 1. Purpose
 
-Fresh snap-trapped material (gut, nest/burrow, soil) is untested for this pipeline in a way an established archive wouldn't have been. This pilot exists to check DNA yield, quality, and amplification success **before** the Stage 1 RR locks in committed sample numbers and analysis plan — cheap insurance against pre-registering N or a protocol that turns out to be optimistic.
+Fresh snap-trapped material (gut, nest/burrow, soil) is untested for this pipeline in a way an established archive wouldn't have been. This pilot exists to check DNA yield, quality, and amplification success **before** the preregistration locks in committed sample numbers and analysis plan — cheap insurance against pre-registering N or a protocol that turns out to be optimistic.
 
 ## 2. Pilot sample selection
 
@@ -71,7 +71,7 @@ Run alongside the pilot extractions, not deferred to the full run:
 
 ## 6. Decision framework
 
-What pilot outcomes would change before Stage 1 RR submission:
+What pilot outcomes would change before the preregistration is filed:
 
 ::: {.callout-note}
 
@@ -88,6 +88,6 @@ What pilot outcomes would change before Stage 1 RR submission:
 
 ::: {.callout-important}
 
-**PLACEHOLDER** — pilot needs to complete (extraction → QC, not necessarily full sequencing) early enough to inform Stage 1 RR numbers. Slot this against the Phase 1 timeline once the September trapping dates are confirmed.
+**PLACEHOLDER** — pilot needs to complete (extraction → QC, not necessarily full sequencing) early enough to inform the preregistered numbers. Slot this against the Phase 1 timeline once the September trapping dates are confirmed.
 
 :::

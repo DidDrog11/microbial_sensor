@@ -1,0 +1,301 @@
+---
+title: "PLACEHOLDER — title that encapsulates the main research question"
+author:
+  - name: David Simons
+    email: PLACEHOLDER@ebc.uu.se
+    corresponding: true
+    affiliations:
+      - name: Uppsala University
+        department: Department of Ecology and Genetics
+        city: Uppsala
+        country: Sweden
+  - name: "PLACEHOLDER — co-authors"
+    affiliations:
+      - name: PLACEHOLDER
+date: today
+bibliography: references.bib
+csl: nature.csl
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=2.5cm
+    fontsize: 11pt
+    linestretch: 2
+    number-sections: false
+    colorlinks: true
+    include-in-header:
+      text: |
+        \usepackage{lineno}
+        \linenumbers
+  docx:
+    number-sections: false
+    linestretch: 2
+---
+::: {.callout-important title="Status — skeleton, not a draft"}
+
+This is a preregistration, not a journal submission. It was originally drafted as a Stage 1 Registered Report for *Nature Ecology & Evolution*; that submission has been dropped, and the plan will instead be filed publicly (OSF or equivalent) before the WP2 data exist. Section order, headings and the Design Table are kept from the NEE Stage 1 template (`np-nee-template-stage1.pdf`, this directory), which remains the most fully specified format available for a plan of this kind. The requirements that existed only to serve journal review have been removed.
+
+Inference is Bayesian throughout. There is no null-hypothesis significance testing anywhere in this plan, and no Bayes-factor stopping rule — sample sizes are fixed in advance by the field campaigns, not accumulated until a criterion is met.
+
+All scientific content is a placeholder. Hypotheses, the operational definition of connectivity, the sampling plan and the model specification are developed outside this repository and arrive here already decided (CLAUDE.md, *Roles*). They must be written in by an author, not inferred from the protocols.
+
+While this file is named `prereg_DRAFT.qmd` the plan is not filed and can still be revised. On filing it is renamed to `prereg.qmd` and records its filing date and registry link. Delete this callout before filing.
+
+:::
+
+# Abstract {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER — max 150 words, no references.**
+
+1. One sentence introducing the general topic and its significance for a broad audience.
+2. The specific research questions.
+3. What will be done.
+4. Broadly, what results would support each hypothesis and what would undermine it.
+
+:::
+
+# Introduction
+
+::: {.callout-note}
+
+**PLACEHOLDER.** No subheadings are permitted in this section.
+
+Required content:
+
+- Review of the literature motivating the research question.
+- Full description of the research aims and questions.
+- Each research question motivated, explained, and linked to specific hypotheses and predictions.
+- Predictions defined precisely in terms of the named independent and dependent variables. Number them as Hypothesis 1, Hypothesis 2 …
+- A commitment to how **every** possible data pattern will be interpreted: patterns matching the prediction, patterns running counter to it, and patterns that are simply inconclusive. Because inference here is Bayesian, this means stating in advance what posterior would count as support for a hypothesis, what would count as support against it, and what would leave the question open. That rule is the author's decision and must be written in, not left to a default.
+- A call-out to the Design Table (@tbl-design).
+
+Constraints on wording:
+
+- Write the proposed research in the **future tense** throughout.
+- The WP1 evidence is observational and cross-sectional: use no causal language, and no language implying causality, where the design cannot support it.
+
+:::
+
+# Methods
+
+## Ethics information
+
+::: {.callout-note}
+
+**PLACEHOLDER.** This research involves non-human animals, so the Methods section must open with a statement that:
+
+- the research complies with all relevant ethical regulations;
+- names the board and institution that approved the study protocol (WP1 Pallasjärvi, Finland; WP2 Grimsö, Sweden — permits differ by jurisdiction and both must be named);
+- confirms that the ARRIVE guidelines were used to report the research.
+
+:::
+
+## Pilot data
+
+::: {.callout-note}
+
+**PLACEHOLDER — include only if applicable.**
+
+- Describe pilot studies and results briefly here; report them in full in Supplementary Information.
+- Pilot data and custom analysis code must be deposited and referred to in the Data availability and Code availability statements.
+- Simulated data supporting any design or sensitivity analysis must also be made available.
+- Report pilot results as posterior summaries — the estimate, its uncertainty interval, and the model and priors that produced it. No *p*-values.
+
+:::
+
+## Design
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Experimental procedures in sufficient detail for another researcher to repeat the methodology exactly, using only this protocol, the Supplementary Information, and the linked code and data.
+
+Must include:
+
+- Full description of outcome-neutral criteria and positive controls — quality checks orthogonal to the hypotheses, which decide whether the data are fit to test anything at all (extraction and amplification success, contamination in field and extraction blanks, read depth, and the like).
+- A statement on randomization, if applicable.
+- Whether the design is within-subjects, between-subjects, mixed, or other.
+- A statement on blinding. If there will be no blinding, say so explicitly.
+
+Source material — check currency before reusing, and note that the funded proposal is *not* the current plan (CLAUDE.md):
+
+- `../protocols/pallasjarvi-fieldwork-protocol.qmd` (WP1 field design)
+- `../protocols/grimso-field-protocol.qmd` (WP2 longitudinal design, RFID contact triangulation)
+- `../protocols/pilot-lab-protocol.qmd` (extraction, PacBio HiFi 16S)
+- `../protocols/data-management-plan.qmd` (sample IDs, batch design, and the operational definition of connectivity)
+
+:::
+
+## Sampling plan
+
+::: {.callout-note}
+
+**PLACEHOLDER.**
+
+Sample size is not chosen to reach an inferential criterion. It is fixed in advance by the field campaigns, the sequencing budget, and the permits — so there is no power analysis (no NHST) and no Bayes-factor stopping rule.
+
+State:
+
+- the planned sample sizes for WP1 and WP2, and exactly what constrains each;
+- what those sample sizes can and cannot resolve under the planned model, and how that was established — the approach is the author's decision (PLACEHOLDER), but it must be described here and its code deposited;
+- all data inclusion and exclusion criteria, and how they affect the sampling strategy;
+- a full description of proposed sample characteristics;
+- objective procedures for exclusion due to technical error or other reasons, including how and under what conditions samples would be replaced.
+
+These details must also be summarised in @tbl-design.
+
+:::
+
+## Analysis plan
+
+::: {.callout-note}
+
+**PLACEHOLDER.**
+
+- All pre-processing steps, and a precise description of every planned analysis.
+- Each model written out in full: response, likelihood, all covariates and group-level terms, and the **priors**, with their justification.
+- The decision rule mapping each posterior onto the interpretation committed to in @tbl-design.
+- Where an analysis decision is contingent on the outcome of a prior analysis, the contingency must be specified as an IF–THEN rule and then adhered to.
+- **Do not** include exploratory analyses here. Anything not specified in this section is exploratory, and must be reported as exploratory in any resulting manuscript.
+
+Once this plan is filed, any departure from it is a deviation. Record it in a deviation log alongside the filed plan, with its reason and its date, rather than revising this document.
+
+:::
+
+## Timeline for completion of the study
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Timeline from filing to completion of the study.
+
+Fellowship term is Sep 2026 – Aug 2028. WP1 trapping is September 2026; the WP2 trapping schedule is in `../protocols/grimso-field-protocol.qmd`.
+
+:::
+
+::: {.callout-important title="Do not add Results or Discussion"}
+
+This plan is filed before the data exist. Neither section belongs here.
+
+:::
+
+# Data availability {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Must contain an explicit commitment to public sharing of raw data and materials on publication. Any pilot data already collected should be deposited at filing.
+
+Name the sequence data destination (ENA/SRA) and the repository DOI for metadata — see `../protocols/data-management-plan.qmd`.
+
+:::
+
+# Code availability {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Must be a **separate** statement from Data availability, and must contain an explicit commitment to public sharing of all code on publication.
+
+Provide a live link (GitHub, OSF) to the code, including any code used to simulate data or run design analyses. Code supporting this plan should be available at filing.
+
+:::
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+::: {.callout-note}
+
+**PLACEHOLDER.** `references.bib` is a stub.
+
+Citation rendering check: [@callahan2016dada2].
+
+:::
+
+# Acknowledgements {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Acknowledge all funding sources with grant or contribution numbers (Birgitta Sintring Fellowship; add the grant number). State the role the funders had in conceptualization, design, data collection, analysis, the decision to publish, or preparation of the manuscript. If they had none, say so.
+
+Anything that could be perceived as a competing interest must also appear in the competing interests statement. Keep other acknowledgements brief.
+
+:::
+
+# Author contributions {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Short statement of individual contributions, referring to authors by initials, using CRediT roles (<https://credit.niso.org/>).
+
+:::
+
+# Competing interests {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Declare financial and non-financial competing interests. If there are none, state that the authors declare no competing interests.
+
+:::
+
+# Figures and figure captions {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Figures may appear in the text or at the end of the plan.
+
+Captions begin with a brief title, then describe what is shown. For pilot data, give the *N* of each panel and the posterior summaries behind any estimate shown.
+
+:::
+
+# Tables {.unnumbered}
+
+The Design Table is the core of this preregistration. Add one row per research question.
+
+::: {#tbl-design}
+
++------------------+------------------+------------------+------------------+------------------+
+| Question         | Hypothesis       | Sampling plan    | Analysis plan    | Interpretation   |
+|                  |                  | (n, exclusions,  |                  | given to         |
+|                  |                  | sensitivity)     |                  | different        |
+|                  |                  |                  |                  | outcomes         |
++==================+==================+==================+==================+==================+
+| PLACEHOLDER —    | PLACEHOLDER —    | PLACEHOLDER —    | PLACEHOLDER —    | PLACEHOLDER —    |
+| research         | H1, with the     | n, the exclusion | the exact model, | what each        |
+| question 1       | predicted        | criteria, and    | with all         | possible         |
+|                  | direction        | what fixes n     | covariates and   | posterior means, |
+|                  | stated on named  |                  | priors, matched  | including        |
+|                  | dependent and    |                  | 1:1 to the       | outcomes counter |
+|                  | independent      |                  | hypothesis in    | to prediction    |
+|                  | variables        |                  | this row         | and inconclusive |
+|                  |                  |                  |                  | ones             |
++------------------+------------------+------------------+------------------+------------------+
+| PLACEHOLDER —    | PLACEHOLDER      | PLACEHOLDER      | PLACEHOLDER      | PLACEHOLDER      |
+| research         |                  |                  |                  |                  |
+| question 2       |                  |                  |                  |                  |
++------------------+------------------+------------------+------------------+------------------+
+
+Design table.
+
+:::
+
+::: {.callout-note}
+
+Requirements for @tbl-design:
+
+- **Exact** correspondence between each scientific hypothesis and the model that addresses it.
+- Hypotheses must name the measure and the predicted direction. Not "X will affect Y", but "Y will be higher under X than under Z".
+- Analysis strategies contingent on an earlier result must be given as IF–THEN statements.
+- Every row must say what an inconclusive posterior means as well as a supportive one. A plan that describes only the outcome it hopes for is not preregistered.
+
+:::
+
+# Supplementary information {.unnumbered}
+
+::: {.callout-note}
+
+**PLACEHOLDER.** Report pilot data in detail here, along with any other background material.
+
+:::

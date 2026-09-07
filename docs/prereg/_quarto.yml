@@ -1,8 +1,8 @@
 project:
-  title: "Microbial Sensor — Registered Report"
+  title: "Microbial Sensor — Preregistration"
   output-dir: _output
   render:
-    - rr.qmd
+    - prereg_DRAFT.qmd
 
 execute:
   echo: false

@@ -4,7 +4,7 @@ Using the rodent gut microbiome as a sensor of host social and environmental con
 
 Birgitta Sintring Fellowship, [Videvall lab](PLACEHOLDER — lab URL), Department of Ecology and Genetics, Uppsala University. Sep 2026 – Aug 2028.
 
-> **Status: pre-fieldwork.** No data have been collected. The repository currently holds protocol drafts, the Registered Report skeleton, and the project skeleton for the analysis code. Protocols in `docs/protocols/` are the authoritative description of the design; the funded proposal in `docs/proposal/` is background only, and the design has changed since submission.
+> **Status: pre-fieldwork.** No data have been collected. The repository currently holds protocol drafts, the preregistration skeleton, and the project skeleton for the analysis code. Protocols in `docs/protocols/` are the authoritative description of the design; the funded proposal in `docs/proposal/` is background only, and the design has changed since submission.
 
 ## Question
 
@@ -38,7 +38,7 @@ Y1 = Sep 2026 – Aug 2027; Y2 = Sep 2027 – Aug 2028.
 
 Not everything here is under the same constraints.
 
-**1. Sensor model (Registered Report) — pre-registered.** The primary analysis, submitted to *Nature Ecology & Evolution* as a Registered Report. The Stage 1 protocol fixes the sampling design, bioinformatic pipeline, and model specification in advance; Stage 2 is evaluated on whether that protocol was followed. Anything that would change analysis logic, model specification, or pipeline parameters is a documented deviation, not a code change.
+**1. Sensor model — preregistered.** The primary analysis. The design and analysis plan will be publicly preregistered (OSF or equivalent) before the WP2 data exist; the plan lives in `docs/prereg/`. While it is named `prereg_DRAFT.qmd` it is not yet filed and is still being developed; on filing it is renamed to `prereg.qmd` and carries its filing date and registry link. Once filed, anything that would change analysis logic, model specification, or pipeline parameters is a documented deviation, not a code change. This analysis was previously planned as a Registered Report at *Nature Ecology & Evolution*; that submission has been dropped.
 
 **2. Everything else — normal.** Exploratory work, secondary questions, methods development. Ordinary practice applies.
 
@@ -48,7 +48,7 @@ Not everything here is under the same constraints.
 docs/
   proposal/    funded proposal (background only — superseded in places)
   protocols/   field, lab, and data management protocols
-  rr/          Registered Report manuscript (Quarto → PDF/DOCX)
+  prereg/      preregistration drafts and the filed plan (Quarto → PDF/DOCX)
 notes/         working notes
 data-raw/      raw data — read-only, never committed
 data/          processed data — directory tree tracked, contents ignored
@@ -62,10 +62,10 @@ Analysis scripts are numbered by pipeline stage.
 
 | File | What it is |
 |---|---|
-| `docs/rr/rr.qmd` | Stage 1 Registered Report manuscript |
+| `docs/prereg/prereg_DRAFT.qmd` | Preregistration of the design and analysis plan (draft, not filed) |
 | `docs/protocols/pallasjarvi-fieldwork-protocol.qmd` | WP1 field collection |
 | `docs/protocols/grimso-field-protocol.qmd` | WP2 trapping, RFID, sampling |
-| `docs/protocols/pilot-lab-protocol.qmd` | Pilot extraction/QC before Stage 1 locks |
+| `docs/protocols/pilot-lab-protocol.qmd` | Pilot extraction/QC before the preregistration locks |
 | `docs/protocols/data-management-plan.qmd` | Sample IDs, metadata schema, batch design |
 | `notes/microbiome_pipeline.qmd` | Wet-lab and bioinformatics workflow |
 
@@ -85,7 +85,7 @@ Open `microbial_sensor.Rproj` in RStudio, or set the working directory to the pr
 Render a document with:
 
 ```bash
-quarto render docs/rr/rr.qmd
+quarto render docs/prereg/prereg_DRAFT.qmd
 ```
 
 Sequence processing is intended to run on UPPMAX rather than locally.
@@ -94,7 +94,7 @@ Sequence processing is intended to run on UPPMAX rather than locally.
 
 - `data-raw/` is **read-only** and is never committed. Nothing in the pipeline writes to it.
 - `data/` keeps its directory tree under version control but not its contents; each subdirectory has a README describing what belongs there.
-- Sequence data will be deposited in a public archive (PLACEHOLDER — ENA or SRA) and metadata in PLACEHOLDER — repository, with release timed to Stage 2 acceptance. See `docs/protocols/data-management-plan.qmd`.
+- Sequence data will be deposited in a public archive (PLACEHOLDER — ENA or SRA) and metadata in PLACEHOLDER — repository, with release timed to publication. See `docs/protocols/data-management-plan.qmd`.
 
 ## Ethics and permits
 

@@ -205,7 +205,7 @@ master_dyads <- expand_grid(
   left_join(read_rds(here("data", "clean_networks", "unifrac_similarity_matrix.rds")), by = "dyad_id") |>
   left_join(read_rds(here("data", "clean_networks", "radseq_kinship_matrix.rds")), by = "dyad_id")
 
-# Export frozen compendium for Stage 2 Registered Report validation
+# Export frozen compendium for the preregistered validation analysis
 write_rds(master_dyads, here("data", "clean_networks", "wp2_master_dyadic_validation_df.rds"))
 
 ```

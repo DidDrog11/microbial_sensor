@@ -17,7 +17,7 @@ The pathogen endpoint is Puumala orthohantavirus (PUUV), which is endemic to ban
 | | WP1 — Pallasjärvi | WP2 — Grimsö |
 |---|---|---|
 | **Site** | Pallasjärvi, Finnish Lapland | Grimsö Wildlife Research Station, Sweden |
-| **When** | September 2026 (Y1) | Autumn 2027 (Y2) |
+| **When** | September 2026 | Summer 2027 (provisional — timing under review) |
 | **Trapping** | Snap-trapping, 3–4 nights per grid | Live-trapping, CMR, 3 ha nested grid |
 | **Samples** | Gut (distal colon) + paired nest/burrow and soil, ~150 individuals | Longitudinal faecal/rectal swabs, ~20–40 tracked individuals |
 | **Connectivity** | Inferred from within-campaign spatial co-occurrence | Observed directly, via RFID proximity logging |

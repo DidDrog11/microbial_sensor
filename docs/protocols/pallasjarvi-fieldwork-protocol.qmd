@@ -45,11 +45,13 @@ Carry a copy of the approved form with the samples in the car.
 
 | Item | Purpose | Status |
 |---|---|---|
-| 7 ml screw-cap tubes, DNA-free/DNase-free certified | soil, nest material, field blanks | `[?]` check IEG stock before ordering; confirm −70 °C rating |
-| Cryovials | gut (transfer in Uppsala) | `[?]` IEG stock? |
+| 2 ml Sarstedt Biosphere plus SafeSeal tubes (PCR performance tested; free of DNA, DNase, RNase and PCR inhibitors) | soil, field blanks | from IEG stock, 09 Sep 2026. Certification is defensive rather than required (Elin), but cheap. Snap cap is fine for dry soil at −20 °C. Rounded base: keep a rack or foam block in the cool bag |
+| 10 ml tubes, 100 | nest and burrow material, which is too bulky for 2 ml; spares cover any oversized soil point | in hand, IEG stock, 09 Sep 2026. More than needed |
+| 81-place cryoboxes for 2 ml tubes | freezer storage; same format as the gut cryovials | in hand, IEG stock, 09 Sep 2026 |
+| Cryovials | gut (transfer in Uppsala) | not needed for the trip; sort out before gut processing |
 | 1 dl self-sealing minigrip bags | gut, at dissection | Henttonen provides |
-| Disposable spatulas (plastic) or wooden tongue depressors | soil collection, single use per point | to buy |
-| Nitrile gloves | — | to buy/bring |
+| Disposable wooden waxing spatulas (narrow tip) | clearing litter and loading soil; single use per point. Not sterile, so keep the box sealed in a ziplock and use one lot for the whole campaign. Scooping directly with the tube is the alternative | ordered, arriving 10 Sep 2026 |
+| Nitrile gloves | — | in hand, IEG stock, 09 Sep 2026 |
 | Pencil or solvent-proof marker | tube labelling | to bring |
 | Min/max temperature logger | inside car freezer | to buy |
 | Frozen gel packs | thermal mass / power-failure buffer | to buy |
@@ -89,7 +91,9 @@ Collected and processed by Henttonen's team under their existing SOP, unchanged 
 
 - Collect at every capture point (~150). Collection is cheap; only a subset will be processed (§5.6).
 - Sampling horizon: organic layer beneath the litter, standardised across all points.
-- Fill tube to about two-thirds — roughly 4–6 g in mineral forest soil, less in peatland. Leaves headroom for freeze expansion and for re-extraction.
+- Fill the 2 ml tube to about two-thirds — roughly 0.5–1.5 g depending on how loose the organic layer is. That is two to five extractions' worth, which leaves room for re-extraction. Leave headroom for freeze expansion.
+- Clear the litter with a fresh spatula or gloved hand, then scoop directly with the tube mouth or load with a narrow spatula. Nothing that has touched litter goes into the tube.
+- One tube per point. Do not take duplicates as routine; a second tube means a second sample ID and is almost never processed.
 - New spatula per point. New gloves per point, or between points where practical.
 - Record sampling depth (cm below litter) and rough moisture class.
 
@@ -98,6 +102,7 @@ Collected and processed by Henttonen's team under their existing SOP, unchanged 
 - Opportunistic — collected by both our team and Henttonen's team when encountered, not systematically.
 - Must be linked to SQ number.
 - Record material type: actual nest / burrow lining / runway debris. These are microbiologically different things.
+- Goes into a larger tube or a minigrip bag, not a 2 ml tube. Fibrous material does not compact into a small tube without handling it more than is wise.
 
 ### 5.5 Controls collected alongside real samples
 
@@ -150,16 +155,13 @@ Sample IDs follow the naming scheme in `data-management-plan.qmd`.
 - Day's tubes sit in a cool bag while working.
 - **Frozen gel packs** in the freezer for thermal mass — this is the real buffer against a power interruption.
 - **Min/max logger inside the freezer.**
+- Freezer on 12 V while driving, on mains at the station and at overnight stops. Bring the mains adapter.
 - No preservative. Samples are stored dry and frozen. This is only defensible while the cold chain holds — hence the logger.
 
 ## 10. On arrival in Uppsala
 
 - Transfer gut from minigrip bags to cryovials on dry ice, without thawing.
-- Move everything to institutional −20 °C or −80 °C.
-
-`[?]` Freezer allocation at IEG — pending the departmental rearrangement; discussion with Elin scheduled for the week of 8 Sep 2026.
-
-`[?]` Should soil and nest go to −80 °C, or is −20 °C adequate for the storage duration? Depends on when extraction happens (see lab timeline).
+- Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil, nest and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 
 ## 11. Outstanding items
 
@@ -169,10 +171,8 @@ Sample IDs follow the naming scheme in `data-management-plan.qmd`.
 
 - Trapping start date. CLAUDE.md gives 12–17 September 2026; the working draft left the start open (§1).
 - Group count, to finalise the tube order and the field blank total (§4).
-- IEG stock check for 7 ml tubes and cryovials, and confirmation of the −70 °C rating (§4).
 - PUUV SOP reference, and what "processes the blood" means in practice (§5.2).
 - Biosafety/PPE reference for handling wild-rodent carcasses and excreta — likely already covered by Henttonen's existing PUUV field SOP; link it here rather than duplicate.
 - GPS coordinates at capture points: to be added to the KoBo shared location block — next piece of work (§8).
-- Freezer allocation at IEG, and −20 °C vs −80 °C for soil and nest (§10).
 
 :::

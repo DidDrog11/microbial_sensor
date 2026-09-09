@@ -7,12 +7,7 @@
 #         data-capture/wp1_nest.xlsx
 #
 # The shared location block is defined once, here, and pasted into all three
-# forms. That block is the join key between the three tables and to Henttonen's
-# morphometrics, so the field names must match exactly across forms — which is
-# why these are generated rather than maintained as three spreadsheets.
-#
-# Upload each .xlsx to KoBoToolbox with "New project -> Upload an XLSForm".
-# Bump FORM_VERSION whenever a form changes; KoBo uses it to version submissions.
+# forms. 
 
 library(dplyr)
 library(tibble)
@@ -21,12 +16,11 @@ library(here)
 
 out_dir <- here("data-capture")
 
-FORM_VERSION <- "2026-09-07"
+FORM_VERSION <- "2026-09-09"
 
 # shared blocks ----------------------------------------------------------------
 
-# Columns every survey sheet carries. Kept in one place so the three sheets bind
-# cleanly even when a form uses none of a given column.
+# Columns every survey sheet carries..
 survey_row <- function(type, name, label, required = NA, relevant = NA,
                        constraint = NA, constraint_message = NA,
                        hint = NA, appearance = NA) {
@@ -34,7 +28,7 @@ survey_row <- function(type, name, label, required = NA, relevant = NA,
          constraint, constraint_message, hint, appearance)
 }
 
-#' Device metadata — invisible to the enumerator, useful for QA
+#' Device metadata
 meta_block <- function() {
   bind_rows(
     survey_row("start",    "start",    NA),
@@ -43,7 +37,7 @@ meta_block <- function() {
   )
 }
 
-#' The join key. Identical field names and types in all three forms.
+#' The join key.
 location_block <- function() {
   bind_rows(
     survey_row("date", "collection_date", "Date",

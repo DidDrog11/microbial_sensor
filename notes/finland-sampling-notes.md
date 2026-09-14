@@ -23,4 +23,5 @@ Still open, from protocol §11: reference soils (4 forest + 4 peatland) not yet 
 - Two **pitfall lines** also sampled, `MS` and `MS+` ("MS extra"), old forest: 2 soils + 1 blank per line, coordinates taken for each soil. Tubes read "MS 1", "MS 2", "MS (blank)", "MS+ 1", "MS+ 2", "MS+ (blank)"; data IDs `MS1`, `MS2`, `MS`, `MS+1`, `MS+2`, `MS+`.
 - About 6 voles from the pitfall lines, recorded to line only. Line length and pitfall spacing unknown; infer from coordinates or ask Heikki.
 - Pitfalls are a different unit from an SQ (shape, extent, trap type, soil coverage). Whether these voles can enter the dyadic model is open (protocol §11); data collected so the option exists.
+- Vole data: Heikki will share his Excel sheet rather than have us read the lab notes. His sheet is the primary record; we fill only sample IDs, gut fullness and caecum torn per animal, keyed on his animal ID. Get the sheet before leaving and check the animal ID form matches the gut bags.
 - `line_id` column added to all three tables. **Add it to `data-raw/wp1_finland/wp1_corner_coords.csv` by hand**, after `sq_id`, since that file was copied before the change.

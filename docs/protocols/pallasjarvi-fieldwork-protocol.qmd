@@ -21,7 +21,7 @@ Collect host and paired environmental samples from bank voles (*Clethrionomys gl
 
 WP1 is Pallasjärvi only: a single prospective field campaign, snap-trapped 12–17 September 2026 on Prof. Heikki Henttonen's (LUKE) existing long-term monitoring design, targeting ~150 individuals. There is no archived-sample component.
 
-Sample types: gut tissue (caecum and distal colon, separately), blood or tissue for PUUV serology, soil at every quadrat corner, field blanks, and off-grid reference soil. Nest material is not obtainable at this site (§5.4).
+Sample types: gut tissue (caecum and distal colon, separately), lung and kidney for PUUV detection, soil at every quadrat corner, field blanks, and off-grid reference soil. Nest material is not obtainable at this site (§5.4).
 
 ## 2. Site and trapping design
 
@@ -71,7 +71,7 @@ Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass 
 
 | Sample | Collected by | Purpose |
 |---|---|---|
-| Blood/tissue for PUUV serology | Henttonen's team, existing SOP | Hantavirus surveillance — unchanged from current practice |
+| Lung and kidney for PUUV | Henttonen, existing SOP | Hantavirus surveillance — unchanged from current practice |
 | Caecum | Henttonen's team, at dissection | Host gut community; separate sample ID |
 | Distal colon | Henttonen's team, at dissection | Host gut community, standardised against WP2 faecal swabs; separate sample ID |
 | Soil at every SQ corner | Field team | Environmental channel — SQ-level soil signature and its within-quadrat spread |
@@ -82,18 +82,20 @@ Nest and burrow material was planned but is not collectable here (§5.4).
 ### 5.1 Gut
 
 - Caecum and distal colon in separate bags, one row per animal, two sample IDs.
-- Collected by Henttonen's team into minigrip bags at dissection; frozen the same day.
+- Collected by Henttonen at dissection into minigrip bags; frozen the same day. Henttonen dissects every animal, with us assisting, so dissector is constant and not recorded per animal.
 - Transfer from bags to cryovials happens in Uppsala, on dry ice (§10).
 
 Record if the caecum tears during dissection; cross-contamination between caecum and colon breaks the comparison between them.
 
+No separate tissue is retained for host genotyping. If the kinship term is funded, host DNA comes from the gut wall: a piece of colon or caecum tissue is cut into its own tube at the cryovial transfer (§10), so the genotyping and microbiome workflows never draw on the same tube.
+
 Vole data are entered by Henttonen's team rather than by us (§8). Their record holds **time of trap check and time of dissection**, so the post-mortem interval covariate is available. **Gut fullness and caecum state** (torn or intact) are recorded at dissection for the animals we sample. On the first morning every colon and caecum seen contained faeces.
 
-### 5.2 PUUV serology
+### 5.2 PUUV
 
-Collected and processed by Henttonen's team under their existing SOP, unchanged from current practice. This protocol points to that SOP rather than duplicating it.
+No blood is taken. Henttonen takes **lung and kidney** from every animal for PUUV detection, under his existing SOP and unchanged from current practice. This protocol points to that SOP rather than duplicating it. The result is joined to our vole table on `animal_id` when it is available.
 
-`[?]` SOP reference or citation, and confirmation of what "processes the blood" means in practice (serum for ELISA vs. whole blood).
+`[?]` SOP reference or citation, and the detection method (antigen vs. RT-PCR), so the endpoint can be described correctly.
 
 ### 5.3 Soil
 
@@ -181,17 +183,27 @@ Balance the whole set across forest and peatland.
 
 If the GPS unit exports GPX, the export goes into `data-raw/wp1_finland/sampling/` and `R/01_wp1_trap_grid_gpx.R` builds this table, with no transcription.
 
-**Vole table** (`wp1_voles`), one row per animal, transcribed from Henttonen's record for the animals whose gut samples we take:
+**Vole table** (`wp1_voles`), one row per animal. Henttonen will share his own Excel sheet rather than have us transcribe the lab notes, so his sheet is the primary record: it is stored unaltered in `data-raw/wp1_finland/` and its columns are mapped to the ones below by script, not retyped. The columns marked "ours" are the only ones we fill by hand, keyed on `animal_id`. The full column list is kept as the target schema so the mapping has something fixed to land on:
 
-| Column | Content |
-|---|---|
-| `animal_id` | Henttonen's ID — the join to his morphometrics and PUUV result |
-| `collection_date` | date the trap was checked |
-| `sq_id`, `line_id`, `habitat` | as in the soil log; exactly one of `sq_id` and `line_id` is filled |
-| `caecum_sample_id`, `colon_sample_id` | |
-| `trap_check_time`, `dissection_time` | from Henttonen's record; the difference is the post-mortem interval |
-| `gut_fullness`, `caecum_torn` | recorded at dissection (§5.1): full / partial / empty; yes / no |
-| `notes` | |
+| Column | Content | Source |
+|---|---|---|
+| `processing_date` | date of necropsy | lab notes |
+| `animal_id` | Henttonen's ID — the join to his morphometrics and the PUUV result, which arrives later and is joined on this column, not copied here | lab notes |
+| `capture_date` | date the trap was checked; usually equals `processing_date` | lab notes |
+| `sq_id`, `line_id`, `habitat` | as in the soil log; exactly one of `sq_id` and `line_id` is filled | lab notes |
+| `trap_check_time`, `necropsy_time` | the difference is the post-mortem interval | lab notes |
+| `species`, `sex` | | lab notes |
+| `head_body_mm`, `tail_mm`, `mass_g` | | lab notes |
+| `age_class` | as Henttonen's team classes it (e.g. juvenile / subadult / adult, or overwintered vs. young of the year) | lab notes |
+| `repro_status` | males: testes scrotal / abdominal; females: perforate, pregnant, lactating, placental scars — as recorded | lab notes |
+| `embryos_n` | if pregnant | lab notes |
+| `carcass_condition` | fresh / autolysed / scavenged / wet, and whether the animal was alive at the check (pitfalls) | lab notes or ours |
+| `wounds` | bite wounds or scars, yes / no with a note | lab notes or ours |
+| `caecum_sample_id`, `colon_sample_id` | | ours |
+| `gut_fullness`, `caecum_torn` | full / partial / empty; yes / no (§5.1) | ours |
+| `notes` | | |
+
+Not recorded per animal because they are constant: the dissector (Henttonen, throughout), PUUV tissue (lung and kidney, every animal, §5.2), and tissue for host genotyping (the gut samples themselves, §10). Until Henttonen's sheet arrives, record only `animal_id`, `sq_id` or `line_id`, `caecum_sample_id`, `colon_sample_id`, `gut_fullness` and `caecum_torn` for each animal we sample; everything else comes from his sheet. Columns his sheet does not carry are left blank, not guessed.
 
 The join between the two tables is `sq_id` for quadrat animals and `line_id` for pitfall animals, never corner: a vole pairs with all soils of its unit. Group is attached to both tables afterwards from the derived SQ-to-group lookup (§2). Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
 
@@ -207,7 +219,7 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 
 ## 10. On arrival in Uppsala
 
-- Transfer gut from minigrip bags to cryovials on dry ice, without thawing.
+- Transfer gut from minigrip bags to cryovials on dry ice, without thawing. At the same step, if host genotyping is going ahead, cut a piece of gut wall from each animal into a separate labelled tube (§5.1).
 - Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 
 ## 11. Outstanding items
@@ -217,13 +229,14 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 **To resolve during the campaign (unrecoverable afterwards):**
 
 - Off-grid reference soils, 4 forest + 4 peatland, still to collect (§5.5).
+- Obtain Henttonen's Excel sheet before leaving, and check that it carries `animal_id` in the same form we write on the gut bags, trap-check and necropsy times, and the sampling unit (§8).
 
 **To resolve before processing:**
 
 - The one-soil-per-SQ rule: random corner, fixed corner, or pooled (§5.6).
 - Number of field blanks to sequence (§5.6).
 - Derive the SQ-to-group lookup from the corner coordinates once all SQs are sampled (§2).
-- PUUV SOP reference, and what "processes the blood" means in practice (§5.2).
+- PUUV SOP reference and detection method (§5.2).
 - Biosafety/PPE reference for handling wild-rodent carcasses and excreta — likely already covered by Henttonen's existing PUUV field SOP; link it here rather than duplicate.
 - The operational connectivity definition in `data-management-plan.qmd` §2 must be at SQ level or coarser, since co-capture at a trap or corner is not observable.
 - **Pitfall lines.** Line length and pitfall spacing (infer from coordinates; ask Henttonen). Whether the ~6 pitfall voles enter the dyadic connectivity model at all: co-capture on a line is a weaker and differently shaped co-occurrence than co-capture in a 15 × 15 m quadrat, and there is no within-line resolution. Options are a unit-type term with unit extent as a covariate, or excluding pitfall voles from the dyadic model and using them only for the host–soil channel. This is a modelling decision, not a field one.

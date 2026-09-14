@@ -1,0 +1,87 @@
+sample_id,sample_type,collection_date,sq_id,line_id,corner,habitat,depth_cm,flag,collector_initials,notes
+31A,soil,2026-09-14,31,,A,old_forest,2,,DS,
+31B,soil,2026-09-14,31,,B,old_forest,2,,DS,
+31C,soil,2026-09-14,31,,C,old_forest,2,,DS,
+31D,soil,2026-09-14,31,,D,old_forest,2,,DS,
+31,field_blank,2026-09-14,31,,A,old_forest,,,DS,tube labelled '31 control'
+32A,soil,2026-09-14,32,,A,old_forest,2,,DS,
+32B,soil,2026-09-14,32,,B,old_forest,2,,DS,
+32C,soil,2026-09-14,32,,C,old_forest,2,,DS,
+32D,soil,2026-09-14,32,,D,old_forest,2,,DS,
+32,field_blank,2026-09-14,32,,A,old_forest,,,DS,tube labelled '32 control'
+33A,soil,2026-09-14,33,,A,old_forest,2,,DS,
+33B,soil,2026-09-14,33,,B,old_forest,2,,DS,
+33C,soil,2026-09-14,33,,C,old_forest,2,,DS,
+33D,soil,2026-09-14,33,,D,old_forest,2,,DS,
+33,field_blank,2026-09-14,33,,A,old_forest,,,DS,tube labelled '33 control'
+34A,soil,2026-09-14,34,,A,old_forest,2,,DS,
+34B,soil,2026-09-14,34,,B,old_forest,2,,DS,
+34C,soil,2026-09-14,34,,C,old_forest,2,,DS,
+34D,soil,2026-09-14,34,,D,old_forest,2,,DS,
+34,field_blank,2026-09-14,34,,A,old_forest,,,DS,tube labelled '34 control'
+35A,soil,2026-09-14,35,,A,old_forest,2,,DS,
+35B,soil,2026-09-14,35,,B,old_forest,2,,DS,
+35C,soil,2026-09-14,35,,C,old_forest,2,,DS,
+35D,soil,2026-09-14,35,,D,old_forest,2,,DS,
+35,field_blank,2026-09-14,35,,A,old_forest,,,DS,tube labelled '35 control'
+36A,soil,2026-09-14,36,,A,old_forest,2,,DS,
+36B,soil,2026-09-14,36,,B,old_forest,2,,DS,
+36C,soil,2026-09-14,36,,C,old_forest,2,,DS,
+36D,soil,2026-09-14,36,,D,old_forest,2,,DS,
+36,field_blank,2026-09-14,36,,A,old_forest,,,DS,tube labelled '36 control'
+37A,soil,2026-09-14,37,,A,old_forest,2,,DS,
+37B,soil,2026-09-14,37,,B,old_forest,2,,DS,
+37C,soil,2026-09-14,37,,C,old_forest,2,,DS,
+37D,soil,2026-09-14,37,,D,old_forest,2,,DS,
+37,field_blank,2026-09-14,37,,A,old_forest,,,DS,tube labelled '37 control'
+38A,soil,2026-09-14,38,,A,old_forest,2,,DS,
+38B,soil,2026-09-14,38,,B,old_forest,2,,DS,
+38C,soil,2026-09-14,38,,C,old_forest,2,,DS,
+38D,soil,2026-09-14,38,,D,old_forest,2,,DS,
+38,field_blank,2026-09-14,38,,A,old_forest,,,DS,tube labelled '38 control'
+39A,soil,2026-09-14,39,,A,old_forest,2,,DS,
+39B,soil,2026-09-14,39,,B,old_forest,2,,DS,
+39C,soil,2026-09-14,39,,C,old_forest,2,,DS,
+39D,soil,2026-09-14,39,,D,old_forest,2,,DS,
+39,field_blank,2026-09-14,39,,A,old_forest,,,DS,tube labelled '39 control'
+40A,soil,2026-09-14,40,,A,old_forest,2,,DS,
+40B,soil,2026-09-14,40,,B,old_forest,2,,DS,
+40C,soil,2026-09-14,40,,C,old_forest,2,,DS,
+40D,soil,2026-09-14,40,,D,old_forest,2,,DS,
+40,field_blank,2026-09-14,40,,A,old_forest,,,DS,tube labelled '40 control'
+41A,soil,2026-09-14,41,,A,old_forest,2,,DS,
+41B,soil,2026-09-14,41,,B,old_forest,2,,DS,
+41C,soil,2026-09-14,41,,C,old_forest,2,,DS,
+41D,soil,2026-09-14,41,,D,old_forest,2,,DS,
+41,field_blank,2026-09-14,41,,A,old_forest,,,DS,tube labelled '41 control'
+42A,soil,2026-09-14,42,,A,old_forest,2,,DS,
+42B,soil,2026-09-14,42,,B,old_forest,2,,DS,
+42C,soil,2026-09-14,42,,C,old_forest,2,,DS,
+42D,soil,2026-09-14,42,,D,old_forest,2,,DS,
+42,field_blank,2026-09-14,42,,A,old_forest,,,DS,tube labelled '42 control'
+43A,soil,2026-09-14,43,,A,old_forest,2,,DS,
+43B,soil,2026-09-14,43,,B,old_forest,2,,DS,
+43C,soil,2026-09-14,43,,C,old_forest,2,,DS,
+43D,soil,2026-09-14,43,,D,old_forest,2,,DS,
+43,field_blank,2026-09-14,43,,A,old_forest,,,DS,tube labelled '43 control'
+58A,soil,2026-09-14,58,,A,old_forest,2,,DS,
+58B,soil,2026-09-14,58,,B,old_forest,2,,DS,
+58C,soil,2026-09-14,58,,C,old_forest,2,,DS,
+58D,soil,2026-09-14,58,,D,old_forest,2,,DS,
+58,field_blank,2026-09-14,58,,A,old_forest,,,DS,tube labelled '58 control'
+59A,soil,2026-09-14,59,,A,old_forest,2,,DS,
+59B,soil,2026-09-14,59,,B,old_forest,2,,DS,
+59C,soil,2026-09-14,59,,C,old_forest,2,,DS,
+59D,soil,2026-09-14,59,,D,old_forest,2,,DS,
+59,field_blank,2026-09-14,59,,A,old_forest,,,DS,tube labelled '59 control'
+60A,soil,2026-09-14,60,,A,old_forest,2,,DS,
+60B,soil,2026-09-14,60,,B,old_forest,2,,DS,
+60C,soil,2026-09-14,60,,C,old_forest,2,,DS,
+60D,soil,2026-09-14,60,,D,old_forest,2,,DS,
+60,field_blank,2026-09-14,60,,A,old_forest,,,DS,tube labelled '60 control'
+MS1,soil,2026-09-14,,MS,,old_forest,2,,DS,
+MS2,soil,2026-09-14,,MS,,old_forest,2,,DS,
+MS,field_blank,2026-09-14,,MS,,old_forest,,,DS,tube labelled 'MS (blank)'
+MS+1,soil,2026-09-14,,MS+,,old_forest,2,,DS,
+MS+2,soil,2026-09-14,,MS+,,old_forest,2,,DS,
+MS+,field_blank,2026-09-14,,MS+,,old_forest,,,DS,tube labelled 'MS+ (blank)'

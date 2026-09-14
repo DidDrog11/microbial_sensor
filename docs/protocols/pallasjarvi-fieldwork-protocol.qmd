@@ -167,9 +167,12 @@ Balance the whole set across forest and peatland.
 | `line_id` | pitfall line (`MS`, `MS+`); blank for quadrat and reference soils |
 | `corner` | A/B/C/D; A for quadrat field blanks; blank for pitfall and reference soils |
 | `habitat` | `old_forest` / `peatland` |
-| `depth_cm` | 2 unless deviated |
+| `depth_cm` | 2 unless deviated; blank for field blanks |
+| `flag` | blank, or a short code set at freezer check-in: `label_concern` (numbering or legibility doubt), `cold_chain`, `volume_low`. A flagged tube is still logged and stored; the flag decides whether it enters the processing subset |
 | `collector_initials` | |
-| `notes` | |
+| `notes` | tube label as written, if it differs from `sample_id` |
+
+Blanks carry `corner` A, where they are opened. Pitfall blanks carry `line_id` and no corner.
 
 **Coordinates** (`wp1_corner_coords`), one row per soil point: quadrat corners and pitfall soil points, from the GPS waypoint. Coordinates live here only, keyed by `sq_id` + `corner` or by `line_id` + waypoint, and are joined to the soil log rather than typed into it:
 

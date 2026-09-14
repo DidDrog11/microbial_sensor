@@ -181,7 +181,7 @@ Balance the whole set across forest and peatland.
 | `collection_date` | |
 | `notes` | |
 
-If the GPS unit exports GPX, the export goes into `data-raw/wp1_finland/sampling/` and `R/01_wp1_trap_grid_gpx.R` builds this table, with no transcription.
+`R/03_wp1_soil_point_coords.R` loads this file, applies a documented corrections table (the raw file is never edited), imputes a missing fourth corner where three were recorded, and writes the point, quadrat and pitfall-line tables to `data/field_sites/`. Entry errors found by that script are corrected in its table, not in the raw file. If the GPS unit exports GPX, the export goes into `data-raw/wp1_finland/sampling/` and `R/01_wp1_trap_grid_gpx.R` builds the same tables with no transcription.
 
 **Vole table** (`wp1_voles`), one row per animal. Henttonen will share his own Excel sheet rather than have us transcribe the lab notes, so his sheet is the primary record: it is stored unaltered in `data-raw/wp1_finland/` and its columns are mapped to the ones below by script, not retyped. The columns marked "ours" are the only ones we fill by hand, keyed on `animal_id`. The full column list is kept as the target schema so the mapping has something fixed to land on:
 

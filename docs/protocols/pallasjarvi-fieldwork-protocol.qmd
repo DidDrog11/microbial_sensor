@@ -203,7 +203,9 @@ Balance the whole set across forest and peatland.
 | `gut_fullness`, `caecum_torn` | full / partial / empty; yes / no (§5.1) | ours |
 | `notes` | | |
 
-Not recorded per animal because they are constant: the dissector (Henttonen, throughout), PUUV tissue (lung and kidney, every animal, §5.2), and tissue for host genotyping (the gut samples themselves, §10). Until Henttonen's sheet arrives, record only `animal_id`, `sq_id` or `line_id`, `caecum_sample_id`, `colon_sample_id`, `gut_fullness` and `caecum_torn` for each animal we sample; everything else comes from his sheet. Columns his sheet does not carry are left blank, not guessed.
+Not recorded per animal because they are constant: the dissector (Henttonen, throughout), PUUV tissue (lung and kidney, every animal, §5.2), and tissue for host genotyping (the gut samples themselves, §10).
+
+**The location join is not in Henttonen's sheet.** His animal ID is the same as written on the gut bags, but the quadrat or line an animal came from exists only in his field notebook. So each evening, while the notebook is to hand, record for every animal we sample: `animal_id`, `sq_id` or `line_id`, `caecum_sample_id`, `colon_sample_id`, `gut_fullness` and `caecum_torn`. The first two are the join between host and soil and cannot be reconstructed from Uppsala. Everything else comes from his sheet; columns his sheet does not carry are left blank, not guessed.
 
 The join between the two tables is `sq_id` for quadrat animals and `line_id` for pitfall animals, never corner: a vole pairs with all soils of its unit. Group is attached to both tables afterwards from the derived SQ-to-group lookup (§2). Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
 
@@ -229,7 +231,8 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 **To resolve during the campaign (unrecoverable afterwards):**
 
 - Off-grid reference soils, 4 forest + 4 peatland, still to collect (§5.5).
-- Obtain Henttonen's Excel sheet before leaving, and check that it carries `animal_id` in the same form we write on the gut bags, trap-check and necropsy times, and the sampling unit (§8).
+- Obtain Henttonen's Excel sheet before leaving. Animal ID matches the gut bags (confirmed 14 Sep); the sampling unit does not appear in the sheet and must be taken from his notebook animal by animal, each evening (§8).
+- Pitfall line length and spacing, from Henttonen (§2).
 
 **To resolve before processing:**
 

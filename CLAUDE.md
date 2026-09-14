@@ -58,7 +58,7 @@ This is about scope, not concealment: AI use is disclosed at the level of resear
 - R, with `renv` for dependency management
 - Quarto (`.qmd`) for protocols, notebooks, and documentation
 - Analysis scripts numbered by pipeline stage
-- `data-raw/` is read-only — never write to it
+- `data-raw/` is read-only for code and for Claude — never write to it. Corrections to raw records go in a corrections table in the loading script, not in the file. The user enters raw data there by hand.
 - No absolute paths — use `here::here()`
 - Spatial work uses `terra` and `tidyterra`, not `sf`. Rasters and vectors both go through terra; tidyterra supplies the dplyr verbs for `SpatVector` and `SpatRaster`.
 - Do not hard-wrap prose at a fixed column. Write each paragraph, list item, or table row as one line and let the editor soft-wrap it. This applies to Markdown, Quarto, and commit message bodies; code still follows normal line-length conventions.
@@ -67,7 +67,8 @@ This is about scope, not concealment: AI use is disclosed at the level of resear
 
 - Commit messages: imperative mood, plain description of what changed
 - Do not commit unless asked
-- Never commit contents of `data-raw/`, large data files, or credentials
+- `data-raw/` is tracked: it is small, hand-entered, and irreplaceable. A pre-commit hook in `.githooks/` blocks files over 50 MB; enable it once per clone with `git config core.hooksPath .githooks`. Sequence data and other large binaries are ignored by extension.
+- Never commit credentials, or material received from collaborators (Henttonen's sheet, GPX, PUUV results — `data-raw/wp1_finland/henttonen/`, ignored) to this public repository without their agreement.
 - Do not force-push, rewrite history, or amend published commits
 
 ## Layout
@@ -78,7 +79,8 @@ docs/
   protocols/   field, lab, and data management protocols
   prereg/      preregistration drafts and the filed plan
 notes/         working notes
-data-raw/      raw data, read-only
+data-raw/      raw data, hand-entered, tracked, read-only for code
+data-capture/  CSV templates for field transcription (and superseded KoBo forms)
 data/          processed data
 R/             analysis scripts and functions
 pipelines/     DADA2 / sequence processing

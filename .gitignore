@@ -50,8 +50,11 @@ rsconnect/
 
 # --- Project-specific ---------------------------------------------------
 
-# Raw data is read-only and never committed (see CLAUDE.md)
-data-raw/
+# Raw data is tracked: it is small, hand-entered, and irreplaceable. Files over
+# 50 MB are blocked by .githooks/pre-commit (GitHub rejects 100 MB). Material
+# received from Henttonen (his Excel sheet, GPX, PUUV results) stays out of this
+# public repository unless he agrees to its release.
+data-raw/wp1_finland/henttonen/
 
 # Processed data: keep the directory tree, not the objects
 data/**

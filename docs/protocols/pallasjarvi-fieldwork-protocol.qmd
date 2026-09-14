@@ -7,11 +7,11 @@ format: html
 
 ## Status
 
-**Draft.** Nothing here is fixed until v1.0. Open questions are marked `[?]` inline where they sit, and collected in §11.
+**Draft v0.2, revised in the field.** Updated 14 September 2026 after the first morning of soil sampling, so that the protocol describes what is actually being done rather than what was planned. Open questions are marked `[?]` inline where they sit, and collected in §11.
 
 ::: {.callout-important}
 
-This protocol assumes **snap-trapping**, two trap-nights per group, ~150 individuals, and no live recapture. If any of that changes, the spatial design in §2 and the data capture in §8 need revisiting.
+This protocol assumes **snap-trapping**, two trap-nights per group, ~150 individuals, no live recapture, and that **animals are recorded to the small quadrat, not to a corner or trap**. If any of that changes, the spatial design in §2, the soil design in §5.3 and the data capture in §8 need revisiting.
 
 :::
 
@@ -19,9 +19,9 @@ This protocol assumes **snap-trapping**, two trap-nights per group, ~150 individ
 
 Collect host and paired environmental samples from bank voles (*Clethrionomys glareolus*) at Pallasjärvi, Finnish Lapland, to support WP1 of the Microbial Sensor project: establishing whether structured components of the gut microbiome track host connectivity, using within-campaign spatial co-occurrence as the connectivity proxy. See `data-management-plan.qmd` §2 for how "connected" is operationally defined here, now that this is prospective rather than archived data.
 
-WP1 is Pallasjärvi only: a single prospective field campaign, snap-trapped 12–17 September 2026 `[?]` on Prof. Heikki Henttonen's (LUKE) existing long-term monitoring design, targeting ~150 individuals. There is no archived-sample component.
+WP1 is Pallasjärvi only: a single prospective field campaign, snap-trapped 12–17 September 2026 on Prof. Heikki Henttonen's (LUKE) existing long-term monitoring design, targeting ~150 individuals. There is no archived-sample component.
 
-Sample types: gut tissue (caecum and distal colon, separately), blood or tissue for PUUV serology, soil at capture points, nest and burrow material, field blanks, and off-grid reference soil.
+Sample types: gut tissue (caecum and distal colon, separately), blood or tissue for PUUV serology, soil at every quadrat corner, field blanks, and off-grid reference soil. Nest material is not obtainable at this site (§5.4).
 
 ## 2. Site and trapping design
 
@@ -29,11 +29,13 @@ Sample types: gut tissue (caecum and distal colon, separately), blood or tissue 
 - Site: Pallasjärvi long-term monitoring grids.
 - 30 small quadrats (SQ), 15 × 15 m, in groups of 3–7, ≥50 m apart within a group.
 - Groups in old forest and in peatland/bog; some peatland groups sit near forest, so voles are caught there too.
+- Traps sit at the four corners of each SQ: three snap traps per corner, placed within roughly 3–5 m of the corner marker. Exact trap positions are not recorded.
+- Animals are recorded to the SQ only. Henttonen's sample record does not associate an animal with a corner or a trap.
 - Traps set day 1; checked day 2; checked and collected day 3.
 
-This gives four nested spatial scales — capture point, SQ, group, habitat — with gaps between them. The forest/peatland contrast provides a within-site environmental contrast.
+**Spatial resolution.** Because animals are known only to SQ, the host side of the design has three nested scales — SQ, group, habitat. The 15 × 15 m quadrat is the finest scale at which a vole can be placed. Corner resolution exists only on the soil side (§5.3), where it is used to estimate the SQ-level soil signature and its within-quadrat spread, not to place animals.
 
-The protocol will be updated with Henttonen's full sampling design once it is available.
+Corner coordinates come from a consumer handheld GPS, with a per-fix error of roughly 2 m. SQ centroids are therefore good to about 1 m and between-quadrat distances are reliable; within-quadrat distances are not, and the corner is treated as a categorical label with known 15 m and 21 m geometry rather than as a measured position. The forest/peatland contrast provides a within-site environmental contrast.
 
 ## 3. Approvals
 
@@ -45,22 +47,23 @@ Carry a copy of the approved form with the samples in the car.
 
 | Item | Purpose | Status |
 |---|---|---|
-| 2 ml Sarstedt Biosphere plus SafeSeal tubes (PCR performance tested; free of DNA, DNase, RNase and PCR inhibitors) | soil, field blanks | from IEG stock, 09 Sep 2026. Certification is defensive rather than required (Elin), but cheap. Snap cap is fine for dry soil at −20 °C. Rounded base: keep a rack or foam block in the cool bag |
-| 10 ml tubes, 100 | nest and burrow material, which is too bulky for 2 ml; spares cover any oversized soil point | in hand, IEG stock, 09 Sep 2026. More than needed |
-| 81-place cryoboxes for 2 ml tubes | freezer storage; same format as the gut cryovials | in hand, IEG stock, 09 Sep 2026 |
+| 2 ml Sarstedt Biosphere plus SafeSeal tubes (PCR performance tested; free of DNA, DNase, RNase and PCR inhibitors) | soil, field blanks, reference soil | in use throughout. Certification is defensive rather than required (Elin), but cheap. Snap cap is fine for dry soil at −20 °C. Rounded base: keep a rack or foam block in the cool bag |
+| 10 ml tubes, 100 | were for nest and burrow material | not needed — no nest material is obtainable (§5.4). Spares only |
+| 81-place cryoboxes for 2 ml tubes | freezer storage; same format as the gut cryovials | in use |
 | Cryovials | gut (transfer in Uppsala) | not needed for the trip; sort out before gut processing |
 | 1 dl self-sealing minigrip bags | gut, at dissection | Henttonen provides |
-| Disposable wooden waxing spatulas (narrow tip) | clearing litter and loading soil; single use per point. Not sterile, so keep the box sealed in a ziplock and use one lot for the whole campaign. Scooping directly with the tube is the alternative | ordered, arriving 10 Sep 2026 |
-| Nitrile gloves | — | in hand, IEG stock, 09 Sep 2026 |
-| Pencil or solvent-proof marker | tube labelling | to bring |
-| Min/max temperature logger | inside car freezer | to buy |
-| Frozen gel packs | thermal mass / power-failure buffer | to buy |
-| Cool bag or coolbox | holds day's tubes until evening transfer | to bring |
-| Phone/tablet with KoBo forms | data capture | set up before departure |
+| Disposable wooden waxing spatulas (narrow tip) | clearing litter and loading soil; single use per tube. Not sterile, so keep the box sealed in a ziplock and use one lot for the whole campaign | in use |
+| Nitrile gloves | fresh pair per tube | in use |
+| Pencil or solvent-proof marker | tube labelling | in use |
+| Handheld GPS | one waypoint per corner, named with the sample ID | in use |
+| Min/max temperature logger | inside car freezer | in place |
+| Frozen gel packs | thermal mass / power-failure buffer | in place |
+| Cool bag or coolbox | holds the morning's tubes until transfer to the station freezer | in use |
+| Waterproof notebook | field record; transcribed each evening (§8) | in use |
 
-Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass samples (soil, nest) are where reagent and plasticware contaminants masquerade as signal.
+Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass samples such as soil are where reagent and plasticware contaminants masquerade as signal.
 
-`[?]` Approximate tube count needed: ~150 soil + nest (unknown n) + blanks (one per group per day ≈ `[?]` groups × 2 days). Confirm group count with Henttonen to finalise the order.
+**Tube count.** 30 SQ × (4 corner soils + 1 field blank) = 150 tubes, plus 8 off-grid reference soils = 158. The first morning covered 10 SQ (50 tubes), so the grid takes about three mornings.
 
 ## 5. Sample collection
 
@@ -69,9 +72,10 @@ Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass 
 | Blood/tissue for PUUV serology | Henttonen's team, existing SOP | Hantavirus surveillance — unchanged from current practice |
 | Caecum | Henttonen's team, at dissection | Host gut community; separate sample ID |
 | Distal colon | Henttonen's team, at dissection | Host gut community, standardised against WP2 faecal swabs; separate sample ID |
-| Soil at capture point | Field team | Environmental channel |
-| Nest/burrow material | Field team with Henttonen's team, opportunistic | Environmental channel — shared-infrastructure signal |
+| Soil at every SQ corner | Field team | Environmental channel — SQ-level soil signature and its within-quadrat spread |
 | Field blanks, off-grid reference soil | Field team | Contamination check and biological comparator (§5.5) |
+
+Nest and burrow material was planned but is not collectable here (§5.4).
 
 ### 5.1 Gut
 
@@ -81,6 +85,8 @@ Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass 
 
 Record if the caecum tears during dissection; cross-contamination between caecum and colon breaks the comparison between them.
 
+Vole data are entered by Henttonen's team rather than by us (§8). Their record holds **time of trap check and time of dissection**, so the post-mortem interval covariate is available. **Gut fullness and caecum state** (torn or intact) are recorded at dissection for the animals we sample. On the first morning every colon and caecum seen contained faeces.
+
 ### 5.2 PUUV serology
 
 Collected and processed by Henttonen's team under their existing SOP, unchanged from current practice. This protocol points to that SOP rather than duplicating it.
@@ -89,70 +95,95 @@ Collected and processed by Henttonen's team under their existing SOP, unchanged 
 
 ### 5.3 Soil
 
-- Collect at every capture point (~150). Collection is cheap; only a subset will be processed (§5.6).
-- Sampling horizon: organic layer beneath the litter, standardised across all points.
+- **One tube at each of the four corners of every SQ**, whether or not a vole was caught there. 120 soils in total.
+- Taken from the nearest **runway or burrow opening** to the corner marker, i.e. from substrate the animals actually use, rather than from an arbitrary point at the corner. Runway and burrow opening are not distinguished in the record: at a fixed horizon, and with no information on whether the feature is active, the distinction is an uncontrolled covariate that would not be analysed.
+- Sampling horizon: **2 cm below the litter and needle layer**, standardised across all points.
 - Fill the 2 ml tube to about two-thirds — roughly 0.5–1.5 g depending on how loose the organic layer is. That is two to five extractions' worth, which leaves room for re-extraction. Leave headroom for freeze expansion.
-- Clear the litter with a fresh spatula or gloved hand, then scoop directly with the tube mouth or load with a narrow spatula. Nothing that has touched litter goes into the tube.
-- One tube per point. Do not take duplicates as routine; a second tube means a second sample ID and is almost never processed.
-- New spatula per point. New gloves per point, or between points where practical.
-- Record sampling depth (cm below litter) and rough moisture class.
+- Clear the litter with the spatula, then load with the spatula or scoop directly with the tube mouth. Nothing that has touched litter goes into the tube.
+- **Fresh spatula and fresh gloves for every tube.**
+- **One GPS waypoint per corner**, named with the sample ID (§7).
+- One tube per corner. Do not take duplicates as routine; a second tube means a second sample ID and is almost never processed.
+
+Why every corner rather than only capture points: the animal's corner is unknown, so the quantity that pairs with a host is the SQ-level soil signature. Four corners per SQ estimate that signature, and the five fully-sequenced SQs in §5.6 estimate how much it varies within a quadrat. Sampling only the corners with captures would give no more host resolution and a worse SQ estimate.
 
 ### 5.4 Nest and burrow material
 
-- Opportunistic — collected by both our team and Henttonen's team when encountered, not systematically.
-- Must be linked to SQ number.
-- Record material type: actual nest / burrow lining / runway debris. These are microbiologically different things.
-- Goes into a larger tube or a minigrip bag, not a 2 ml tube. Fibrous material does not compact into a small tube without handling it more than is wise.
+**Not collected.** Burrows at this site are deep, and nest material cannot be reached without excavation. The runway and burrow-opening soil collected under §5.3 is the closest available proxy for shared burrow infrastructure.
+
+If nest material is encountered opportunistically (e.g. a nest exposed at the surface), it goes into a 10 ml tube or a minigrip bag with the SQ number and material type, but this is not expected.
 
 ### 5.5 Controls collected alongside real samples
 
-- **Field blanks** — an empty tube of the same type, opened at the sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. One per group per day, distributed across groups and days rather than collected in one batch.
-- **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow: four off-grid forest and four off-grid peatland (8 total). This is a biological comparator, not a contamination check.
+- **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (30 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube.
+- **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow: four off-grid forest and four off-grid peatland (8 total), same horizon and tube as §5.3. This is a biological comparator, not a contamination check. `[?]` Not yet collected; schedule for a later morning.
 
 Kit blanks, PCR no-template controls, and the mock community standard are lab-stage controls, not field-collected — see `pilot-lab-protocol.qmd`.
 
 ### 5.6 Processing subset (soil)
 
-Collect all ~150; extract and sequence ~55–60:
+Collect all 120 soils and 30 blanks; extract and sequence ~58 soils plus a subset of blanks:
 
-- One soil per SQ (30)
-- Four capture-point soils in each of 5 multi-capture SQs (20) — estimates within-SQ variance and answers whether capture-point resolution is needed
-- Four off-grid forest + four off-grid peatland reference soils (8)
-- Balanced across forest and peatland
+- **One soil per SQ (30).** `[?]` The rule for choosing it is not yet decided: a randomly drawn corner, a fixed corner, or an equal-mass pool of the four corners at extraction. Pooling gives the best SQ-level estimate but removes the SQ from the within-quadrat comparison below, so the choice interacts with the next item.
+- **All four corners in 5 SQs (20).** This estimates the **within-quadrat variance component**. Because hosts are resolved to SQ, the question it answers is how much information the host–soil pairing loses by being at SQ level rather than corner level — not whether capture-point distance matters, which is unmeasurable here. Choose SQs with captures, balanced across forest and peatland.
+- **Four off-grid forest + four off-grid peatland reference soils (8).**
+- **Field blanks.** `[?]` How many of the 30 to sequence; at minimum one per extraction batch, drawn from the SQs in that batch.
+
+Balance the whole set across forest and peatland.
 
 ## 6. Field hygiene
 
-- Sterile or single-use dissection tools per individual for gut and nest/burrow sampling specifically. Shared tools across a necropsy series will homogenise the community signal across individuals in a way that is very hard to detect after the fact.
-- New spatula per soil point; new gloves per point, or between points where practical.
+- Sterile or single-use dissection tools per individual for gut sampling. Shared tools across a necropsy series will homogenise the community signal across individuals in a way that is very hard to detect after the fact.
+- Fresh spatula and fresh gloves for every soil tube and blank.
 
 ## 7. Labelling
 
-- Sample ID plus human-readable location on the tube itself.
-- Solvent-proof marker.
+- Sample ID is the **SQ number followed by the corner letter**, e.g. `31A`, written on the tube with a solvent-proof marker at the point of collection. Each corner is sampled once, so this is unique across the campaign.
+- The GPS waypoint at that corner carries the same string.
+- Field blanks: the **SQ number alone**, e.g. `31`. Soils always carry a corner letter, so a bare number is unambiguous. First-morning blanks were written as the SQ number plus "control"; they map to the same ID and are not relabelled.
+- Reference soils: proposed `REF-F1`…`REF-F4` and `REF-P1`…`REF-P4`.
+- In the data, `sample_id` is the tube label verbatim. A project prefix (`PAL-`) is added only at the point where WP1 and WP2 data are merged, not on tubes.
 
-## 8. Data capture (KoBo)
+## 8. Data capture
 
-Three separate forms plus blanks. Location fields identical across all forms — that is the join key.
+**KoBo is not used.** The forms in `data-capture/` were built for a design in which each sample carried several per-sample fields worth capturing at the moment of collection. With every corner sampled at a fixed depth into a fixed tube, the per-sample information collapses to the tube label and the GPS waypoint, both of which are recorded outside KoBo anyway. The forms are kept in the repository as a record and are superseded by the two tables below.
 
-**Shared location block:** date, group ID, SQ ID, capture point ID, habitat (old forest / peatland), collector initials.
+**Two tables, transcribed each evening** from the tube labels, the GPS unit and the notebook. Templates with the column headers are in `data-capture/`.
 
-**Form 1 — Voles** (one row per animal): Henttonen's animal ID (**required** — joins to his morphometrics), caecum sample ID, distal colon sample ID, time of trap check, time of dissection, gut fullness (full/partial/empty), caecum torn (y/n), dissector initials, notes.
+**Soil log** (`wp1_soil_log`), one row per tube — soils, blanks and reference soils:
 
-**Form 2 — Soil:** sample ID, sampling depth, moisture class, position (within quadrat / quadrat edge / off-grid reference), notes.
+| Column | Content |
+|---|---|
+| `sample_id` | tube label (§7): `31A` for soil, `31` for the blank |
+| `sample_type` | `soil` / `field_blank` / `reference` |
+| `collection_date` | ISO date |
+| `group_id` | trapping group, as labelled by the Henttonen team |
+| `sq_id` | SQ number; blank for reference soils |
+| `corner` | A/B/C/D; A for field blanks; blank for reference soils |
+| `habitat` | `old_forest` / `peatland` |
+| `depth_cm` | 2 unless deviated |
+| `lat`, `lon` | from the GPS waypoint, WGS84 decimal degrees |
+| `collector_initials` | |
+| `notes` | |
 
-**Form 3 — Nest/burrow:** sample ID, material type, notes.
+**Vole table** (`wp1_voles`), one row per animal, transcribed from Henttonen's record for the animals whose gut samples we take:
 
-**Blanks:** own form or a sample-type field; same location block. Captured in data, not remembered.
+| Column | Content |
+|---|---|
+| `animal_id` | Henttonen's ID — the join to his morphometrics and PUUV result |
+| `collection_date` | date the trap was checked |
+| `group_id`, `sq_id`, `habitat` | as in the soil log |
+| `caecum_sample_id`, `colon_sample_id` | |
+| `trap_check_time`, `dissection_time` | from Henttonen's record; the difference is the post-mortem interval |
+| `gut_fullness`, `caecum_torn` | recorded at dissection (§5.1): full / partial / empty; yes / no |
+| `notes` | |
 
-Time of check and time of dissection are separate fields. The gap between them is the post-mortem interval covariate — free to record now, unrecoverable later, and the first thing that stops being recorded when the campaign gets busy.
-
-Sample IDs follow the naming scheme in `data-management-plan.qmd`.
+The join between the two tables is `sq_id` (and `group_id`, `habitat`), not corner: a vole pairs with all four corner soils of its SQ. Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
 
 ## 9. Cold chain
 
-- Samples go to the **field station freezer** during the day.
-- Transfer to the **car freezer** (compressor, −18/−20 °C, 18 L) in one batch in the evening. Batch the loading: one door opening per day, not thirty.
-- Day's tubes sit in a cool bag while working.
+- Samples go to the **field station freezer** during the day. Confirmed working on the first morning.
+- Transfer to the **car freezer** (compressor, −18/−20 °C, 18 L) in one batch in the evening. Batch the loading: one door opening per day, not thirty. The car freezer runs on mains at the station, with the logger and gel packs in place.
+- The morning's tubes sit in a cool bag while working.
 - **Frozen gel packs** in the freezer for thermal mass — this is the real buffer against a power interruption.
 - **Min/max logger inside the freezer.**
 - Freezer on 12 V while driving, on mains at the station and at overnight stops. Bring the mains adapter.
@@ -161,18 +192,23 @@ Sample IDs follow the naming scheme in `data-management-plan.qmd`.
 ## 10. On arrival in Uppsala
 
 - Transfer gut from minigrip bags to cryovials on dry ice, without thawing.
-- Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil, nest and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
+- Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 
 ## 11. Outstanding items
 
 ::: {.callout-important}
 
-**To resolve before this protocol is final:**
+**To resolve during the campaign (unrecoverable afterwards):**
 
-- Trapping start date. CLAUDE.md gives 12–17 September 2026; the working draft left the start open (§1).
-- Group count, to finalise the tube order and the field blank total (§4).
+- Off-grid reference soils, 4 forest + 4 peatland, still to collect (§5.5).
+
+**To resolve before processing:**
+
+- The one-soil-per-SQ rule: random corner, fixed corner, or pooled (§5.6).
+- Number of field blanks to sequence (§5.6).
+- Group count, for the record (§2).
 - PUUV SOP reference, and what "processes the blood" means in practice (§5.2).
 - Biosafety/PPE reference for handling wild-rodent carcasses and excreta — likely already covered by Henttonen's existing PUUV field SOP; link it here rather than duplicate.
-- GPS coordinates at capture points: to be added to the KoBo shared location block — next piece of work (§8).
+- The operational connectivity definition in `data-management-plan.qmd` §2 must be at SQ level or coarser, since co-capture at a trap or corner is not observable.
 
 :::

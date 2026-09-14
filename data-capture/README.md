@@ -1,6 +1,19 @@
 # data-capture
 
-KoBoToolbox data-capture forms for the WP1 Pallasjärvi campaign, as XLSForms.
+## Current: daily transcription templates
+
+**The KoBo forms below are not in use.** Field practice at Pallasjärvi (from 14 September 2026) samples every quadrat corner at a fixed depth into a fixed tube, so the per-sample information reduces to the tube label and a GPS waypoint, and the vole data are entered by Henttonen's team. Data are transcribed each evening into two CSVs whose column headers are given by the templates here. Column definitions are in `docs/protocols/pallasjarvi-fieldwork-protocol.qmd` §8.
+
+| Template | One row per |
+|---|---|
+| `wp1_soil_log_template.csv` | soil tube, field blank, or reference soil |
+| `wp1_voles_template.csv` | trapped animal whose gut samples we take |
+
+Copy a template to `data-raw/wp1_finland/` under the real name (`wp1_soil_log.csv`, `wp1_voles.csv`) and append to it; do not fill in the template itself. Join between the two tables is `sq_id`, not corner: animals are recorded to quadrat only.
+
+## Superseded: KoBoToolbox forms
+
+KoBoToolbox data-capture forms for the WP1 Pallasjärvi campaign, as XLSForms. Kept as a record of the pre-campaign design; the nest form in particular covers a sample type that turned out not to be collectable.
 
 | File | Form | One row per |
 |---|---|---|

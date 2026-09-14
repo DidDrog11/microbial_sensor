@@ -21,8 +21,7 @@ Since there's no multi-year history to select connected/unconnected dyads from, 
 
 ::: {.callout-important}
 
-**PLACEHOLDER** — exact operational definition, e.g. co-capture at the same trap station/burrow within the 3–4 night session vs. capture on distant grids. This determines what counts as a "connected" vs. "unconnected" dyad
-in the eventual model, and should be pinned down before the pilot (it affects what metadata absolutely must be captured in the field — see §4).
+**PLACEHOLDER** — exact operational definition, e.g. co-capture in the same small quadrat within the two-night session vs. capture in different groups or habitats. This determines what counts as a "connected" vs. "unconnected" dyad in the eventual model. The finest available host scale is the 15 × 15 m quadrat: animals are recorded to quadrat only, not to a trap or corner, so any definition based on trap-station or burrow co-capture is not observable (fieldwork protocol §2).
 
 :::
 
@@ -30,47 +29,33 @@ in the eventual model, and should be pinned down before the pilot (it affects wh
 
 ::: {.callout-note}
 
-**PLACEHOLDER** — propose something like:
+**In use since 14 Sep 2026** — see fieldwork protocol §7, which is authoritative.
 
-`PAL-{grid}-{date:YYYYMMDD}-{individual}-{sampletype}`
+- Soil: SQ number + corner letter, e.g. `31A`. Unique because each corner is sampled once.
+- Field blanks: SQ number alone, e.g. `31`; always opened at corner A.
+- Reference soils: `REF-F1`…`REF-F4`, `REF-P1`…`REF-P4`.
+- Gut: Henttonen's animal ID plus tissue, assigned at transfer to cryovials in Uppsala; the field record carries `caecum_sample_id` and `colon_sample_id` per animal.
 
-e.g. `PAL-G3-20260915-014-GUT`, `PAL-G3-20260915-014-NEST`, `PAL-G3-20260915-BLANK-01`
-
-Confirm grid codes and whether individual numbering resets per grid or is
-global across the campaign.
+`sample_id` in the data is the tube label verbatim. A `PAL-` prefix is added only when WP1 and WP2 tables are merged.
 
 :::
 
 ## 4. Metadata schema
 
-Minimum fields to capture per sample, matching §4 of the fieldwork protocol:
+Field-stage metadata are the two transcribed tables defined in the fieldwork protocol §8 (`wp1_soil_log`, `wp1_voles`; templates in `data-capture/`). Their shared keys are `collection_date`, `group_id`, `sq_id` and `habitat`. The soil log additionally carries `corner`, `depth_cm` and the corner coordinates; the vole table carries Henttonen's `animal_id`, which joins to his morphometrics (species, sex, age class, mass) and to the PUUV result.
 
-| Field | Description | Captured by |
-|---|---|---|
-| sample_id | Unique ID per §3 | Field team |
-| grid_id | Trapping grid identifier | Field team |
-| trap_station_id | Trap location within grid | Field team |
-| gps_lat / gps_lon | Coordinates | Field team |
-| capture_date | Date of capture | Field team |
-| trap_night | Which night of the 3–4 night session (1–4) | Field team |
-| individual_id | Unique animal identifier | Field team |
-| species | | Field team |
-| sex / age_class / mass | If routinely recorded | Field team |
-| burrow_id | If a burrow was associated with this capture | Field team |
-| trap_to_burrow_distance_m | | Field team |
-| sample_types_collected | Which of gut/nest/soil/blood obtained | Field team |
-| storage_medium | Frozen / ethanol / preservation buffer | Field team |
-| extraction_batch_id | | Lab |
-| extraction_date | | Lab |
-| extraction_kit_lot | | Lab |
-| pcr_batch_id | | Lab |
-| sequencing_run_id | | Lab / NGI |
+Not captured, because the trapping design does not record them: trap station within quadrat, burrow identity, and trap-to-burrow distance. Animals are resolved to the small quadrat only. Trap night is recoverable from `collection_date`.
 
-::: {.callout-note}
+Lab-stage fields, added per sample as processing proceeds:
 
-**PLACEHOLDER** — confirm which fields Heikki's team can realistically capture given field conditions vs. which need to be reconstructed later (e.g., precise GPS per burrow may need a field-friendly method — handheld GPS unit vs. relative distance/bearing from a mapped trap station).
-
-:::
+| Field | Captured by |
+|---|---|
+| storage_medium (frozen, no preservative, for all field samples) | Field team |
+| extraction_batch_id | Lab |
+| extraction_date | Lab |
+| extraction_kit_lot | Lab |
+| pcr_batch_id | Lab |
+| sequencing_run_id | Lab / NGI |
 
 ## 5. Batch design
 

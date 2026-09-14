@@ -2,14 +2,15 @@
 
 ## Current: daily transcription templates
 
-**The KoBo forms below are not in use.** Field practice at Pallasjärvi (from 14 September 2026) samples every quadrat corner at a fixed depth into a fixed tube, so the per-sample information reduces to the tube label and a GPS waypoint, and the vole data are entered by Henttonen's team. Data are transcribed each evening into two CSVs whose column headers are given by the templates here. Column definitions are in `docs/protocols/pallasjarvi-fieldwork-protocol.qmd` §8.
+**The KoBo forms below are not in use.** Field practice at Pallasjärvi (from 14 September 2026) samples every quadrat corner at a fixed depth into a fixed tube, so the per-sample information reduces to the tube label and a GPS waypoint, and the vole data are entered by Henttonen's team. Data are transcribed each evening into three CSVs whose column headers are given by the templates here. Column definitions are in `docs/protocols/pallasjarvi-fieldwork-protocol.qmd` §8.
 
 | Template | One row per |
 |---|---|
 | `wp1_soil_log_template.csv` | soil tube, field blank, or reference soil |
 | `wp1_voles_template.csv` | trapped animal whose gut samples we take |
+| `wp1_corner_coords_template.csv` | quadrat corner: the GPS waypoint, WGS84 decimal degrees |
 
-Copy a template to `data-raw/wp1_finland/` under the real name (`wp1_soil_log.csv`, `wp1_voles.csv`) and append to it; do not fill in the template itself. Join between the two tables is `sq_id`, not corner: animals are recorded to quadrat only.
+Copy a template to `data-raw/wp1_finland/` under the real name (`wp1_soil_log.csv`, `wp1_voles.csv`, `wp1_corner_coords.csv`) and append to it; do not fill in the template itself. Join between soil and vole tables is `sq_id` for quadrat units and `line_id` for pitfall lines, not corner: animals are recorded to quadrat or line only. Coordinates live only in the corner table, keyed by `sq_id` + `corner`, so nothing is typed twice. If the GPS unit exports GPX, put the export in `data-raw/wp1_finland/sampling/` instead and let `R/01_wp1_trap_grid_gpx.R` build the corner table.
 
 ## Superseded: KoBoToolbox forms
 

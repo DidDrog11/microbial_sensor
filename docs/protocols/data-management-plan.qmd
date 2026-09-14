@@ -42,7 +42,7 @@ Since there's no multi-year history to select connected/unconnected dyads from, 
 
 ## 4. Metadata schema
 
-Field-stage metadata are the two transcribed tables defined in the fieldwork protocol §8 (`wp1_soil_log`, `wp1_voles`; templates in `data-capture/`). Their shared keys are `collection_date`, `group_id`, `sq_id` and `habitat`. The soil log additionally carries `corner`, `depth_cm` and the corner coordinates; the vole table carries Henttonen's `animal_id`, which joins to his morphometrics (species, sex, age class, mass) and to the PUUV result.
+Field-stage metadata are the two transcribed tables defined in the fieldwork protocol §8 (`wp1_soil_log`, `wp1_voles`; templates in `data-capture/`). Their shared keys are `collection_date`, `habitat`, and the sampling unit: `sq_id` for quadrats or `line_id` for pitfall lines. Group is not recorded in the field; it is derived from the corner coordinates and attached afterwards (fieldwork protocol §2). The soil log additionally carries `corner` and `depth_cm`; corner coordinates are a separate table (`wp1_corner_coords`), one row per corner, joined on `sq_id` + `corner`; the vole table carries Henttonen's `animal_id`, which joins to his morphometrics (species, sex, age class, mass) and to the PUUV result.
 
 Not captured, because the trapping design does not record them: trap station within quadrat, burrow identity, and trap-to-burrow distance. Animals are resolved to the small quadrat only. Trap night is recoverable from `collection_date`.
 

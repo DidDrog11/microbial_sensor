@@ -28,10 +28,12 @@ Sample types: gut tissue (caecum and distal colon, separately), blood or tissue 
 - Field lead: Prof. Heikki Henttonen (LUKE) and team.
 - Site: Pallasjärvi long-term monitoring grids.
 - 30 small quadrats (SQ), 15 × 15 m, in groups of 3–7, ≥50 m apart within a group.
+- Group membership is **not recorded in the field**. It is derived afterwards from the corner coordinates, by clustering SQ centroids; the within-group spacing (≥50 m) is well inside GPS precision, so the derivation is unambiguous.
 - Groups in old forest and in peatland/bog; some peatland groups sit near forest, so voles are caught there too.
 - Traps sit at the four corners of each SQ: three snap traps per corner, placed within roughly 3–5 m of the corner marker. Exact trap positions are not recorded.
 - Animals are recorded to the SQ only. Henttonen's sample record does not associate an animal with a corner or a trap.
 - Traps set day 1; checked day 2; checked and collected day 3.
+- **Pitfall lines.** Henttonen's team also runs pitfall lines. Two, `MS` and `MS+` (written "MS extra" on some tubes), were sampled on 14 September. Pitfall animals are recorded to the line only. `[?]` Line length and pitfall spacing are not yet known; infer from the soil-point coordinates and ask Henttonen.
 
 **Spatial resolution.** Because animals are known only to SQ, the host side of the design has three nested scales — SQ, group, habitat. The 15 × 15 m quadrat is the finest scale at which a vole can be placed. Corner resolution exists only on the soil side (§5.3), where it is used to estimate the SQ-level soil signature and its within-quadrat spread, not to place animals.
 
@@ -106,6 +108,8 @@ Collected and processed by Henttonen's team under their existing SOP, unchanged 
 
 Why every corner rather than only capture points: the animal's corner is unknown, so the quantity that pairs with a host is the SQ-level soil signature. Four corners per SQ estimate that signature, and the five fully-sequenced SQs in §5.6 estimate how much it varies within a quadrat. Sampling only the corners with captures would give no more host resolution and a worse SQ estimate.
 
+**Pitfall lines.** Two soils per line plus one field blank, same tube, horizon and hygiene as the corner soils, one waypoint per soil. A line is a longer and differently shaped unit than a 15 × 15 m quadrat, is trapped by a different method, and gets half the soil coverage, so pitfall soils and pitfall voles are held as their own stratum in the data (§8) and are not counted among the 120 quadrat soils. Whether pitfall voles can enter the dyadic connectivity model is an open scientific question (§11); the samples are collected so that the option exists.
+
 ### 5.4 Nest and burrow material
 
 **Not collected.** Burrows at this site are deep, and nest material cannot be reached without excavation. The runway and burrow-opening soil collected under §5.3 is the closest available proxy for shared burrow infrastructure.
@@ -114,7 +118,7 @@ If nest material is encountered opportunistically (e.g. a nest exposed at the su
 
 ### 5.5 Controls collected alongside real samples
 
-- **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (30 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube.
+- **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (30 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube. Pitfall lines get one blank per line.
 - **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow: four off-grid forest and four off-grid peatland (8 total), same horizon and tube as §5.3. This is a biological comparator, not a contamination check. `[?]` Not yet collected; schedule for a later morning.
 
 Kit blanks, PCR no-template controls, and the mock community standard are lab-stage controls, not field-collected — see `pilot-lab-protocol.qmd`.
@@ -140,6 +144,7 @@ Balance the whole set across forest and peatland.
 - Sample ID is the **SQ number followed by the corner letter**, e.g. `31A`, written on the tube with a solvent-proof marker at the point of collection. Each corner is sampled once, so this is unique across the campaign.
 - The GPS waypoint at that corner carries the same string.
 - Field blanks: the **SQ number alone**, e.g. `31`. Soils always carry a corner letter, so a bare number is unambiguous. First-morning blanks were written as the SQ number plus "control"; they map to the same ID and are not relabelled.
+- Pitfall lines: line name plus running number for soils, line name alone for the blank, following the quadrat convention. In the data: `MS1`, `MS2`, blank `MS`; `MS+1`, `MS+2`, blank `MS+`. Tubes are written with a space ("MS 1", "MS+ 2", "MS (blank)") and some read "MS extra" for `MS+`; these all map to the IDs above.
 - Reference soils: proposed `REF-F1`…`REF-F4` and `REF-P1`…`REF-P4`.
 - In the data, `sample_id` is the tube label verbatim. A project prefix (`PAL-`) is added only at the point where WP1 and WP2 data are merged, not on tubes.
 
@@ -147,7 +152,7 @@ Balance the whole set across forest and peatland.
 
 **KoBo is not used.** The forms in `data-capture/` were built for a design in which each sample carried several per-sample fields worth capturing at the moment of collection. With every corner sampled at a fixed depth into a fixed tube, the per-sample information collapses to the tube label and the GPS waypoint, both of which are recorded outside KoBo anyway. The forms are kept in the repository as a record and are superseded by the two tables below.
 
-**Two tables, transcribed each evening** from the tube labels, the GPS unit and the notebook. Templates with the column headers are in `data-capture/`.
+**Three tables, transcribed each evening** from the tube labels, the GPS unit and the notebook. Templates with the column headers are in `data-capture/`; the filled files live in `data-raw/wp1_finland/`.
 
 **Soil log** (`wp1_soil_log`), one row per tube — soils, blanks and reference soils:
 
@@ -156,14 +161,25 @@ Balance the whole set across forest and peatland.
 | `sample_id` | tube label (§7): `31A` for soil, `31` for the blank |
 | `sample_type` | `soil` / `field_blank` / `reference` |
 | `collection_date` | ISO date |
-| `group_id` | trapping group, as labelled by the Henttonen team |
-| `sq_id` | SQ number; blank for reference soils |
-| `corner` | A/B/C/D; A for field blanks; blank for reference soils |
+| `sq_id` | SQ number; blank for pitfall and reference soils |
+| `line_id` | pitfall line (`MS`, `MS+`); blank for quadrat and reference soils |
+| `corner` | A/B/C/D; A for quadrat field blanks; blank for pitfall and reference soils |
 | `habitat` | `old_forest` / `peatland` |
 | `depth_cm` | 2 unless deviated |
-| `lat`, `lon` | from the GPS waypoint, WGS84 decimal degrees |
 | `collector_initials` | |
 | `notes` | |
+
+**Coordinates** (`wp1_corner_coords`), one row per soil point: quadrat corners and pitfall soil points, from the GPS waypoint. Coordinates live here only, keyed by `sq_id` + `corner` or by `line_id` + waypoint, and are joined to the soil log rather than typed into it:
+
+| Column | Content |
+|---|---|
+| `waypoint_name` | name as stored on the GPS, normally the sample ID (`31A`, `MS1`) |
+| `sq_id`, `line_id`, `corner` | as in the soil log |
+| `lat`, `lon` | WGS84 decimal degrees, at least five decimal places |
+| `collection_date` | |
+| `notes` | |
+
+If the GPS unit exports GPX, the export goes into `data-raw/wp1_finland/sampling/` and `R/01_wp1_trap_grid_gpx.R` builds this table, with no transcription.
 
 **Vole table** (`wp1_voles`), one row per animal, transcribed from Henttonen's record for the animals whose gut samples we take:
 
@@ -171,13 +187,13 @@ Balance the whole set across forest and peatland.
 |---|---|
 | `animal_id` | Henttonen's ID — the join to his morphometrics and PUUV result |
 | `collection_date` | date the trap was checked |
-| `group_id`, `sq_id`, `habitat` | as in the soil log |
+| `sq_id`, `line_id`, `habitat` | as in the soil log; exactly one of `sq_id` and `line_id` is filled |
 | `caecum_sample_id`, `colon_sample_id` | |
 | `trap_check_time`, `dissection_time` | from Henttonen's record; the difference is the post-mortem interval |
 | `gut_fullness`, `caecum_torn` | recorded at dissection (§5.1): full / partial / empty; yes / no |
 | `notes` | |
 
-The join between the two tables is `sq_id` (and `group_id`, `habitat`), not corner: a vole pairs with all four corner soils of its SQ. Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
+The join between the two tables is `sq_id` for quadrat animals and `line_id` for pitfall animals, never corner: a vole pairs with all soils of its unit. Group is attached to both tables afterwards from the derived SQ-to-group lookup (§2). Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
 
 ## 9. Cold chain
 
@@ -206,9 +222,10 @@ The join between the two tables is `sq_id` (and `group_id`, `habitat`), not corn
 
 - The one-soil-per-SQ rule: random corner, fixed corner, or pooled (§5.6).
 - Number of field blanks to sequence (§5.6).
-- Group count, for the record (§2).
+- Derive the SQ-to-group lookup from the corner coordinates once all SQs are sampled (§2).
 - PUUV SOP reference, and what "processes the blood" means in practice (§5.2).
 - Biosafety/PPE reference for handling wild-rodent carcasses and excreta — likely already covered by Henttonen's existing PUUV field SOP; link it here rather than duplicate.
 - The operational connectivity definition in `data-management-plan.qmd` §2 must be at SQ level or coarser, since co-capture at a trap or corner is not observable.
+- **Pitfall lines.** Line length and pitfall spacing (infer from coordinates; ask Henttonen). Whether the ~6 pitfall voles enter the dyadic connectivity model at all: co-capture on a line is a weaker and differently shaped co-occurrence than co-capture in a 15 × 15 m quadrat, and there is no within-line resolution. Options are a unit-type term with unit extent as a covariate, or excluding pitfall voles from the dyadic model and using them only for the host–soil channel. This is a modelling decision, not a field one.
 
 :::

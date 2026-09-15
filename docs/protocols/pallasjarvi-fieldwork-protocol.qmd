@@ -29,7 +29,7 @@ Sample types: gut tissue (caecum and distal colon, separately), lung and kidney 
 - Site: Pallasjärvi long-term monitoring grids.
 - 30 small quadrats (SQ), 15 × 15 m, in groups of 3–7, ≥50 m apart within a group.
 - Group membership is **not recorded in the field**. It is derived afterwards from the corner coordinates, by clustering SQ centroids; the within-group spacing (≥50 m) is well inside GPS precision, so the derivation is unambiguous.
-- Groups in old forest and in peatland/bog. **In the September 2026 session no bank voles were caught on the peatland grids**, so WP1 is old forest only: no peatland quadrats are soil-sampled, no peatland reference soils are taken, and the forest/peatland contrast planned as a within-site environmental gradient does not exist in this dataset. The `habitat` column is kept for schema compatibility with WP2 and is `old_forest` throughout.
+- Groups in old forest and in peatland/bog. **In the September 2026 session no bank voles were caught on the peatland grids**, so WP1 is old forest only, **25 SQs** (31–48 and 54–60): no peatland quadrats are soil-sampled, no peatland reference soils are taken, and the forest/peatland contrast planned as a within-site environmental gradient does not exist in this dataset. The `habitat` column is kept for schema compatibility with WP2 and is `old_forest` throughout.
 - Traps sit at the four corners of each SQ: three snap traps per corner, placed within roughly 3–5 m of the corner marker. Exact trap positions are not recorded.
 - Animals are recorded to the SQ only. Henttonen's sample record does not associate an animal with a corner or a trap.
 - Traps set day 1; checked day 2; checked and collected day 3.
@@ -65,7 +65,7 @@ Carry a copy of the approved form with the samples in the car.
 
 Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass samples such as soil are where reagent and plasticware contaminants masquerade as signal.
 
-**Tube count.** 30 SQ × (4 corner soils + 1 field blank) = 150 tubes, plus 8 off-grid reference soils = 158. The first morning covered 10 SQ (50 tubes), so the grid takes about three mornings.
+**Tube count.** 25 SQ × (4 corner soils + 1 field blank) = 125, plus 4 trap lines × (2 soils + 1 blank) = 12, plus 4 reference soils = 141. Collected over two days, 14–15 September, with REF3 and REF4 outstanding.
 
 ## 5. Sample collection
 
@@ -79,13 +79,31 @@ Tubes must be certified DNA-free/DNase-free, not merely sterile — low-biomass 
 
 Nest and burrow material was planned but is not collectable here (§5.4).
 
+### 5.0 Trap check and carcass handling
+
+- Trap walks start at **09:00**. Each group of neighbouring SQs is checked as a set, taking 15–20 minutes per group.
+- Animals are taken from the traps into **bags labelled by SQ**. The SQ label on the bag is the only record of where an animal came from until it is entered in Henttonen's notebook (§8).
+- Immediately after the group's check, the bags go to the **freezer in the lab**. Carcasses are taken out one at a time for dissection the same day; they are not hard-frozen when they come out, or thaw within minutes, so dissection is on a chilled, not a thawed, animal.
+
+**Post-mortem interval.** Traps are checked once a day, so an animal has been dead anywhere between minutes and about 24 hours at collection; the trap-check time is the *end* of that interval, not a measure of it. In practice the interval is shorter than the outer limit, because bank voles are mostly active and trapped at night, and it is spent cold: mornings have been about 1 °C and nights around 0 °C during this session, so the carcass is effectively refrigerated from death through the freezer to the bench. The trap-check-to-dissection gap recorded in §8 is therefore a real but small covariate, and the unmeasured death-to-check interval is bounded and cold. Record ambient morning temperature in the field log by day.
+
 ### 5.1 Gut
 
-- Caecum and distal colon in separate bags, one row per animal, two sample IDs.
-- Collected by Henttonen at dissection into minigrip bags; frozen the same day. Henttonen dissects every animal, with us assisting, so dissector is constant and not recorded per animal.
-- Transfer from bags to cryovials happens in Uppsala, on dry ice (§10).
+Henttonen dissects every animal, with us assisting, so dissector is constant and not recorded per animal. Per animal, in order:
 
-Record if the caecum tears during dissection; cross-contamination between caecum and colon breaks the comparison between them.
+1. Species identified from external features and morphology.
+2. Weighed and measured (head–body, tail); laid ventral side up.
+3. Skin opened with scissors; abdomen opened with **clean tweezers**; organs removed.
+4. **Whole caecum and whole colon dissected out with clean utensils**, intact with their contents, into separate minigrip bags, each labelled with **date, rodent number and organ**. We record gut fullness and whether the caecum tore at this point (§8). Tools are bleach-decontaminated and gloves changed between animals (§6).
+5. Gut bags go straight into the freezer.
+6. The remainder of the necropsy (lung and kidney for PUUV, §5.2) continues; none of it is used in this project.
+7. Henttonen assigns the **functional group** — age, sex and maturity — from coat development stage, mass and reproductive organ development. This is his standard classification and is taken as given.
+
+A caecum tear cross-contaminates caecum and colon and breaks the comparison between them, which is why it is recorded rather than the sample discarded.
+
+Carcass condition has been good throughout the session: no scavenging or damage in the trap, so `carcass_condition` (§8) is expected to be uniform.
+
+Transfer from bags to cryovials happens in Uppsala, on dry ice (§10). Because the whole organ is bagged, **what is subsampled for extraction is a processing decision, not a field one**: the distal colon sample that best matches the WP2 faecal swabs is the formed pellets in the distal colon, not the colon wall, and the caecum sample is caecal content. That leaves the emptied wall tissue available for host genotyping (§10). `[?]` Confirm in `pilot-lab-protocol.qmd` before processing.
 
 No separate tissue is retained for host genotyping. If the kinship term is funded, host DNA comes from the gut wall: a piece of colon or caecum tissue is cut into its own tube at the cryovial transfer (§10), so the genotyping and microbiome workflows never draw on the same tube.
 
@@ -99,7 +117,7 @@ No blood is taken. Henttonen takes **lung and kidney** from every animal for PUU
 
 ### 5.3 Soil
 
-- **One tube at each of the four corners of every SQ**, whether or not a vole was caught there. 120 soils in total.
+- **One tube at each of the four corners of every SQ**, whether or not a vole was caught there. 100 quadrat soils in total.
 - Taken from the nearest **runway or burrow opening** to the corner marker, i.e. from substrate the animals actually use, rather than from an arbitrary point at the corner. Runway and burrow opening are not distinguished in the record: at a fixed horizon, and with no information on whether the feature is active, the distinction is an uncontrolled covariate that would not be analysed.
 - Sampling horizon: **2 cm below the litter and needle layer**, standardised across all points.
 - Fill the 2 ml tube to about two-thirds — roughly 0.5–1.5 g depending on how loose the organic layer is. That is two to five extractions' worth, which leaves room for re-extraction. Leave headroom for freeze expansion.
@@ -120,25 +138,27 @@ If nest material is encountered opportunistically (e.g. a nest exposed at the su
 
 ### 5.5 Controls collected alongside real samples
 
-- **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (30 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube. Pitfall lines get one blank per line.
+- **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (25 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube. Pitfall lines get one blank per line.
 - **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow, same horizon and tube as §5.3. **Four, all old forest** (`REF1`–`REF4`); the four peatland references planned originally are dropped with the peatland grids (§2). This is a biological comparator, not a contamination check. REF1 and REF2 collected 15 September; REF3 and REF4 to follow.
 
 Kit blanks, PCR no-template controls, and the mock community standard are lab-stage controls, not field-collected — see `pilot-lab-protocol.qmd`.
 
 ### 5.6 Processing subset (soil)
 
-Collect all 120 soils and 30 blanks; extract and sequence ~58 soils plus a subset of blanks:
+Collect all 100 quadrat soils, 8 line soils, 4 reference soils and 29 blanks; extract and sequence ~49 soils plus a subset of blanks:
 
-- **One soil per SQ (30).** `[?]` The rule for choosing it is not yet decided: a randomly drawn corner, a fixed corner, or an equal-mass pool of the four corners at extraction. Pooling gives the best SQ-level estimate but removes the SQ from the within-quadrat comparison below, so the choice interacts with the next item.
+- **One soil per SQ (25).** `[?]` The rule for choosing it is not yet decided: a randomly drawn corner, a fixed corner, or an equal-mass pool of the four corners at extraction. Pooling gives the best SQ-level estimate but removes the SQ from the within-quadrat comparison below, so the choice interacts with the next item.
 - **All four corners in 5 SQs (20).** This estimates the **within-quadrat variance component**. Because hosts are resolved to SQ, the question it answers is how much information the host–soil pairing loses by being at SQ level rather than corner level — not whether capture-point distance matters, which is unmeasurable here. Choose SQs with captures, balanced across forest and peatland.
 - **Four off-grid reference soils (4).**
 - **Field blanks.** `[?]` How many to sequence; at minimum one per extraction batch, drawn from the SQs in that batch.
 
-Quadrat counts above assume 30 SQs; with the peatland grids empty the forest total is `[?]` and the numbers scale with it. Balance the set across quadrat groups.
+Line soils (8) are outside this count; whether any are sequenced follows the decision on line voles (§11). Balance the set across quadrat groups.
 
 ## 6. Field hygiene
 
-- Sterile or single-use dissection tools per individual for gut sampling. Shared tools across a necropsy series will homogenise the community signal across individuals in a way that is very hard to detect after the fact.
+- Tools are changed between animals on a rotation: after use they are immersed in bleach, rinsed, and held in a second bleach container until next used (§5.1). This is the right treatment for sequencing work, but for a different reason than viability: amplicon sequencing reads DNA whether or not the cell was alive, so the requirement is that carried-over DNA is destroyed, not that bacteria are killed. Sodium hypochlorite does both if concentration and contact time are adequate. Immersion in the second bath is about **30 minutes**, because the tool pool is large; the bleach is laboratory grade at the working dilution Henttonen's virology practice uses `[?]` (concentration not yet recorded; ask, and write it here as available chlorine). A tap-water rinse can reintroduce DNA after the bleach has removed it, so distilled or bottled water is preferable if practical. Residual bleach on a rinsed tool is not a concern at the trace level.
+- **Gloves changed between animals.** The gut is handled only with tools, never by hand.
+- Shared tools across a necropsy series without this treatment would homogenise the community signal across individuals in a way that is very hard to detect after the fact.
 - Fresh spatula and fresh gloves for every soil tube and blank.
 
 ## 7. Labelling
@@ -148,6 +168,8 @@ Quadrat counts above assume 30 SQs; with the peatland grids empty the forest tot
 - Field blanks: the **SQ number alone**, e.g. `31`. Soils always carry a corner letter, so a bare number is unambiguous. First-morning blanks were written as the SQ number plus "control"; they map to the same ID and are not relabelled.
 - Trap lines: line name plus point for soils, line name alone for the blank, following the quadrat convention. In the data: `MS1`, `MS2`, blank `MS`; `MS+1`, `MS+2`, blank `MS+`; `8-10A`, `8-10B`, blank `8-10`; `LOM-A`, `LOM-B`, blank `LOM`. Tubes are written with a space or parentheses ("MS 1", "8-10 A", "LOM (blank)") and some read "MS extra" for `MS+`; the data ID is the tube label with spaces and parentheses removed.
 - Reference soils: `REF1`…`REF4`.
+- Animals: Henttonen numbers rodents **sequentially within each day**, so the number alone is not unique. `animal_id` in the data is date plus number, `{YYYYMMDD}-{n}`, e.g. `20260915-07`, which is the order the bag is written in (date, rodent number, organ).
+- Gut: the two sample IDs are derived from `animal_id`, not assigned: `20260915-07-CAE` and `20260915-07-COL`. The cryovials written in Uppsala (§10) carry these.
 - In the data, `sample_id` is the tube label verbatim. A project prefix (`PAL-`) is added only at the point where WP1 and WP2 data are merged, not on tubes.
 
 ## 8. Data capture
@@ -191,24 +213,24 @@ Blanks carry `corner` A, where they are opened. Pitfall blanks carry `line_id` a
 | Column | Content | Source |
 |---|---|---|
 | `processing_date` | date of necropsy | lab notes |
-| `animal_id` | Henttonen's ID — the join to his morphometrics and the PUUV result, which arrives later and is joined on this column, not copied here | lab notes |
+| `animal_id` | date plus Henttonen's within-day rodent number, `{YYYYMMDD}-{n}` (§7) — the join to his sheet and the PUUV result, which arrives later and is joined on this column, not copied here | lab notes |
 | `capture_date` | date the trap was checked; usually equals `processing_date` | lab notes |
 | `sq_id`, `line_id`, `habitat` | as in the soil log; exactly one of `sq_id` and `line_id` is filled | lab notes |
 | `trap_check_time`, `necropsy_time` | the difference is the post-mortem interval | lab notes |
 | `species`, `sex` | | lab notes |
 | `head_body_mm`, `tail_mm`, `mass_g` | | lab notes |
-| `age_class` | as Henttonen's team classes it (e.g. juvenile / subadult / adult, or overwintered vs. young of the year) | lab notes |
-| `repro_status` | males: testes scrotal / abdominal; females: perforate, pregnant, lactating, placental scars — as recorded | lab notes |
+| `age_class` | Henttonen's functional group (age, sex, maturity from coat stage, mass and reproductive development), copied as he writes it | lab notes |
+| `repro_status` | reproductive organ development as recorded, if separate from the functional group | lab notes |
 | `embryos_n` | if pregnant | lab notes |
 | `carcass_condition` | fresh / autolysed / scavenged / wet, and whether the animal was alive at the check (pitfalls) | lab notes or ours |
 | `wounds` | bite wounds or scars, yes / no with a note | lab notes or ours |
-| `caecum_sample_id`, `colon_sample_id` | | ours |
+| `caecum_sample_id`, `colon_sample_id` | derived: `{YYYYMMDD}-{n}-CAE`, `{YYYYMMDD}-{n}-COL` (§7) | derived |
 | `gut_fullness`, `caecum_torn` | full / partial / empty; yes / no (§5.1) | ours |
 | `notes` | | |
 
 Not recorded per animal because they are constant: the dissector (Henttonen, throughout), PUUV tissue (lung and kidney, every animal, §5.2), and tissue for host genotyping (the gut samples themselves, §10).
 
-**The location join is not in Henttonen's sheet.** His animal ID is the same as written on the gut bags, but the quadrat or line an animal came from exists only in his field notebook. So each evening, while the notebook is to hand, record for every animal we sample: `animal_id`, `sq_id` or `line_id`, `caecum_sample_id`, `colon_sample_id`, `gut_fullness` and `caecum_torn`. The first two are the join between host and soil and cannot be reconstructed from Uppsala. Everything else comes from his sheet; columns his sheet does not carry are left blank, not guessed.
+**The location join is not in Henttonen's sheet.** His animal ID is the same as written on the gut bags, but the quadrat or line an animal came from exists only in his field notebook. So each evening, while the notebook is to hand, record for every animal we sample: `animal_id`, `sq_id` or `line_id`, `gut_fullness` and `caecum_torn`. The first two are the join between host and soil and cannot be reconstructed from Uppsala. The gut sample IDs follow from `animal_id` and need no entry. Everything else comes from his sheet; columns his sheet does not carry are left blank, not guessed.
 
 The join between the two tables is `sq_id` for quadrat animals and `line_id` for pitfall animals, never corner: a vole pairs with all soils of its unit. Group is attached to both tables afterwards from the derived SQ-to-group lookup (§2). Sample IDs follow §7; `data-management-plan.qmd` §3 points here.
 
@@ -224,7 +246,7 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 
 ## 10. On arrival in Uppsala
 
-- Transfer gut from minigrip bags to cryovials on dry ice, without thawing. At the same step, if host genotyping is going ahead, cut a piece of gut wall from each animal into a separate labelled tube (§5.1).
+- Transfer gut from minigrip bags to cryovials on dry ice, without thawing. The plan, to be confirmed in the lab protocol, is that the `COL` cryovial receives distal colon pellets and the `CAE` cryovial caecal content, matching the WP2 swab target; the emptied wall tissue then goes to a third tube per animal for host genotyping if that goes ahead (§5.1). Whole frozen organs cannot be emptied without partial thawing, so this step needs its own SOP.
 - Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 
 ## 11. Outstanding items
@@ -234,7 +256,6 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 **To resolve during the campaign (unrecoverable afterwards):**
 
 - Reference soils REF3 and REF4 (§5.5).
-- Total number of forest SQs in the design, now that peatland is out; the processing subset scales with it (§5.6).
 - Obtain Henttonen's Excel sheet before leaving. Animal ID matches the gut bags (confirmed 14 Sep); the sampling unit does not appear in the sheet and must be taken from his notebook animal by animal, each evening (§8).
 - Pitfall line length and spacing, from Henttonen (§2).
 

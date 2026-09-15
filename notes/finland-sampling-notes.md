@@ -32,9 +32,13 @@ Still open, from protocol §11: reference soils (4 forest + 4 peatland) not yet 
 
 ## 2026-09-15 — soil
 
-- **No bank voles caught on the peatland grids.** WP1 is old forest only; the forest/peatland contrast is gone, peatland reference soils dropped. Protocol §2, §5.5, §5.6 updated. Total forest SQ count still to confirm.
+- **No bank voles caught on the peatland grids.** WP1 is old forest only; the forest/peatland contrast is gone, peatland reference soils dropped. Protocol §2, §5.5, §5.6 updated. The 25 SQs sampled (31–48, 54–60) are the full forest set. Checked the funded proposal: it never mentions peatland or a habitat contrast, so no commitment is affected; the contrast only ever existed in the protocol draft.
 - SQs 44–48 and 54–57 sampled (9 SQ, 45 tubes), old forest. Running total 25 SQ.
 - Two trap lines, not grids: `8-10` (tubes "8-10 A", "8-10 B", "8-10 (blank)") and `LOM` ("LOM-A", "LOM-B", "LOM (blank)"). Data IDs `8-10A`, `8-10B`, `8-10`; `LOM-A`, `LOM-B`, `LOM`. Handled as `line_id` units like MS and MS+.
 - Reference soils REF1 and REF2, old forest. REF3 and REF4 tomorrow.
 - 53 tubes today; 139 in total.
 - Coordinates for today, plus 58A/58D and the re-recorded 36, to be entered and shared later; the loader now parses lettered line points and plain REF numbers.
+- Trap check and dissection SOP recorded in protocol §5.0–5.1: walks from 09:00, bags per SQ, carcasses to the lab freezer straight after each group, dissected one at a time the same day, chilled not thawed. New tweezers for the abdomen and new utensils for the gut per animal; gut bags labelled date + rodent number + organ, straight to the freezer. Heikki assigns functional group (age, sex, maturity). Mornings ~1 °C, nights ~0 °C, so the pre-collection interval is cold.
+- Gut sample IDs are now derived from Heikki's rodent number (`{id}-CAE`, `{id}-COL`), not assigned separately.
+- Rodent numbers restart each day, so `animal_id` is date + number (`20260915-07`) and gut IDs `20260915-07-CAE` / `-COL`. Tools rotate between animals via bleach immersion, rinse, second bleach bath; concentration, immersion time and rinse water still to record.
+- Tools sit ~30 min in the second bleach bath (lab-grade bleach, concentration to ask). Gloves changed per animal; gut touched only with tools. Whole caecum and whole colon bagged with contents; subsampling to pellets/content vs. wall is a processing decision, flagged in protocol §5.1 and §10 for the lab protocol. No scavenged or damaged carcasses so far.

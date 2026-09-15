@@ -130,15 +130,23 @@ if (nrow(dup_names)) {
 
 pts <- pts %>%
   mutate(
+    # Quadrat corners are "<number><letter>". Reference soils are "REF<n>".
+    # Anything else that ends in a point number or a single point letter is a
+    # non-quadrat trap line: "MS1", "MS+2", "LOM-A", "8-10A". The line name is
+    # everything before the trailing point, trimmed of a space or hyphen.
     unit_type = case_when(
-      str_detect(waypoint_name, "^\\d+[A-Da-d]$") ~ "quadrat",
-      str_detect(waypoint_name, "^MS\\+?\\d+$")   ~ "pitfall_line",
-      TRUE                                        ~ NA_character_
+      str_detect(waypoint_name, "^\\d+[A-Da-d]$")                   ~ "quadrat",
+      str_detect(waypoint_name, "^REF-?[FP]?\\d+$")                   ~ "reference",
+      str_detect(waypoint_name, "^\\S.*?[ -]?(\\d+|[A-Za-z])$")       ~ "pitfall_line",
+      TRUE                                                          ~ NA_character_
     ),
     sq_id   = if_else(unit_type == "quadrat", as.integer(str_extract(waypoint_name, "^\\d+")), NA_integer_),
     corner  = if_else(unit_type == "quadrat", str_to_upper(str_sub(waypoint_name, -1)), NA_character_),
-    line_id = if_else(unit_type == "pitfall_line", str_remove(waypoint_name, "\\d+$"), NA_character_),
-    point   = if_else(unit_type == "pitfall_line", as.integer(str_extract(waypoint_name, "\\d+$")), NA_integer_),
+    point   = if_else(unit_type == "pitfall_line", str_to_upper(str_extract(waypoint_name, "(\\d+|[A-Za-z])$")), NA_character_),
+    line_id = if_else(unit_type == "pitfall_line",
+                      str_remove(waypoint_name, "[ -]?(\\d+|[A-Za-z])$") %>% str_trim(), NA_character_),
+    # a bare number ("31") is not a point name; refuse rather than invent a unit
+    unit_type = if_else(unit_type == "pitfall_line" & line_id == "", NA_character_, unit_type),
     source  = "gps",
     imputed = FALSE
   )
@@ -195,7 +203,7 @@ impute_corner <- function(q) {
     sq_id           = q$sq_id[1],
     corner          = missing,
     line_id         = NA_character_,
-    point           = NA_integer_,
+    point           = NA_character_,
     source          = "imputed",
     imputed         = TRUE,
     x               = x_new,

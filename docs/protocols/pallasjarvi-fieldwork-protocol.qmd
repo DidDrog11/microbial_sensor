@@ -29,15 +29,15 @@ Sample types: gut tissue (caecum and distal colon, separately), lung and kidney 
 - Site: Pallasjärvi long-term monitoring grids.
 - 30 small quadrats (SQ), 15 × 15 m, in groups of 3–7, ≥50 m apart within a group.
 - Group membership is **not recorded in the field**. It is derived afterwards from the corner coordinates, by clustering SQ centroids; the within-group spacing (≥50 m) is well inside GPS precision, so the derivation is unambiguous.
-- Groups in old forest and in peatland/bog; some peatland groups sit near forest, so voles are caught there too.
+- Groups in old forest and in peatland/bog. **In the September 2026 session no bank voles were caught on the peatland grids**, so WP1 is old forest only: no peatland quadrats are soil-sampled, no peatland reference soils are taken, and the forest/peatland contrast planned as a within-site environmental gradient does not exist in this dataset. The `habitat` column is kept for schema compatibility with WP2 and is `old_forest` throughout.
 - Traps sit at the four corners of each SQ: three snap traps per corner, placed within roughly 3–5 m of the corner marker. Exact trap positions are not recorded.
 - Animals are recorded to the SQ only. Henttonen's sample record does not associate an animal with a corner or a trap.
 - Traps set day 1; checked day 2; checked and collected day 3.
-- **Pitfall lines.** Henttonen's team also runs pitfall lines. Two, `MS` and `MS+` (written "MS extra" on some tubes), were sampled on 14 September. Pitfall animals are recorded to the line only. `[?]` Line length and pitfall spacing are not yet known; infer from the soil-point coordinates and ask Henttonen.
+- **Trap lines.** Henttonen's team also runs lines that are not grids: pitfall lines `MS` and `MS+` (written "MS extra" on some tubes), sampled 14 September, and trap lines `8-10` and `LOM`, sampled 15 September. Line animals are recorded to the line only. All four are handled identically in the data as `line_id` units. `[?]` Line length, trap spacing and trap type per line are not yet known; infer extent from the soil-point coordinates and ask Henttonen.
 
 **Spatial resolution.** Because animals are known only to SQ, the host side of the design has three nested scales — SQ, group, habitat. The 15 × 15 m quadrat is the finest scale at which a vole can be placed. Corner resolution exists only on the soil side (§5.3), where it is used to estimate the SQ-level soil signature and its within-quadrat spread, not to place animals.
 
-Corner coordinates come from a consumer handheld GPS, with a per-fix error of roughly 2 m. SQ centroids are therefore good to about 1 m and between-quadrat distances are reliable; within-quadrat distances are not, and the corner is treated as a categorical label with known 15 m and 21 m geometry rather than as a measured position. The forest/peatland contrast provides a within-site environmental contrast.
+Corner coordinates come from a consumer handheld GPS, with a per-fix error of roughly 2 m. SQ centroids are therefore good to about 1 m and between-quadrat distances are reliable; within-quadrat distances are not, and the corner is treated as a categorical label with known 15 m and 21 m geometry rather than as a measured position. The only environmental contrast available within the site is therefore between groups of quadrats, not between habitats.
 
 ## 3. Approvals
 
@@ -121,7 +121,7 @@ If nest material is encountered opportunistically (e.g. a nest exposed at the su
 ### 5.5 Controls collected alongside real samples
 
 - **Field blanks** — an empty tube of the same type, opened at a sampling point, left open for roughly the time a real sample takes, closed, and then handled identically to real samples all the way through extraction and sequencing. These catch airborne and handling contamination. **One per SQ** (30 total), which is a denser series than the one-per-group-per-day originally planned and lets a contaminated quadrat be identified rather than a contaminated day. **The blank is always opened at corner A**, so the corner need not be recorded per tube. Pitfall lines get one blank per line.
-- **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow: four off-grid forest and four off-grid peatland (8 total), same horizon and tube as §5.3. This is a biological comparator, not a contamination check. `[?]` Not yet collected; schedule for a later morning.
+- **Off-grid reference soil** — background regional soil signature, collected away from any grid or burrow, same horizon and tube as §5.3. **Four, all old forest** (`REF1`–`REF4`); the four peatland references planned originally are dropped with the peatland grids (§2). This is a biological comparator, not a contamination check. REF1 and REF2 collected 15 September; REF3 and REF4 to follow.
 
 Kit blanks, PCR no-template controls, and the mock community standard are lab-stage controls, not field-collected — see `pilot-lab-protocol.qmd`.
 
@@ -131,10 +131,10 @@ Collect all 120 soils and 30 blanks; extract and sequence ~58 soils plus a subse
 
 - **One soil per SQ (30).** `[?]` The rule for choosing it is not yet decided: a randomly drawn corner, a fixed corner, or an equal-mass pool of the four corners at extraction. Pooling gives the best SQ-level estimate but removes the SQ from the within-quadrat comparison below, so the choice interacts with the next item.
 - **All four corners in 5 SQs (20).** This estimates the **within-quadrat variance component**. Because hosts are resolved to SQ, the question it answers is how much information the host–soil pairing loses by being at SQ level rather than corner level — not whether capture-point distance matters, which is unmeasurable here. Choose SQs with captures, balanced across forest and peatland.
-- **Four off-grid forest + four off-grid peatland reference soils (8).**
-- **Field blanks.** `[?]` How many of the 30 to sequence; at minimum one per extraction batch, drawn from the SQs in that batch.
+- **Four off-grid reference soils (4).**
+- **Field blanks.** `[?]` How many to sequence; at minimum one per extraction batch, drawn from the SQs in that batch.
 
-Balance the whole set across forest and peatland.
+Quadrat counts above assume 30 SQs; with the peatland grids empty the forest total is `[?]` and the numbers scale with it. Balance the set across quadrat groups.
 
 ## 6. Field hygiene
 
@@ -146,8 +146,8 @@ Balance the whole set across forest and peatland.
 - Sample ID is the **SQ number followed by the corner letter**, e.g. `31A`, written on the tube with a solvent-proof marker at the point of collection. Each corner is sampled once, so this is unique across the campaign.
 - The GPS waypoint at that corner carries the same string.
 - Field blanks: the **SQ number alone**, e.g. `31`. Soils always carry a corner letter, so a bare number is unambiguous. First-morning blanks were written as the SQ number plus "control"; they map to the same ID and are not relabelled.
-- Pitfall lines: line name plus running number for soils, line name alone for the blank, following the quadrat convention. In the data: `MS1`, `MS2`, blank `MS`; `MS+1`, `MS+2`, blank `MS+`. Tubes are written with a space ("MS 1", "MS+ 2", "MS (blank)") and some read "MS extra" for `MS+`; these all map to the IDs above.
-- Reference soils: proposed `REF-F1`…`REF-F4` and `REF-P1`…`REF-P4`.
+- Trap lines: line name plus point for soils, line name alone for the blank, following the quadrat convention. In the data: `MS1`, `MS2`, blank `MS`; `MS+1`, `MS+2`, blank `MS+`; `8-10A`, `8-10B`, blank `8-10`; `LOM-A`, `LOM-B`, blank `LOM`. Tubes are written with a space or parentheses ("MS 1", "8-10 A", "LOM (blank)") and some read "MS extra" for `MS+`; the data ID is the tube label with spaces and parentheses removed.
+- Reference soils: `REF1`…`REF4`.
 - In the data, `sample_id` is the tube label verbatim. A project prefix (`PAL-`) is added only at the point where WP1 and WP2 data are merged, not on tubes.
 
 ## 8. Data capture
@@ -233,7 +233,8 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 
 **To resolve during the campaign (unrecoverable afterwards):**
 
-- Off-grid reference soils, 4 forest + 4 peatland, still to collect (§5.5).
+- Reference soils REF3 and REF4 (§5.5).
+- Total number of forest SQs in the design, now that peatland is out; the processing subset scales with it (§5.6).
 - Obtain Henttonen's Excel sheet before leaving. Animal ID matches the gut bags (confirmed 14 Sep); the sampling unit does not appear in the sheet and must be taken from his notebook animal by animal, each evening (§8).
 - Pitfall line length and spacing, from Henttonen (§2).
 

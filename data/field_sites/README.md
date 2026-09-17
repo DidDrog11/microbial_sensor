@@ -10,7 +10,8 @@ Built by `R/03_wp1_soil_point_coords.R` from the hand-entered waypoints in `data
 |---|---|---|
 | `wp1_soil_points.csv` | soil point (quadrat corner or pitfall point) | `source` is `gps` or `imputed`; `correction` records any departure from the raw row; `raw_row` and `waypoint_raw` trace back to the file as entered |
 | `wp1_quadrats.csv` | quadrat | centroid, side and diagonal lengths, `geometry_flag`, nearest neighbouring quadrat — the input to the SQ-to-group derivation |
-| `wp1_pitfall_lines.csv` | pitfall line | span between the recorded points |
+| `wp1_pitfall_lines.csv` | trap line | span between the recorded points; nearest quadrat and group |
+| `wp1_sq_groups.csv` | quadrat | `group_id` from single-linkage clustering of centroids at a 150 m cut, named by the lowest SQ in the group |
 | `wp1_soil_points.gpkg` | — | layers `soil_points`, `quadrat_centroids`, `quadrat_polygons` (complete quadrats only), EPSG:3067 |
 
 The raw file is never edited. Corrections live in the `corrections` table at the top of the script, matched on the waypoint name and the coordinates as entered, so each applies exactly once and warns if the raw row changes. A quadrat with three recorded corners gets its fourth by parallelogram completion, flagged `imputed`.

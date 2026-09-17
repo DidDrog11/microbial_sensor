@@ -8,7 +8,8 @@
 # Input   data-raw/wp1_finland/wp1_corner_coords.csv   (read-only, as entered)
 # Output  data/field_sites/wp1_soil_points.csv         one row per point
 #         data/field_sites/wp1_quadrats.csv            one row per quadrat
-#         data/field_sites/wp1_pitfall_lines.csv       one row per pitfall line
+#         data/field_sites/wp1_pitfall_lines.csv       one row per trap line
+#         data/field_sites/wp1_sq_groups.csv           SQ-to-group lookup
 #         data/field_sites/wp1_soil_points.gpkg        points, centroids and
 #                                                      quadrat polygons, EPSG:3067
 #
@@ -50,6 +51,14 @@ diag_nominal <- 15 * sqrt(2)
 # three corners rather than invent a fourth.
 impute_min_sep <- 8
 
+# Group membership (protocol §2) is derived by single-linkage clustering of
+# quadrat centroids. With all 25 forest SQs entered (17 Sep 2026) the merge
+# heights run 49-83 m within groups and then jump to 202 m, 798 m and 1337 m,
+# so any cut between 83 and 202 m gives the same four groups. 150 m sits in
+# the middle of that gap. The script reports the merge heights either side of
+# the cut so a change in the data that closes the gap is noticed.
+group_cut_m <- 150
+
 # corrections ------------------------------------------------------------------
 
 # `lat`/`lon` are the values AS ENTERED in the raw file; they identify the row.
@@ -58,9 +67,8 @@ corrections <- tribble(
   "38A",  68.015549, 24.146634, "set",    NA,        NA,        24.145310, "longitude typed as 42D's; re-read from the GPS unit, 14 Sep 2026",
   "42B",  68.015830, 24.146983, "set",    NA,        68.015710, 24.147133, "entered as a copy of 42A; re-read from the GPS unit, 14 Sep 2026",
   "42C",  68.015731, 24.147005, "set",    NA,        68.015612, NA,        "latitude typed as 42D's; re-read from the GPS unit, 14 Sep 2026",
-  "43A",  68.017810, 24.148397, "set",    NA,        68.016810, NA,        "digit slip placing the corner 130 m north; 68.0168 fits the other three",
-  "43D",  68.016664, 24.148692, "drop",   NA,        NA,        NA,        "first of two 43 sets entered; superseded by the second (this D sits 2.7 m from C)",
-  "43A",  68.016781, 24.148397, "drop",   NA,        NA,        NA,        "first of two 43 sets entered; superseded by the second",
+  "43A",  68.017810, 24.148397, "drop",   NA,        NA,        NA,        "second-set 43A with a digit slip (130 m north); the first-set 43A (68.016781) is the value confirmed from the GPS unit, 17 Sep 2026",
+  "43D",  68.016664, 24.148692, "drop",   NA,        NA,        NA,        "first-set 43D sits 2.7 m from C; the second-set 43D (68.016640, 24.148448) is the value confirmed from the GPS unit, 17 Sep 2026",
   "40B",  68.016825, 24.147270, "rename", "41B",     NA,        NA,        "recorded in the 41 sequence and 40 has its own B; 13-20 m from 41 A, C, D",
   "35D",  68.015236, 24.143080, "rename", "34D",     NA,        NA,        "two sets entered as 35; this southern set is 34 (matched in the field to 68.015252, 24.143071)",
   "35C",  68.015334, 24.142698, "rename", "34C",     NA,        NA,        "as 35D -> 34D",
@@ -273,18 +281,36 @@ quadrats <- pts %>%
   bind_rows() %>%
   to_lonlat()
 
-# nearest neighbouring quadrat, centroid to centroid — the input to the
-# SQ-to-group derivation (protocol §2)
-d <- as.matrix(dist(quadrats[, c("x", "y")]))
+# nearest neighbouring quadrat, centroid to centroid, and group membership
+# by single-linkage clustering of centroids (protocol §2)
+d_full <- dist(quadrats[, c("x", "y")])
+d <- as.matrix(d_full)
 diag(d) <- NA
+
+hc <- hclust(d_full, method = "single")
+heights <- sort(hc$height)
+below <- max(heights[heights < group_cut_m])
+above <- min(heights[heights >= group_cut_m])
+cluster <- cutree(hc, h = group_cut_m)
+
 quadrats <- quadrats %>%
   mutate(
     nearest_sq = quadrats$sq_id[apply(d, 1, which.min)],
-    nearest_m  = apply(d, 1, min, na.rm = TRUE)
+    nearest_m  = apply(d, 1, min, na.rm = TRUE),
+    cluster    = cluster
   ) %>%
-  select(sq_id, n_corners, corners_present, n_imputed, lat, lon, x, y,
+  # name each group by its lowest SQ number, so the label is stable if the
+  # cluster numbering changes
+  group_by(cluster) %>%
+  mutate(group_id = paste0("G", min(sq_id)), n_in_group = n()) %>%
+  ungroup() %>%
+  select(sq_id, group_id, n_in_group, n_corners, corners_present, n_imputed, lat, lon, x, y,
          starts_with("side_"), starts_with("diag_"), shape_rmse_m, geometry_flag,
          nearest_sq, nearest_m, collection_date)
+
+sq_groups <- quadrats %>%
+  select(sq_id, group_id, n_in_group) %>%
+  arrange(sq_id)
 
 # pitfall lines ----------------------------------------------------------------
 
@@ -299,8 +325,21 @@ lines <- pts %>%
     collection_date = min(collection_date),
     .groups = "drop"
   ) %>%
-  to_lonlat() %>%
-  select(line_id, n_points, span_m, lat, lon, x, y, collection_date)
+  to_lonlat()
+
+# nearest quadrat (and so nearest group) to each line's midpoint; lines are
+# not members of a group, this only says where they sit
+nearest_to_line <- function(lx, ly) {
+  dd <- sqrt((quadrats$x - lx)^2 + (quadrats$y - ly)^2)
+  i <- which.min(dd)
+  list(sq = quadrats$sq_id[i], group = quadrats$group_id[i], m = dd[i])
+}
+lines <- lines %>%
+  rowwise() %>%
+  mutate(nn = list(nearest_to_line(x, y)),
+         nearest_sq = nn$sq, nearest_group = nn$group, nearest_sq_m = nn$m) %>%
+  ungroup() %>%
+  select(line_id, n_points, span_m, lat, lon, x, y, nearest_sq, nearest_group, nearest_sq_m, collection_date)
 
 # write ------------------------------------------------------------------------
 
@@ -309,6 +348,7 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 write_csv(pts,      file.path(out_dir, "wp1_soil_points.csv"))
 write_csv(quadrats, file.path(out_dir, "wp1_quadrats.csv"))
 write_csv(lines,    file.path(out_dir, "wp1_pitfall_lines.csv"))
+write_csv(sq_groups, file.path(out_dir, "wp1_sq_groups.csv"))
 
 gpkg <- file.path(out_dir, "wp1_soil_points.gpkg")
 if (file.exists(gpkg)) invisible(file.remove(gpkg))
@@ -352,3 +392,8 @@ if (nrow(flagged)) {
 message(sprintf("shape RMSE across complete quadrats: median %.1f m, max %.1f m (sq %d)",
                 median(complete$shape_rmse_m), max(complete$shape_rmse_m),
                 complete$sq_id[which.max(complete$shape_rmse_m)]))
+message(sprintf("groups: %d at a %d m single-linkage cut (last merge below %.0f m, first above %.0f m): %s",
+                length(unique(sq_groups$group_id)), group_cut_m, below, above,
+                paste(sapply(split(sq_groups$sq_id, sq_groups$group_id),
+                             function(s) paste0("{", paste(s, collapse = ","), "}")), collapse = " ")))
+if (above - below < 50) warning("the gap between within-group and between-group merges is under 50 m; check the cut", call. = FALSE)

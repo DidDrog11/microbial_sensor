@@ -17,4 +17,4 @@ The raw file is never edited. Corrections live in the `corrections` table at the
 
 ## Henttonen trap-grid GPX
 
-`R/01_wp1_trap_grid_gpx.R` parses Garmin GPX exports of the trap-grid corners from `data-raw/wp1_finland/sampling/` into `wp1_trap_grid_*` tables. The `source` column records the GPX file a row came from. These are quadrat corners, not trap positions: three snap traps sit within a few metres of each corner and are not recorded.
+`R/01_wp1_trap_grid_gpx.R` parses Garmin GPX exports of the trap-grid corners from `data-raw/wp1_finland/henttonen/` into `wp1_trap_grid_*` tables. The `source` column records the GPX file a row came from. These are quadrat corners, not trap positions: three snap traps sit within a few metres of each corner and are not recorded.

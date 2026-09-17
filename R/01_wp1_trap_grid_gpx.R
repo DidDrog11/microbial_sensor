@@ -3,7 +3,8 @@
 # Parse Garmin GPX exports of the Pallasjärvi (WP1) trap-grid corners into tidy
 # tables: corners, quadrat centroids, and the pairwise distances between them.
 #
-# Input   data-raw/wp1_finland/sampling/*.gpx   (read-only)
+# Input   data-raw/wp1_finland/henttonen/*.gpx  (read-only; Henttonen's exports,
+#                                               gitignored — see CLAUDE.md)
 # Output  data/field_sites/wp1_trap_grid.gpkg          (corners + quadrats, with geometry)
 #         data/field_sites/wp1_trap_grid_corners.csv
 #         data/field_sites/wp1_trap_grid_quadrats.csv   (centroids)
@@ -31,7 +32,7 @@ library(stringr)
 library(ggplot2)
 library(here)
 
-gpx_dir <- here("data-raw", "wp1_finland", "sampling")
+gpx_dir <- here("data-raw", "wp1_finland", "henttonen")
 out_dir <- here("data", "field_sites")
 fig_dir <- here("output", "figures")
 
@@ -74,7 +75,11 @@ summarise_quadrats <- function(corners) {
       corners_abcd    = setequal(corner, c("A", "B", "C", "D")),
       n_flagged       = sum(corner_nonstandard | corner_case_differs),
       elevation_m     = mean(elevation_m, na.rm = TRUE),
-      recorded_at     = min(recorded_at, na.rm = TRUE)
+      recorded_at     = min(recorded_at, na.rm = TRUE),
+      # drop the grouping: with more than one GPX file a grouped result made
+      # row_number() restart per source downstream, so the pairwise-distance
+      # table joined the wrong quadrat labels
+      .groups         = "drop"
     ) %>%
     centroids() %>%
     arrange(source, quadrat)

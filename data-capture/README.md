@@ -10,7 +10,7 @@
 | `wp1_voles_template.csv` | trapped animal whose gut samples we take |
 | `wp1_corner_coords_template.csv` | quadrat corner: the GPS waypoint, WGS84 decimal degrees |
 
-Copy a template to `data-raw/wp1_finland/` under the real name (`wp1_soil_log.csv`, `wp1_voles.csv`, `wp1_corner_coords.csv`) and append to it; do not fill in the template itself. Join between soil and vole tables is `sq_id` for quadrat units and `line_id` for pitfall lines, not corner: animals are recorded to quadrat or line only. Coordinates live only in the corner table, keyed by `sq_id` + `corner`, so nothing is typed twice. `R/03_wp1_soil_point_coords.R` loads the coordinates file and carries a corrections table for entry errors, so never fix the raw file in place. If the GPS unit exports GPX, put the export in `data-raw/wp1_finland/sampling/` instead and let `R/01_wp1_trap_grid_gpx.R` build the corner table.
+Copy a template to `data-raw/wp1_finland/` under the real name (`wp1_soil_log.csv`, `wp1_voles.csv`, `wp1_corner_coords.csv`) and append to it; do not fill in the template itself. Join between soil and vole tables is `sq_id` for quadrat units and `line_id` for pitfall lines, not corner: animals are recorded to quadrat or line only. Coordinates live only in the corner table, keyed by `sq_id` + `corner`, so nothing is typed twice. `R/03_wp1_soil_point_coords.R` loads the coordinates file and carries a corrections table for entry errors, so never fix the raw file in place. If the GPS unit exports GPX, put the export in `data-raw/wp1_finland/henttonen/` instead and let `R/01_wp1_trap_grid_gpx.R` build the corner table.
 
 ## Superseded: KoBoToolbox forms
 

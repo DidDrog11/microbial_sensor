@@ -42,3 +42,10 @@ Still open, from protocol §11: reference soils (4 forest + 4 peatland) not yet 
 - Gut sample IDs are now derived from Heikki's rodent number (`{id}-CAE`, `{id}-COL`), not assigned separately.
 - Rodent numbers restart each day, so `animal_id` is date + number (`20260915-07`) and gut IDs `20260915-07-CAE` / `-COL`. Tools rotate between animals via bleach immersion, rinse, second bleach bath; concentration, immersion time and rinse water still to record.
 - Tools sit ~30 min in the second bleach bath (lab-grade bleach, concentration to ask). Gloves changed per animal; gut touched only with tools. Whole caecum and whole colon bagged with contents; subsampling to pellets/content vs. wall is a processing decision, flagged in protocol §5.1 and §10 for the lab protocol. No scavenged or damaged carcasses so far.
+
+## 2026-09-17 — Henttonen GPX
+
+- Heikki shared a second GPX; both files are his own corner fixes from 4 Sep 2025. Together they cover SQs 31–43 (52 waypoints; 31C and 42D absent, extra "31B1", "42C1", "40c") and 49–53 (20 waypoints; 52D absent, extra "52C1"). Not covered: 44–48, 54–60. His unit recorded no hdop/satellite fields. SQs 49–53 sit ~1 km south of 31–43 and were not soil-sampled; presumably the peatland group with no voles — to confirm.
+- Cross-check of his fixes against ours for 31–43, 49 shared corners: median offset 3.9 m, mean 5.3, 90th pct 11, max 25. Centroid offsets 1–6 m, mean shift ~1 m east and ~0 north, so no between-unit bias. His quadrat geometry is as irregular as ours, so the shape residuals are GPS noise. Per-fix error ~3–5 m, not 2. Protocol §2 updated with these numbers.
+- Corner letters differ between observers: 34 B/D swapped, 37 rotated one corner. Our letters define the soil samples; his are used for centroids only.
+- GPX input for `R/01_wp1_trap_grid_gpx.R` moved to `data-raw/wp1_finland/henttonen/` (ignored), per repository policy.

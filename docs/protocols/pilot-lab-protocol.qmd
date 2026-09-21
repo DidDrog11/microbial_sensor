@@ -7,24 +7,83 @@ format: html
 
 ## Status
 
+**Draft skeleton, September 2026.** The field campaign is complete and the samples are at −20 °C at IEG (fieldwork protocol §10). Nothing in the lab has started. §0 is a plain-language guide to the lab side written for the project lead, who is not a microbiome lab specialist, to structure the discussion with Elin Videvall and NGI; the numbered sections below it are the protocol proper and are mostly placeholders until that discussion has happened.
+
+## 0. The lab side in plain language
+
+### 0.1 What actually happens to a sample
+
+Every tube, whether soil, caecal content or colon pellets, goes through the same five steps. Each step has a decision attached, and each decision is a place where a systematic difference between samples could be introduced by us rather than by biology. The whole point of the protocol is to make those decisions once, the same way for every sample, and write them down.
+
+1. **Subsample.** A small, weighed amount is taken from the tube — of the order of a quarter of a gram — into the extraction tube. The rest stays frozen as the archive. For gut this is where the decision in fieldwork protocol §5.1 is applied: pellets and caecal content go to extraction, the emptied gut wall goes to a separate tube for host genotyping. Nothing is thawed more than once if it can be helped.
+2. **Extract DNA.** A kit breaks the cells open (by shaking them violently with tiny beads: "bead-beating"), removes the things in soil and faeces that stop later reactions working (humic acids, bile salts: "inhibitors"), and leaves purified DNA in a small volume of liquid. The kit is a boxed set of tubes, beads and solutions; a "50-prep" kit does 50 samples. Kits differ mainly in how hard they beat, which matters because tough-walled bacteria give up their DNA only under hard beating, so **two different kits give two different pictures of the same community**. That is why one kit for every matrix is the recommendation.
+3. **Check the DNA.** Two quick measurements per sample: how much DNA there is (a fluorescence assay, "Qubit"), and how clean it is (absorbance ratios, "Nanodrop"). These decide whether a sample goes forward, is re-extracted, or is dropped.
+4. **Amplify the marker gene.** PCR copies one gene from every bacterium present, the 16S rRNA gene, using primers that match its ends. We are using the **full-length** gene (about 1,500 letters), which is what lets PacBio resolve bacteria to species rather than genus. NGI may do this step themselves; that is one of the questions to ask.
+5. **Sequence and read.** NGI runs the amplicons on a PacBio instrument and returns HiFi reads, one per gene copy, with very few errors. Our pipeline (DADA2, in `pipelines/`) then collapses the reads into exact sequence variants, assigns names to them, and produces a table of which variants are in which sample and how many reads each had. That table is the data.
+
+### 0.2 Why controls matter more here than usual
+
+Soil and field blanks are "low biomass": there is not much DNA in them, so a small amount of contaminating DNA from the kit, the bench or the air can look like real signal. Every kit has its own resident contaminants (the "kitome"). The defence is controls run through the identical process:
+
+- **Field blank** — an empty tube opened in the field (we have 29). Catches what got in during collection.
+- **Kit blank** — an extraction with no sample in it, one per kit batch. Catches what the kit and the bench add.
+- **PCR no-template control** — a PCR with water instead of DNA, one per PCR batch. Catches what the amplification adds.
+- **Mock community** — a bought tube containing a known mixture of bacteria in known proportions. Run through everything, it shows how far our whole process distorts a known truth. There are two forms: whole cells, which test extraction onwards, and purified DNA, which tests PCR and sequencing only. Running both separates the two.
+
+Controls are not optional extras for the paper; they are what makes it possible to say afterwards that a bacterium found in both a vole and its soil is a shared organism rather than a shared contaminant.
+
+### 0.3 Why the pilot exists
+
+The preregistration will commit to sample numbers and an analysis. If soil DNA yield turns out too low, or gut samples fail to amplify, or blanks are dirty, that is much better known before the plan is filed than after. So a small set, about 20 tubes spanning soil, both gut compartments, a field blank and the mock, goes through extraction and QC first, with the pass thresholds written down before the results are seen.
+
+### 0.4 What to ask NGI, before ordering anything
+
+1. For their PacBio full-length 16S service: do they want **extracted DNA** or do they also do the PCR? If they do the PCR, which primers?
+2. **How much DNA** per sample, at what concentration and in what volume? This fixes how we elute and whether low-yield soils are acceptable.
+3. **Minimum and maximum samples per run**, cost per sample, and lead time from delivery to data. This decides whether the pilot can be sequenced alone or must wait for the full set.
+4. Do they run **their own controls** (mock, blanks), and do they return the raw reads for them?
+5. What **metadata** they need with the plate, and how they want samples labelled.
+6. Where data are delivered (UPPMAX?) and in what form (HiFi reads as FASTQ? CCS BAM?).
+
+### 0.5 What to ask Elin
+
+1. **Which kit** the lab already uses for stool and for soil, and whether one kit for both is what she would do. The recommendation from the design side is one kit, one lot if possible, because the host–soil comparison is the analysis.
+2. **Input mass** for gut content and for soil, and the elution volume, given NGI's answer to 0.4.2.
+3. Her view on **subsampling frozen whole organs**: pellets from the distal colon and caecal content rather than wall, and how to do it with minimal thawing.
+4. **Which mock community** the lab has used (Zymo is the common choice), and whether to add the gut-specific one.
+5. **Pass/fail thresholds** for yield, purity and amplification that she would set before seeing data.
+6. **Batch design**: extractions blocked across quadrat groups and sample types rather than run group by group (data management plan §5), and who records kit lot per batch.
+7. How many extractions the lab can do per week, so the pilot and the full run can be scheduled against the preregistration date.
+
+### 0.6 Rough size of the job
+
+| Extractions | n |
+|---|---|
+| Gut: 77 bank voles on soil-sampled units, two compartments each | 154 |
+| Soil subset: one per SQ (25), four corners in five SQs (20), references (4) | 49 |
+| Field blanks sequenced, about one per batch | 8 |
+| Kit blanks and mock community, per batch | 16 |
+| Pilot | 20 |
+| Re-extraction allowance, ~10 % | 25 |
+| **Total** | **~270** |
+
+The gut count grows if Henttonen's remaining notebook pages add animals on sampled units, or if red and grey-sided voles are included.
+
 ## 1. Purpose
 
-Fresh snap-trapped material (gut, nest/burrow, soil) is untested for this pipeline in a way an established archive wouldn't have been. This pilot exists to check DNA yield, quality, and amplification success **before** the preregistration locks in committed sample numbers and analysis plan — cheap insurance against pre-registering N or a protocol that turns out to be optimistic.
+Fresh snap-trapped material (gut and soil) is untested for this pipeline in a way an established archive wouldn't have been. This pilot exists to check DNA yield, quality, and amplification success **before** the preregistration locks in committed sample numbers and analysis plan — cheap insurance against pre-registering N or a protocol that turns out to be optimistic.
 
 ## 2. Pilot sample selection
 
 ::: {.callout-note}
 
-**PLACEHOLDER** — propose a small subset spanning conditions rather than a random handful, e.g.:
+**PLACEHOLDER** — a small subset spanning conditions rather than a random handful. Proposed, about 20 tubes:
 
-- 2–3 individuals per grid (spanning grids)
-- All sample types per individual (gut, nest/burrow soil, off-grid soil,
-  field blank)
-- At least one sample stored via each storage route if both flash-freeze
-  and interim-preservative routes end up being used (see fieldwork
-  protocol §5) — so storage method itself is part of what's validated
+- 4 bank voles from different quadrat groups: caecum and colon each (8)
+- 6 corner soils spanning groups, including one from a quadrat with no voles (6)
+- 1 reference soil, 2 field blanks, 1 kit blank, mock community in both cell and DNA form (6)
 
-Total pilot N: TBD once grid count is confirmed.
+Nest material and a second storage route no longer exist in the design (fieldwork protocol §5.4, §9); all samples are dry-frozen, so storage is not a pilot factor.
 
 :::
 
@@ -32,8 +91,7 @@ Total pilot N: TBD once grid count is confirmed.
 
 ::: {.callout-important}
 
-**PLACEHOLDER** — kit choice. Starting point for discussion: a PowerSoil-type kit (or equivalent) for nest/soil material, a stool-DNA kit for gut/distal colon content. Standard input mass for kits in this class is ~250 mg;
-collected volumes (§5 of fieldwork protocol) leave headroom above this so duplicate/repeat extractions are possible if a first attempt fails.
+**PLACEHOLDER** — kit choice. Proposal for discussion with Elin: **one bead-beating kit with inhibitor removal for every matrix**, gut content and soil alike, and one lot if the supplier can provide it, so that the host–soil comparison at the centre of the analysis is not confounded by an extraction difference. Candidates in that class are Qiagen DNeasy PowerSoil Pro and the ZymoBIOMICS DNA Miniprep; choose on what the lab already runs. Standard input mass for kits in this class is ~250 mg; collected volumes (fieldwork protocol §5.3) leave headroom above this so duplicate/repeat extractions are possible if a first attempt fails.
 
 :::
 

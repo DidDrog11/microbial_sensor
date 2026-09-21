@@ -1,1 +1,1 @@
-processing_date,animal_id,capture_date,sq_id,line_id,habitat,trap_check_time,necropsy_time,species,sex,head_body_mm,tail_mm,mass_g,age_class,repro_status,embryos_n,carcass_condition,wounds,caecum_sample_id,colon_sample_id,gut_fullness,caecum_torn,notes
+processing_date,animal_id,sample_code,capture_date,sq_id,line_id,habitat,trap_check_time,necropsy_time,species,sex,head_body_mm,tail_mm,mass_g,age_class,repro_status,embryos_n,carcass_condition,wounds,gut_bag,caecum_sample_id,colon_sample_id,gut_fullness,caecum_torn,notes

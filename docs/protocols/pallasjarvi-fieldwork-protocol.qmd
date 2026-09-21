@@ -169,7 +169,8 @@ Line soils (8) are outside this count; whether any are sequenced follows the dec
 - Trap lines: line name plus point for soils, line name alone for the blank, following the quadrat convention. In the data: `MS1`, `MS2`, blank `MS`; `MS+1`, `MS+2`, blank `MS+`; `8-10A`, `8-10B`, blank `8-10`; `LOM-A`, `LOM-B`, blank `LOM`. Tubes are written with a space or parentheses ("MS 1", "8-10 A", "LOM (blank)") and some read "MS extra" for `MS+`; the data ID is the tube label with spaces and parentheses removed.
 - Reference soils: `REF1`…`REF4`.
 - Animals: Henttonen numbers rodents **sequentially within each day**, so the number alone is not unique. `animal_id` in the data is date plus number, `{YYYYMMDD}-{n}`, e.g. `20260915-07`, which is the order the bag is written in (date, rodent number, organ).
-- Gut: the two sample IDs are derived from `animal_id`, not assigned: `20260915-07-CAE` and `20260915-07-COL`. The cryovials written in Uppsala (§10) carry these.
+- Project sample code: every animal in Henttonen's notebook, all species, receives a **`P-NNN`** code in chronological order from a tracked, append-only registry (`data/registry/wp1_sample_codes.csv`, maintained by `R/05_wp1_notebook_animals.R`). The code is assigned once and never changes; animals from later notebook pages are numbered after the current maximum.
+- Gut: the cryovials written in Uppsala (§10) carry the sample code with an organ suffix: **`P-NNN-C`** caecum, **`P-NNN-D`** distal colon, and `P-NNN` alone for a bag in which both organs were combined `[?]` (suffix meaning as proposed 21 Sep 2026; confirm). The bag itself still reads date, rodent number, species and organ, which is how it is matched to the registry.
 - In the data, `sample_id` is the tube label verbatim. A project prefix (`PAL-`) is added only at the point where WP1 and WP2 data are merged, not on tubes.
 
 ## 8. Data capture
@@ -214,6 +215,7 @@ Blanks carry `corner` A, where they are opened. Pitfall blanks carry `line_id` a
 |---|---|---|
 | `processing_date` | date of necropsy | lab notes |
 | `animal_id` | date plus Henttonen's within-day rodent number, `{YYYYMMDD}-{n}` (§7) — the join to his sheet and the PUUV result, which arrives later and is joined on this column, not copied here | lab notes |
+| `sample_code` | project code `P-NNN` from the registry (§7) | registry |
 | `capture_date` | date the trap was checked; usually equals `processing_date` | lab notes |
 | `sq_id`, `line_id`, `habitat` | as in the soil log; exactly one of `sq_id` and `line_id` is filled | lab notes |
 | `trap_check_time`, `necropsy_time` | the difference is the post-mortem interval | lab notes |
@@ -224,7 +226,8 @@ Blanks carry `corner` A, where they are opened. Pitfall blanks carry `line_id` a
 | `embryos_n` | if pregnant | lab notes |
 | `carcass_condition` | fresh / autolysed / scavenged / wet, and whether the animal was alive at the check (pitfalls) | lab notes or ours |
 | `wounds` | bite wounds or scars, yes / no with a note | lab notes or ours |
-| `caecum_sample_id`, `colon_sample_id` | derived: `{YYYYMMDD}-{n}-CAE`, `{YYYYMMDD}-{n}-COL` (§7) | derived |
+| `caecum_sample_id`, `colon_sample_id` | `P-NNN-C`, `P-NNN-D`; blank where that organ was not bagged; both equal to `P-NNN` where the organs were combined (§7) | ours, at the freezer |
+| `gut_bag` | `separate` / `combined` / `none` — what actually exists in the freezer for this animal | ours, at the freezer |
 | `gut_fullness`, `caecum_torn` | full / partial / empty; yes / no (§5.1) | ours |
 | `notes` | | |
 
@@ -244,8 +247,11 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 - Freezer on 12 V while driving, on mains at the station and at overnight stops. Bring the mains adapter.
 - No preservative. Samples are stored dry and frozen. This is only defensible while the cold chain holds — hence the logger.
 
+**Outcome, September 2026** (`R/04_wp1_freezer_logger.R`; series in `data/cold_chain/`, figure in `output/figures/wp1_freezer_logger.png`). The logger ran from 16 September 08:23 to 21 September 11:18, 5-minute readings, so the first two days at the station on mains (14–15 September) are not covered. The record has two states. Empty and pre-cooling on the morning of the 16th, the air sat at −21 to −22 °C. From loading on the afternoon of the 16th the air rose within an hour to a peak of −5.7 °C and then settled at **−9 °C, where it stayed for the remaining five days** (daily means −8.9 to −9.1 °C), with three brief door-opening bumps of 2–3 °C. The freezer display read about −18 °C throughout, so the thermostat was satisfied at the plate while the air around the logger, and the tubes near it, ran some 9 °C warmer once the compartment was full. No sample came within 5 °C of thawing and there was no freeze–thaw cycling, which is the mechanism that damages DNA in frozen soil and gut; five days at −9 °C is immaterial for amplicon sequencing. The lesson for WP2 and for any future transport is procedural: log among the tubes in the middle of the load rather than at the top, check the air temperature an hour after loading, and lower the set point or reduce the load if it does not return to the target.
+
 ## 10. On arrival in Uppsala
 
+- Gut bags keep Henttonen's labels (date, rodent number, species, organ) until the cryovial transfer; the registry (§7) is the mapping to `P-NNN`. No relabelling in between. The transfer is one session on dry ice, planned for early October 2026, working through the vole sheet bag by bag and filling `gut_bag`, `gut_fullness` and `caecum_torn` as each is handled.
 - Transfer gut from minigrip bags to cryovials on dry ice, without thawing. The plan, to be confirmed in the lab protocol, is that the `COL` cryovial receives distal colon pellets and the `CAE` cryovial caecal content, matching the WP2 swab target; the emptied wall tissue then goes to a third tube per animal for host genotyping if that goes ahead (§5.1). Whole frozen organs cannot be emptied without partial thawing, so this step needs its own SOP.
 - Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 

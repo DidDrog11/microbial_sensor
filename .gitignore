@@ -60,6 +60,9 @@ data-raw/wp1_finland/henttonen/
 data/**
 !data/**/
 !data/**/README.md
+# Registries are derived once and then frozen: tracked, appended to, never regenerated from scratch
+!data/registry/
+!data/registry/**
 
 # Derived outputs: keep the directory tree, not the artefacts
 output/**

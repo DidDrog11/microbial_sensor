@@ -45,15 +45,44 @@ The preregistration will commit to sample numbers and an analysis. If soil DNA y
 5. What **metadata** they need with the plate, and how they want samples labelled.
 6. Where data are delivered (UPPMAX?) and in what form (HiFi reads as FASTQ? CCS BAM?).
 
-### 0.5 What to ask Elin
+### 0.5 Agenda: meeting with Elin, 25 September 2026
 
-1. **Which kit** the lab already uses for stool and for soil, and whether one kit for both is what she would do. The recommendation from the design side is one kit, one lot if possible, because the host–soil comparison is the analysis.
-2. **Input mass** for gut content and for soil, and the elution volume, given NGI's answer to 0.4.2.
-3. Her view on **subsampling frozen whole organs**: pellets from the distal colon and caecal content rather than wall, and how to do it with minimal thawing.
-4. **Which mock community** the lab has used (Zymo is the common choice), and whether to add the gut-specific one.
-5. **Pass/fail thresholds** for yield, purity and amplification that she would set before seeing data.
-6. **Batch design**: extractions blocked across quadrat groups and sample types rather than run group by group (data management plan §5), and who records kit lot per batch.
-7. How many extractions the lab can do per week, so the pilot and the full run can be scheduled against the preregistration date.
+Nine decisions, each with the ask, why it matters to the design, a default to accept or overrule, and a blank line for what was decided. Tick the box when covered. Logistics follow as a separate block that can be skipped if time is short.
+
+- [ ] **1. Extraction kit.** *Ask:* which kit the lab uses for stool and for soil, and whether one kit for both is what she would do. *Why:* the analysis compares a vole's gut community with the soil around it; kits differ in how hard they break cells open, so two kits would put a method difference exactly on the comparison we care about. *Default:* one bead-beating kit with inhibitor removal for every sample, one manufacturer's lot if the supplier can do it. *Decision:*
+
+- [ ] **2. Input mass and elution.** *Ask:* how much material goes into each extraction, and what volume the DNA is eluted into. *Why:* soil tubes hold 0.5–1.5 g against a typical 250 mg extraction, so soil has headroom; gut content per animal is the tighter budget and sets how many repeat extractions are possible. Elution volume trades concentration against total amount, and NGI's requirement (0.4) decides which matters. *Default:* kit standard input; elution per NGI. *Decision:*
+
+- [ ] **3. Subsampling frozen whole organs.** *Ask:* her SOP for taking pellets from the distal colon and content from the caecum out of a frozen whole organ. *Why:* WP2 samples freshly voided faecal pellets, collected into DNA/RNA Shield (Grimsö protocol, method 3), so the WP1 colon sample that matches it is pellets, not wall. Worth asking her in the same breath whether the WP1 dry-frozen versus WP2 preservative difference needs handling in the design. A frozen organ cannot be opened without some thawing, so the question is how brief and how cold, not whether. The emptied wall then goes to a third tube per animal for host genotyping, if that goes ahead. *Default:* brief partial thaw on ice, content out, wall to its own tube, everything back to −80 or −20 the same session. *Decision:*
+
+- [ ] **4. Mock community.** *Ask:* which standard the lab has used and whether to add the gut-specific one. *Why:* a bought tube of known bacteria in known proportions is the only way to measure how far our whole process distorts the truth. The cell-based standard tests extraction onwards; the matching purified-DNA standard tests PCR and sequencing only; running both separates the two. The gut-specific standard has taxa closer to our samples. *Default:* cell standard plus DNA standard, one tube each for the project; gut standard if budget allows. *Decision:*
+
+- [ ] **5. Pass/fail thresholds.** *Ask:* the numbers she would set now, before any data exist, for DNA concentration, purity ratios and amplification. *Why:* thresholds set after seeing results are justifications, not criteria. The kinds of number: a minimum concentration below which PCR is not attempted, acceptable 260/280 and 260/230 ranges, a visible full-length band on a gel. *Default:* her lab's usual values, written into §5. *Decision:*
+
+- [ ] **6. Batch design and lot recording.** *Ask:* that extraction batches mix quadrat groups and sample types rather than running one group at a time, and who writes the kit lot for each batch. *Why:* if group G31 is extracted on Monday and G44 on Friday, any difference between them is inseparable from the day. Blocking is free at this stage and impossible to add later. *Default:* stratified assignment to batches by group and sample type; lot recorded in the extraction log per batch (data management plan §5). *Decision:*
+
+- [ ] **7. Pilot composition and sequencing.** *Ask:* agree the ~20-tube pilot in §2, and whether it can be sequenced on its own or must wait for a full run. *Why:* the pilot exists to catch a bad yield or dirty blanks before the preregistration commits to numbers. If NGI's minimum batch is large, the pilot may be extraction and QC only, with sequencing folded into the full run. *Default:* 4 voles both compartments, 6 soils, 1 reference, 2 field blanks, 1 kit blank, mock in both forms. *Decision:*
+
+- [ ] **8. Who does the extractions, and where.** *Ask:* whether I am trained to do them, whether her staff do them, or a mix. *Why:* this decides throughput, cost, and the training time to budget; it also decides who owns the extraction log. *Default:* none. *Decision:*
+
+- [ ] **9. Throughput and dates.** *Ask:* how many extractions per week are realistic, and when the pilot and the full run can sit in the lab calendar. *Why:* the preregistration must be filed before WP2 data exist in May 2027, and the pilot must inform it. Bench time is modest: ~270 extractions at 40–50 a day with a spin-column kit is about 6 days, or 3 with a 96-well kit, plus 1–2 days subsampling frozen organs and a day of Qubit/Nanodrop, plus 1–2 days of PCR and gels if NGI does not amplify. Roughly two working weeks for one person; the constraint is calendar and blocking across groups, not hours. *Default:* pilot in October after the cryovial transfer; full run from November. *Decision:*
+
+**Logistics, if time allows**
+
+- [ ] Dry ice and cryovials for the October transfer session: where it happens and who orders. −20 °C was agreed as adequate on 9 September (fieldwork protocol §10); confirm that still holds once the gut is in cryovials, or whether −80 is available and preferred.
+- [ ] The gut-wall tube for host genotyping: does she agree it is worth keeping, and where it is stored.
+- [ ] Has the lab submitted PacBio full-length 16S to NGI before, and is there a DADA2 pipeline for HiFi reads to start from? `pipelines/` is currently empty.
+- [ ] Data delivery and storage. The whole project's raw reads are small: at 10–20 thousand HiFi reads of ~1.5 kb per sample, about 10–20 MB per sample gzipped and 3–6 GB for 300 samples, so processing with DADA2 is a laptop or desktop job and no compute allocation is needed. The question is whether NGI requires an UPPMAX project ID to deliver into, or will deliver by download; if the former, who holds the NAISS project. Where the metadata live during the project is still open (data management plan §6).
+- [ ] Does she have a contact at NGI, and would she rather the questions in 0.4 went through her?
+
+**Actions agreed**
+
+| Action | Owner | By |
+|---|---|---|
+| | | |
+| | | |
+| | | |
+| | | |
 
 ### 0.6 Rough size of the job
 

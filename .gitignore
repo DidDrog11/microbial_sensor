@@ -117,3 +117,7 @@ CLAUDE.md
 
 # Rendered protocols: build products, regenerate with quarto render
 docs/protocols/*.html
+
+# Presentations: informal decks may carry preliminary results or collaborator material, so the folder stays local; only its README is tracked
+docs/presentations/*
+!docs/presentations/README.md

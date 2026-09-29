@@ -59,6 +59,21 @@ impute_min_sep <- 8
 # the cut so a change in the data that closes the gap is noticed.
 group_cut_m <- 150
 
+# Manual group overrides, applied after clustering. Distance alone cannot see
+# a barrier: a road runs between quadrats 31-37 and 38-43, so the 13-quadrat
+# spatial cluster is tentatively treated as two design groups (29 Sep 2026,
+# pending Henttonen's confirmation). The clustering result is kept in
+# `spatial_group` so the override is visible in the output.
+group_overrides <- tribble(
+  ~sq_id, ~group_id, ~reason,
+  38, "G38", "road between 31-37 and 38-43; tentative split of spatial cluster G31",
+  39, "G38", "as 38",
+  40, "G38", "as 38",
+  41, "G38", "as 38",
+  42, "G38", "as 38",
+  43, "G38", "as 38"
+)
+
 # corrections ------------------------------------------------------------------
 
 # `lat`/`lon` are the values AS ENTERED in the raw file; they identify the row.
@@ -302,14 +317,19 @@ quadrats <- quadrats %>%
   # name each group by its lowest SQ number, so the label is stable if the
   # cluster numbering changes
   group_by(cluster) %>%
-  mutate(group_id = paste0("G", min(sq_id)), n_in_group = n()) %>%
+  mutate(spatial_group = paste0("G", min(sq_id))) %>%
   ungroup() %>%
-  select(sq_id, group_id, n_in_group, n_corners, corners_present, n_imputed, lat, lon, x, y,
+  left_join(group_overrides %>% select(sq_id, override = group_id), by = "sq_id") %>%
+  mutate(group_id = coalesce(override, spatial_group)) %>%
+  group_by(group_id) %>%
+  mutate(n_in_group = n()) %>%
+  ungroup() %>%
+  select(sq_id, group_id, spatial_group, n_in_group, n_corners, corners_present, n_imputed, lat, lon, x, y,
          starts_with("side_"), starts_with("diag_"), shape_rmse_m, geometry_flag,
          nearest_sq, nearest_m, collection_date)
 
 sq_groups <- quadrats %>%
-  select(sq_id, group_id, n_in_group) %>%
+  select(sq_id, group_id, spatial_group, n_in_group) %>%
   arrange(sq_id)
 
 # pitfall lines ----------------------------------------------------------------
@@ -397,3 +417,7 @@ message(sprintf("groups: %d at a %d m single-linkage cut (last merge below %.0f 
                 paste(sapply(split(sq_groups$sq_id, sq_groups$group_id),
                              function(s) paste0("{", paste(s, collapse = ","), "}")), collapse = " ")))
 if (above - below < 50) warning("the gap between within-group and between-group merges is under 50 m; check the cut", call. = FALSE)
+if (nrow(group_overrides)) {
+  message(sprintf("manual group overrides applied to %d quadrats: %s", nrow(group_overrides),
+                  paste(sprintf("%d->%s", group_overrides$sq_id, group_overrides$group_id), collapse = ", ")))
+}

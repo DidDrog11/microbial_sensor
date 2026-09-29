@@ -111,3 +111,9 @@ _freeze/
 # macOS / Windows cruft
 .DS_Store
 Thumbs.db
+
+# Claude Code project instructions travel over SSH, not git
+CLAUDE.md
+
+# Rendered protocols: build products, regenerate with quarto render
+docs/protocols/*.html

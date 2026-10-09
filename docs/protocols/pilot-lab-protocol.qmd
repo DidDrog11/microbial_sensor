@@ -45,11 +45,37 @@ The preregistration will commit to sample numbers and an analysis. If soil DNA y
 5. What **metadata** they need with the plate, and how they want samples labelled.
 6. Where data are delivered (UPPMAX?) and in what form (HiFi reads as FASTQ? CCS BAM?).
 
+**What NGI has said so far** (Elin's ticket with NGI Sweden, 28 September to 2 October 2026; Mattias Ormestad, NGI Stockholm, and Susana Haggqvist, NGI Uppsala). Two routes are on offer, and both take DNA we have extracted ourselves; NGI Stockholm does not offer extraction.
+
+| | Nanopore, NGI Stockholm | PacBio, NGI Uppsala |
+|---|---|---|
+| Method | Nimagen EasySeq full-length 16S library prep | Kinnex 16S |
+| Who does the PCR | NGI builds the library from our DNA. They recommend we first run a test PCR and normalisation ourselves, as for their Illumina prep, with the same V3/V4 primers | **We do the PCR**, with the specific primers in PacBio's Kinnex procedure checklist; NGI builds the Kinnex library from our pooled amplicons |
+| Samples per plate | 93; three wells are NGI's own controls | not stated |
+| Cost | about 35,000 SEK per plate of 93, prep and sequencing | not stated |
+| Analysis | none offered. Suggested: NBIS, or the development version of nf-core/ampliseq, which includes Savont for recovering exact variants from ONT reads | not discussed |
+| NGI's experience | "few projects so far" with the Nimagen kit; the prep is not yet on the order form, to be requested in the description | established service |
+
+NGI states that it has made no direct comparison of Nanopore and PacBio 16S and cannot advise between them.
+
+**Still unanswered**, to chase: minimum DNA concentration and purity for either route; lead time; how data are delivered; PacBio cost and plate size; whether NGI's control wells are returned as reads; the primer sequences for Kinnex, which are in the attachment to Susana Haggqvist's message of 2 October (save the PDF under `docs/protocols/` so the primers can be written into §3).
+
 ### 0.5 Agenda: meeting with Elin, 25 September 2026
 
 Nine decisions, each with the ask, why it matters to the design, a default to accept or overrule, and a blank line for what was decided. Tick the box when covered. Logistics follow as a separate block that can be skipped if time is short.
 
-- [ ] **1. Extraction kit.** *Ask:* which kit the lab uses for stool and for soil, and whether one kit for both is what she would do. *Why:* the analysis compares a vole's gut community with the soil around it; kits differ in how hard they break cells open, so two kits would put a method difference exactly on the comparison we care about. *Default:* one bead-beating kit with inhibitor removal for every sample, one manufacturer's lot if the supplier can do it. *Decision:*
+- [ ] **0. Sequencing platform: Nanopore or PacBio.** *Open as of 6 October 2026; Elin is leaning towards Nanopore.* This is a decision for Elin and David, not settled here. The considerations, with their sources:
+    - **What the analysis needs.** The project's signal is variants shared between animals and between an animal and its soil, so it needs exact or near-exact sequence variants that do not depend on a reference database; much of soil diversity is not in one. On PacBio HiFi the route to exact variants is DADA2, which is established. On Nanopore the equivalent is a development pipeline (Savont in nf-core/ampliseq, a 2026 preprint), and NGI offers no analysis for it.
+    - **Evidence available.** NGI has no head-to-head comparison and few Nimagen projects so far (NGI, 28–29 September).
+    - **Bench work.** Kinnex means doing the PCR for every sample in-house with barcoded primers; Nimagen means a test PCR and normalisation in-house and NGI doing the rest.
+    - **Cost.** Known for Nanopore only: about 35,000 SEK per 93 samples.
+    - **Shared plates and pipeline.** Elin's ticket covers two projects; whichever platform the other project uses determines whether plates, controls and a pipeline can be shared.
+    - **One way to buy evidence.** Run the same pilot extracts, including the mock community, on both platforms. It costs a plate, so it is a question for the budget, not a plan.
+    - **If Nanopore is chosen**, the method named in the funded proposal and in the project instructions (PacBio HiFi and DADA2) changes; record it as a divergence, and write the preregistration to the platform actually used.
+
+    *Decision:*
+
+- [ ] **1. Extraction kit.** *Stated by Elin to NGI on 29 September: Qiagen PowerFecal Pro, the kit the lab uses for short-read work. To confirm: is that the single kit for soil as well, or is PowerSoil Pro meant for the soil?* *Ask:* which kit the lab uses for stool and for soil, and whether one kit for both is what she would do. *Why:* the analysis compares a vole's gut community with the soil around it; kits differ in how hard they break cells open, so two kits would put a method difference exactly on the comparison we care about. *Default:* one bead-beating kit with inhibitor removal for every sample, one manufacturer's lot if the supplier can do it. *Decision:*
 
 - [ ] **2. Input mass and elution.** *Ask:* how much material goes into each extraction, and what volume the DNA is eluted into. *Why:* soil tubes hold 0.5–1.5 g against a typical 250 mg extraction, so soil has headroom; gut content per animal is the tighter budget and sets how many repeat extractions are possible. Elution volume trades concentration against total amount, and NGI's requirement (0.4) decides which matters. *Default:* kit standard input; elution per NGI. *Decision:*
 
@@ -97,6 +123,8 @@ Nine decisions, each with the ask, why it matters to the design, a default to ac
 | **Total** | **~270** |
 
 The gut count grows if Henttonen's remaining notebook pages add animals on sampled units, or if red and grey-sided voles are included.
+
+**Plates.** On the Nanopore route a plate holds 93 of our samples, so ~270 extractions is three plates, about 105,000 SEK at the price quoted. Two consequences. A pilot of 20 cannot be sequenced on its own without paying for a plate, unless it shares one with the lab's other project; otherwise the pilot is extraction and QC only, and the first full plate serves as the sequencing check before the other two are run. And the plate becomes a batch: quadrat groups and sample types are spread across all three plates, and each plate carries its own field blanks, kit blank and mock community (data management plan §5).
 
 ## 1. Purpose
 

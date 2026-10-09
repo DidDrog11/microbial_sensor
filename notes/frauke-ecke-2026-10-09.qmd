@@ -1,0 +1,114 @@
+---
+title: "Conversation with Frauke Ecke, SLU Umeå"
+date: "2026-10-09"
+format: html
+---
+
+Notes taken during the call. Slides: `docs/presentations/frauke-ecke-chat.qmd`. Fill the headings as they come up; the questions under each are prompts, not a script. Decisions and actions go in the last two sections so they are easy to find afterwards.
+
+## Present
+
+- Frauke Ecke (SLU Umeå, leads the national small-rodent monitoring)
+- David Simons
+- Others:
+
+## Context she gives
+
+How the programme runs today: sites, seasons, method, who does the fieldwork, what has changed over the years.
+
+- National monitoring since 1970's
+In Grimsö 20 1 hectare plots with trapping stations.
+- >14.4g screeened for puumala since 1979
+
+- Experimental work in Helsinki
+- Forest fire work 2019
+
+## The monitoring data
+
+What exists, and at what resolution.
+
+- Sites and years covered; which sites are still running:
+- Season and trapping effort per visit; whether per-transect or per-site values exist:
+- Species split: bank vole separate from *Microtus*, or bundled as "voles":
+- Where the data live (SITES portal, SLU database, spreadsheets) and who holds them:
+- Access conditions: data agreement, SLU policy, attribution expected:
+- The 2026 autumn: done, digitised, headline numbers:
+- Her reading of the current cycle phase and the outlook for 2027:
+
+## PUUV and the archive
+
+- What is archived: whole animals, tissues, sera; from which sites and years; storage history (−20, −80, ethanol):
+- PUUV status per animal: how tested, which years, where the results are:
+- Is PUUV present in Grimsö voles, or does Grimsö lie outside the NE zone:
+- Would archived material be available for microbiome work, and under what terms:
+
+## The extension idea
+
+Her reaction to two uses of the programme: reading the sensor across phases and across the PUUV range, and using per-animal PUUV status to test whether infection sits on the network the sensor reconstructs.
+
+- Interest:
+- Is per-animal PUUV status linked to the animals' locations and dates finely enough to place them on a network:
+- What she would want from it:
+- Funding route she would consider (FORMAS, VR, Naturvårdsverket, other):
+- Who else should be involved:
+
+## Her own project
+
+When I applied she mentioned a project of hers that might overlap. Ask what it is: question, sites, timing, people, funding; where it touches this one; whether to align designs or share effort.
+
+-
+
+## Grimsö plan, her comments
+
+Plot choice, dates, trapping intensity, nest boxes, anything experience says to change.
+
+- Traps and nest boxes compete for the same animal during a session: an animal in a trap cannot visit a box. Her experience of vole behaviour around Ugglan traps and boxes; whether boxes in the buffers between sub-grids would help; whether between-session logging is enough:
+-
+
+## RFID hardware
+
+Not funded. Suggestions of equipment to borrow, suppliers, people who have run PIT-tag nest boxes on voles, funding routes.
+
+-
+
+## What was said (written up afterwards, 9 October)
+
+Notes could not be taken during the call; this is from memory the same day.
+
+**Monitoring data.** She will share the national monitoring data.
+
+**Nest boxes.** Their RFID nest boxes cost about 40,000 euros. Not cheap; the Grimsö RFID component is not affordable within the running budget on that figure.
+
+**Lammi exclosures, Finland.** At Lammi biological station they have exclosures in which vole density and habitat type have been manipulated. RFID loggers are in place, so there is detailed contact information, and faecal samples were collected from the same individuals. They have been interested in network complexity and transmission dynamics but found very few seropositive animals, so it is not a priority for them, and her current postdoc will not have time to process the microbial samples.
+
+**Burnt forest plots, Umeå.** Similar contact information from burnt forest plots.
+
+**Historical cycle.** Samples spanning a complete cycle with PUUV PCR and faecal samples. No contact information and no environmental samples with that set.
+
+**Environmental samples.** She suggested they could take environmental samples. Open question: how much does soil microbiome vary over time? If soil sampled a year after the voles is as good as soil sampled with them, retrospective environmental sampling of the Lammi and Umeå sites becomes possible; the Pallasjärvi soils could be resampled to measure that variability.
+
+**Strategic question.** Whether to fold this project into her programme: become the microbiome person for their contact and faecal datasets, and ground the sensor in data that already exist.
+
+## Follow-up questions for Frauke
+
+- Lammi: how many enclosures, treatments (density levels, habitats), years; how many tagged animals and faecal samples per animal; how samples were collected (at capture, from traps, from boxes), preserved and stored, and for how long; whether sample IDs tie to tagged individuals and dates; what the logger data look like and whether networks are already built.
+- Umeå burnt plots: the same questions; what the control plots are.
+- Historical cycle: sites, years, how animals were located (station, line), sample preservation, PUUV PCR per animal.
+- Soil: would resampling the Lammi and Umeå sites now be possible; what records exist of where animals were caught.
+- Terms: who leads the microbiome analyses and papers; data agreement; how Elin's lab and Uppsala sit in it; what she would want from a joint application.
+
+## Decisions
+
+- No commitment made on the call. David said he was leaning towards working with her datasets; the decision is open until the Lammi inventory and terms are known.
+- Any arrangement is a partnership, not an absorption: the fellowship, the sensor and its analyses stay David's to lead, Elin's lab is where the microbiome work lives, and authorship and data terms are agreed in writing before samples move.
+- Elin to be brought into the conversation before any offer is made.
+- The Grimsö visit on 21 October goes ahead regardless; Grimsö is reconsidered after the Lammi inventory, not before.
+- The funder (per the local administrator) funds the fellow rather than the project as specified, so a change of validation site is permissible with justification; the funder would be informed of any change.
+
+## Actions
+
+| Action | Who | By |
+|---|---|---|
+| | | |
+| | | |
+| | | |

@@ -1,0 +1,58 @@
+---
+title: "Microbial Sensor project: planned fieldwork at Grimsö in 2027"
+subtitle: "Outline for discussion at the visit, October 2026"
+author: "David Simons, Videvall lab, Dept. of Ecology and Genetics, Uppsala University"
+date: "2026-10-06"
+format:
+  docx: default
+  html: default
+---
+
+**Draft for discussion.** Nothing here is fixed; the purpose of the visit is to adjust it to what is practical at Grimsö.
+
+## Aim
+
+To test whether the gut microbiome of bank voles records who an animal has been in contact with. In 2026 we sampled snap-trapped voles and soil at Pallasjärvi, Finland, with Heikki Henttonen. At Grimsö we would follow live animals over one season, recording their contacts directly with PIT tags and RFID readers, and compare those contacts with how similar their gut microbiomes become. Grimsö is the right place because of the long-term vole monitoring: your density series tells us what kind of year we are working in.
+
+## What we would do
+
+| | |
+|---|---|
+| Plot | One forest plot of about 3 ha, trapped intensively. It does not need to be on or near the monitoring transects |
+| Layout | Twelve small sub-grids of 25 × 25 m, 13 trap stations each, about 30 m apart: 156 stations |
+| Traps | Ugglan multiple-capture live traps, checked morning and evening |
+| Sessions | Four sessions of five nights, about three weeks apart. Provisionally late summer to autumn 2027, to run up to and through the autumn density peak; dates open |
+| Animals | Bank voles are the target. Each is PIT-tagged, a 2 mm ear biopsy is taken for marking and genotyping, and it is released at the point of capture. Other species are released at the trap |
+| Samples | Freshly voided faecal pellets, collected at the trap into preservative. No blood, no lethal sampling. Target: 20 to 40 tagged animals, about 100 faecal samples over the season |
+| Contact logging | A small number of nest boxes with RFID readers, left on the plot between sessions |
+| People | One or two, for five trap nights per session, about a week on site with setting and collecting |
+
+## What we would need from the station
+
+- **A plot.** Gunnar has suggested the unmanaged forest near the station or the nearby reserve, since a managed stand could be harvested and nest boxes left out all season would be at risk. We would like to see both.
+- **Housing** for one or two people for about a week, four times. To be booked through the intendentur once dates are fixed.
+- **A −20 °C freezer** for a few boxes of small tubes, short term.
+- **A clean table and a sink.** A metre or two of wipe-down surface for labelling tubes and downloading loggers, and somewhere to wash traps and trays between sessions. Nothing sterile; no samples are opened indoors and no DNA work is done at Grimsö.
+- **Storage** for traps between sessions and over winter.
+- **An introduction day** with someone who knows the vole fieldwork, at the start.
+
+## What we would not need
+
+Station cars (we expect to bring our own), laboratory equipment, or any change to the monitoring transects and their schedule.
+
+## Permits
+
+The station's ethical permit covers snap-trapping for the monitoring programme. We will apply for our own permit for live trapping, tagging and sampling, aiming to submit by December 2026, and would like to name Grimsö as the site and describe handling in a way consistent with your practice.
+
+## Questions for the visit
+
+1. Which plot: unmanaged forest by the station, or the reserve? Are the monitoring transects mostly in managed forest, and would vole numbers in unmanaged forest follow the same pattern?
+2. What did the 2026 autumn survey show, and what would you expect for 2027?
+3. Which weeks in 2027 would suit the station best, and which should we avoid?
+4. May RFID nest boxes stay on the plot from the first session to the last?
+5. Are there Ugglan traps that could be borrowed, and how many?
+6. Guest researcher or bench fees, for the budget.
+7. Is there a land cover map or GIS layer for the research area we could use?
+8. Has any microbiome work been done on Grimsö small mammals before?
+
+Contact: David Simons, dsimons1987@gmail.com

@@ -1,0 +1,64 @@
+---
+title: "Discussions with Elin Videvall"
+subtitle: "Running notes, newest at the bottom"
+format: html
+---
+
+One file for the lab-side conversations, so decisions and open points are in one place. Each entry has what was discussed, what was decided, and what is still open. The lab protocol (`docs/protocols/pilot-lab-protocol.qmd`) carries the decisions in its agenda section; this file is the record of how they got there.
+
+## 9 September 2026, before Finland
+
+- Tubes for soil: 2 ml Sarstedt Biosphere plus SafeSeal from IEG stock; DNA-free certification is defensive rather than required, but cheap. 10 ml tubes and 81-place cryoboxes also from stock.
+- Freezer space at IEG confirmed; −20 °C agreed as adequate for soil and gut.
+- Gut transfer to cryovials can be scheduled after the campaign, before processing.
+
+## 25 September 2026, planning meeting
+
+Agenda was section 0.5 of the lab protocol. No decisions were written down at the time; the points below were recovered on 9 October.
+
+- Kit: the lab uses Qiagen PowerFecal Pro for short-read work (Elin to NGI, 29 September).
+- Elin opened a ticket with NGI the following week covering both this project and her other long-read 16S project.
+
+## 2 October 2026, lab meeting
+
+David presented the project and the Pallasjärvi campaign (`docs/presentations/lab-meeting-videvall.qmd`). No lab decisions taken.
+
+## 9 October 2026, short chat
+
+- **Platform.** Elin leans clearly towards Nanopore through NGI Stockholm (Nimagen full-length 16S, 93 samples per plate, about 35,000 SEK). Not yet decided for this project.
+- **Kit.** Leaning towards a single kit for gut and soil; Elin to confirm the week of 12 October.
+- **Input mass.** A master's student in the lab found different diversity in horse faeces at 0.5 g versus 1 g input, so the question is live. Decision: fix one mass per sample type and record it; never mix masses within a type.
+- **Subsampling frozen organs.** Elin: taking content from the frozen organ on dry ice is fine, no thaw needed.
+- **Mock community.** Not raised.
+- **Pass and fail thresholds.** The lab has no standing rules and sets them as it goes. David will fix values before pilot results exist regardless.
+- **Batches and lots.** The lab does not block batches or record lots routinely; this project will.
+- **Who extracts.** David, after shadowing Elin's team. Lab safety session needed first.
+
+## 13 October 2026, by message
+
+- Lab safety session on 14 October missed (animal hospital); next slot about 28 October. All bench work, the dry-ice transfer, shadowing and the pilot, moves after that. Samples unaffected. Kit order can wait for the pending decisions.
+
+## 16 October 2026, chat, planned
+
+Agenda:
+
+1. **Plate sharing.** Can the vole pilot and first batch share a Nanopore plate with the reindeer project, and when is that plate going to NGI? That date, not the safety session, is the real deadline for the pilot.
+2. **Kit.** Confirm the single kit for gut and soil, and whether it is PowerFecal Pro for both.
+3. **Input mass.** Agree a mass per sample type, given the horse result and the gut-content budget per animal.
+4. **Mock community.** Which standard the lab has used; whether to add the gut-specific one.
+5. **Shadowing.** Who to shadow and when, after the 28 October session.
+6. **Frauke Ecke.** The 9 October conversation: she will share the monitoring data; Lammi exclosures with loggers and faecal samples; Umeå burnt plots; a historical cycle with PUUV PCR; RFID nest boxes cost about 40,000 euros. Elin should hear this before any arrangement is discussed with Frauke, since it bears on WP2 and on where the microbiome work sits. Notes in `frauke-ecke-2026-10-09.qmd`.
+
+Notes:
+
+-
+
+Decisions:
+
+-
+
+Actions:
+
+| Action | Who | By |
+|---|---|---|
+| | | |

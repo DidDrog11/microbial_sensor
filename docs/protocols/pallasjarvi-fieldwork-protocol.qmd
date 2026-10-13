@@ -252,7 +252,7 @@ The join between the two tables is `sq_id` for quadrat animals and `line_id` for
 ## 10. On arrival in Uppsala
 
 - Gut bags keep Henttonen's labels (date, rodent number, species, organ) until the cryovial transfer; the registry (§7) is the mapping to `P-NNN`. No relabelling in between. The transfer is one session on dry ice, planned for early October 2026, working through the vole sheet bag by bag and filling `gut_bag`, `gut_fullness` and `caecum_torn` as each is handled.
-- Transfer gut from minigrip bags to cryovials on dry ice, without thawing. The plan, to be confirmed in the lab protocol, is that the `COL` cryovial receives distal colon pellets and the `CAE` cryovial caecal content, matching the WP2 swab target; the emptied wall tissue then goes to a third tube per animal for host genotyping if that goes ahead (§5.1). Whole frozen organs cannot be emptied without partial thawing, so this step needs its own SOP.
+- Transfer gut from minigrip bags to cryovials on dry ice, without thawing. The plan, to be confirmed in the lab protocol, is that the `COL` cryovial receives distal colon pellets and the `CAE` cryovial caecal content, matching the WP2 swab target; the emptied wall tissue then goes to a third tube per animal for host genotyping if that goes ahead (§5.1). Elin's view (9 October 2026) is that subsampling from the frozen organ on dry ice is fine and no thaw is needed; the SOP for the session follows that.
 - Move everything to institutional −20 °C at IEG. Freezer space is confirmed and −20 °C agreed as adequate for soil and gut (Elin, 09 Sep 2026). The gut transfer to cryovials can be scheduled later, before processing.
 
 ## 11. Outstanding items

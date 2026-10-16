@@ -96,7 +96,11 @@ Method 2 (Ugglan Multiple-Capture Live Traps).
 
 While automated smart traps (Method 3) represent the technological frontier, deploying 156 motorised, battery-dependent units across a boreal forest exceeds the 400,000 SEK running budget and introduces points of hardware failure [@gilbertson2021]. Single-capture traps (Method 1) artificially suppress observed social interactions. Ugglan traps are robust, weatherproof, and capable of multiple simultaneous captures. When two bank voles are captured together in a single Ugglan trap, it provides a high-weight physical contact observation ($\text{SocialContact}_{ij} = 1$). To ensure animal welfare and prevent dietary disruption to the luminal microbiota, traps will be baited with a standardised, autoclaved seed mix (oats and sunflower seeds) supplemented with apple slices for hydration and raw wool for thermal insulation.
 
-## Stage 3: Non-Destructive Biological Sampling 
+::: {.callout-warning}
+**Open points for the ethics application (15 October 2026).** (1) **Check frequency** is not fixed here; the outline sent to Grimsö says at least morning and evening, more often in cold weather, and the permit will set the number. (2) **Predation and losses in traps**: a vole in a wire-mesh Ugglan trap is exposed to mustelids, owls and corvids, and a shrew caught in the same multiple-capture trap can kill it. Mitigations to specify after asking the Grimsö team what they see: trap covers or boards, placement under cover, check frequency, and whether shrew by-catch warrants a design response. (3) **Season**: this protocol argues for mid-August to late October; the funded proposal and the project instructions say May to August; the outline puts both windows to Grimsö. To be decided after the 21 October visit, and recorded here and in the project instructions.
+:::
+
+## Stage 3: Non-Destructive Biological Sampling
 
 We must obtain high-yield host and bacterial nucleic acids along with hantavirus serological data without impacting host survival or subsequent movement ecology. 
 

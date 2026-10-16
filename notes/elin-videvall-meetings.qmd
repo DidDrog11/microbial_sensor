@@ -38,27 +38,40 @@ David presented the project and the Pallasjärvi campaign (`docs/presentations/l
 
 - Lab safety session on 14 October missed (animal hospital); next slot about 28 October. All bench work, the dry-ice transfer, shadowing and the pilot, moves after that. Samples unaffected. Kit order can wait for the pending decisions.
 
-## 16 October 2026, chat, planned
+## 16 October 2026, chat
 
-Agenda:
+Agenda as planned; what was said against each item.
 
-1. **Plate sharing.** Can the vole pilot and first batch share a Nanopore plate with the reindeer project, and when is that plate going to NGI? That date, not the safety session, is the real deadline for the pilot.
-2. **Kit.** Confirm the single kit for gut and soil, and whether it is PowerFecal Pro for both.
-3. **Input mass.** Agree a mass per sample type, given the horse result and the gut-content budget per animal.
-4. **Mock community.** Which standard the lab has used; whether to add the gut-specific one.
-5. **Shadowing.** Who to shadow and when, after the 28 October session.
-6. **Frauke Ecke.** The 9 October conversation: she will share the monitoring data; Lammi exclosures with loggers and faecal samples; Umeå burnt plots; a historical cycle with PUUV PCR; RFID nest boxes cost about 40,000 euros. Elin should hear this before any arrangement is discussed with Frauke, since it bears on WP2 and on where the microbiome work sits. Notes in `frauke-ecke-2026-10-09.qmd`.
-
-Notes:
-
--
+1. **Plate sharing.** Elin is happy in principle for the vole pilot to share a Nanopore plate with the reindeer project. She aims to submit that plate to NGI **before Christmas** and expects to have space for our samples. That submission date, not the safety session, is the deadline for having pilot extracts ready and QC'd.
+2. **Kit.** Confirmed: **one kit for gut and soil**, Qiagen PowerFecal Pro.
+3. **Input mass.** Follow the manufacturer's recommendation, which Elin thinks is 0.2 g. To check against the kit handbook and write into the protocol as the fixed mass per sample type.
+4. **Mock community.** Elin thinks adding the gut-specific standard is a good idea for the first Nanopore run. So the pilot plate carries the mock.
+5. **Shadowing.** David to organise with Elin's team, after the late-October safety session.
+6. **Frauke Ecke and Lammi.** Elin is happy in principle. She knows Frauke and likes her. Authorship and leadership were not discussed; David framed it as something he is still exploring, not a decision. Next step is a fuller conversation with Frauke or one of her postdocs about what their study holds and whether it can answer our questions; David will email Frauke the week after the Grimsö visit. If Lammi samples come to us, extraction can be done at Uppsala.
+7. **Dry-ice transfer session.** Not discussed; for a later session.
+8. **Thresholds.** Not discussed; for a later session. David to propose values first.
+9. **Analysis of Nanopore reads.** No one in the lab has run full-length 16S from ONT. Elin's view is that building the pipeline sits with David and the lab's general skill set rather than with NGI. So the pipeline is ours to set up.
+10. **Kit order.** Ordering goes through the lab's ordering spreadsheet, which is checked twice a week.
 
 Decisions:
 
--
+- The pilot will be sequenced on **Nanopore**, on the reindeer project's plate, before Christmas. The platform for the full set remains open until the pilot has been seen, but a different platform for the full set would now have to be argued for.
+- One extraction kit, Qiagen PowerFecal Pro, for gut content and soil alike.
+- Input mass fixed per sample type at the manufacturer's recommended figure, to be confirmed from the handbook (Elin: about 0.2 g).
+- The gut-specific mock community goes on the pilot plate.
+- David does the extractions after shadowing, and owns the read-processing pipeline.
+
+Still open: thresholds for §5 of the lab protocol, the dry-ice transfer session, and the authorship framing with Frauke's group.
 
 Actions:
 
 | Action | Who | By |
 |---|---|---|
-| | | |
+| Confirm the reindeer plate's submission date with Elin and set the pilot deadline from it | David | 23 Oct |
+| Check the PowerFecal Pro handbook for the recommended input mass; write it into lab protocol §3 | David | 23 Oct |
+| Order kits and mock communities, including the gut-specific standard, through the lab spreadsheet | David | 23 Oct |
+| Organise shadowing with Elin's team for after the safety session | David | 29 Oct |
+| Email Frauke after the Grimsö visit to arrange a fuller conversation on Lammi | David | 30 Oct |
+| Propose pass/fail thresholds in lab protocol §5 before any pilot result | David | mid Nov |
+| Set up and test a read-processing route for ONT full-length 16S on the mock community data | David | before the pilot data arrive |
+| Pilot extracts extracted and QC'd in time for the reindeer plate | David | before plate submission, early Dec |

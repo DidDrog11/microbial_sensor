@@ -2,39 +2,38 @@
 title: "Microbial Sensor project: planned fieldwork at Grimsö in 2027"
 subtitle: "Outline for discussion at the visit, October 2026"
 author: "David Simons, Videvall lab, Dept. of Ecology and Genetics, Uppsala University"
-date: "2026-10-06"
+date: "2026-10-15"
 format:
   docx: default
   html: default
 ---
 
-**Draft for discussion.** Nothing here is fixed; the purpose of the visit is to adjust it to what is practical at Grimsö.
-
 ## Aim
 
-To test whether the gut microbiome of bank voles records who an animal has been in contact with. In 2026 we sampled snap-trapped voles and soil at Pallasjärvi, Finland, with Heikki Henttonen. At Grimsö we would follow live animals over one season, recording their contacts directly with PIT tags and RFID readers, and compare those contacts with how similar their gut microbiomes become. Grimsö is the right place because of the long-term vole monitoring: your density series tells us what kind of year we are working in.
+To test whether the gut microbiome of bank voles has the potential to record who an animal has been in contact with. In September we sampled snap-trapped voles and soil at Pallasjärvi, Finland, with Heikki Henttonen. At Grimsö we would follow live animals over about ten weeks, recording their contacts directly with PIT tags and RFID readers, and compare those contacts with how similar their gut microbiomes are. Conducting this at Grimsö allows me to calibrate the models based on the national monitoring programme density estimates.
 
 ## What we would do
 
 | | |
 |---|---|
-| Plot | One forest plot of about 3 ha, trapped intensively. It does not need to be on or near the monitoring transects |
+| Plot | One forest plot of ~3 ha. Not interacting with the monitoring transects |
 | Layout | Twelve small sub-grids of 25 × 25 m, 13 trap stations each, about 30 m apart: 156 stations |
-| Traps | Ugglan multiple-capture live traps, checked morning and evening |
-| Sessions | Four sessions of five nights, about three weeks apart. Provisionally late summer to autumn 2027, to run up to and through the autumn density peak; dates open |
-| Animals | Bank voles are the target. Each is PIT-tagged, a 2 mm ear biopsy is taken for marking and genotyping, and it is released at the point of capture. Other species are released at the trap |
-| Samples | Freshly voided faecal pellets, collected at the trap into preservative. No blood, no lethal sampling. Target: 20 to 40 tagged animals, about 100 faecal samples over the season |
-| Contact logging | A small number of nest boxes with RFID readers, left on the plot between sessions |
+| Traps | Ugglan multiple-capture live traps with bedding, checked at least morning and evening, more often in cold weather |
+| Bait | A standardised autoclaved seed mix (oats, sunflower) with a slice of apple, the same throughout, chosen not to disturb the gut community |
+| Sessions | Four sessions of five nights, about three weeks apart, so about ten weeks in all. Dates undecided: we are weighing a summer window (June to August, the rising phase) against an autumn one (mid-August to October, through the peak) |
+| Animals | Bank voles are the target. Each is PIT-tagged, a 2 mm ear biopsy is taken for marking and genotyping, and it is released at the point of capture. Non-target species are released at the trap |
+| Samples | Freshly voided faecal pellets, collected at the trap into preservative. No blood, no swabs, no lethal sampling. Target: 20 to 40 tagged animals, about 100 faecal samples over the season |
+| Contact logging | Nest boxes with RFID readers, left on the plot between sessions; the number depends on funding |
 | People | One or two, for five trap nights per session, about a week on site with setting and collecting |
 
 ## What we would need from the station
 
-- **A plot.** Gunnar has suggested the unmanaged forest near the station or the nearby reserve, since a managed stand could be harvested and nest boxes left out all season would be at risk. We would like to see both.
-- **Housing** for one or two people for about a week, four times. To be booked through the intendentur once dates are fixed.
+- **A plot.** Unmanaged forest near the station or the nearby reserve, since a managed stand could be harvested and nest boxes left out all season would be at risk.
+- **Housing** for about a week, four times. To be booked once dates are fixed.
 - **A −20 °C freezer** for a few boxes of small tubes, short term.
-- **A clean table and a sink.** A metre or two of wipe-down surface for labelling tubes and downloading loggers, and somewhere to wash traps and trays between sessions. Nothing sterile; no samples are opened indoors and no DNA work is done at Grimsö.
-- **Storage** for traps between sessions and over winter.
-- **An introduction day** with someone who knows the vole fieldwork, at the start.
+- **A clean table and a sink.** For labelling tubes and downloading loggers, and somewhere to wash traps and trays between sessions. Nothing sterile; no samples are opened indoors and no DNA work is done at Grimsö.
+- **Storage** for traps between sessions.
+- **An introduction** to the area and the vole fieldwork at the start, a day or two; after that we would work independently.
 
 ## What we would not need
 
@@ -42,17 +41,23 @@ Station cars (we expect to bring our own), laboratory equipment, or any change t
 
 ## Permits
 
-The station's ethical permit covers snap-trapping for the monitoring programme. We will apply for our own permit for live trapping, tagging and sampling, aiming to submit by December 2026, and would like to name Grimsö as the site and describe handling in a way consistent with your practice.
+We will apply for our own permit for live trapping, tagging and sampling, aiming to submit by December 2026, and would like to name Grimsö as the site and describe handling in a way consistent with your practice.
 
 ## Questions for the visit
 
 1. Which plot: unmanaged forest by the station, or the reserve? Are the monitoring transects mostly in managed forest, and would vole numbers in unmanaged forest follow the same pattern?
 2. What did the 2026 autumn survey show, and what would you expect for 2027?
-3. Which weeks in 2027 would suit the station best, and which should we avoid?
-4. May RFID nest boxes stay on the plot from the first session to the last?
-5. Are there Ugglan traps that could be borrowed, and how many?
-6. Guest researcher or bench fees, for the budget.
-7. Is there a land cover map or GIS layer for the research area we could use?
-8. Has any microbiome work been done on Grimsö small mammals before?
+3. Summer or autumn: which would you choose, and why? In particular:
+    - when voles at Grimsö are most numerous and most active, and when juveniles disperse;
+    - how late into October live trapping is sensible for the animals, given the nights;
+    - which weeks the station is busiest or empty: your field peak to end June, July holidays, the autumn survey in weeks 37 to 42, hunting season;
+    - when housing is easiest, and when someone would be around for an introduction;
+    - any window in which access to the forest is restricted.
+4. Predation and losses in traps: how often do you lose animals in Ugglan traps to predators or to shrews caught alongside them, and what do you do about it, covers, placement, check frequency?
+5. May RFID nest boxes stay on the plot from the first session to the last?
+6. Are there Ugglan traps that could be borrowed, and how many?
+7. Guest researcher or bench fees, for the budget.
+8. Is there a land cover map or GIS layer for the research area we could use?
+9. Has any microbiome work been done on Grimsö small mammals before?
 
 Contact: David Simons, dsimons1987@gmail.com
